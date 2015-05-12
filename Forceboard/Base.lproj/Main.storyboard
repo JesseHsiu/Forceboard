@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -110,11 +111,29 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxM-JL-5ea">
+                                <rect key="frame" x="276" y="550" width="48" height="30"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanHMSoftDevices:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJX-kQ-DL1"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-08-uDc">
+                                <rect key="frame" x="16" y="28" width="568" height="514"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="TFs-hX-pz7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eZN-wD-lth"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ahf-Mz-kvu" firstAttribute="top" secondItem="7Uh-G4-Q4b" secondAttribute="bottom" id="4ht-3x-mY3"/>
                             <constraint firstItem="tvp-mU-UK6" firstAttribute="centerX" secondItem="x9a-cW-vay" secondAttribute="centerX" id="4l9-uM-Bt3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IxM-JL-5ea" secondAttribute="bottom" constant="20" id="6th-m1-vEQ"/>
                             <constraint firstItem="bAQ-rj-eMN" firstAttribute="centerX" secondItem="7Uh-G4-Q4b" secondAttribute="centerX" id="70o-ya-Bmz"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="leading" secondItem="QZE-kY-pFx" secondAttribute="trailing" id="898-Uw-MU6"/>
                             <constraint firstAttribute="centerY" secondItem="fnJ-7F-kBd" secondAttribute="centerY" id="9lf-d5-uuh"/>
@@ -122,6 +141,7 @@
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="centerX" secondItem="Pma-Fe-N1U" secondAttribute="centerX" id="Fvn-Un-yot"/>
                             <constraint firstItem="x9a-cW-vay" firstAttribute="top" secondItem="tvp-mU-UK6" secondAttribute="bottom" id="HLR-CG-fJx"/>
                             <constraint firstItem="x9a-cW-vay" firstAttribute="centerX" secondItem="8N2-6J-jtO" secondAttribute="centerX" id="IAK-mW-s9B"/>
+                            <constraint firstAttribute="centerX" secondItem="IxM-JL-5ea" secondAttribute="centerX" id="KW0-1s-fHz"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="leading" secondItem="fnJ-7F-kBd" secondAttribute="trailing" id="LYO-jD-cwp"/>
                             <constraint firstItem="ahf-Mz-kvu" firstAttribute="centerX" secondItem="7Uh-G4-Q4b" secondAttribute="centerX" id="N9H-Sb-HK7"/>
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="leading" secondItem="bSu-d4-Df8" secondAttribute="trailing" id="NOY-uX-UUA"/>
@@ -136,17 +156,25 @@
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="top" secondItem="wbX-3A-zKr" secondAttribute="bottom" id="cmh-ha-pzQ"/>
                             <constraint firstAttribute="centerX" secondItem="bSu-d4-Df8" secondAttribute="centerX" id="dmV-X5-nxd"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="height" secondItem="QZE-kY-pFx" secondAttribute="height" id="fJW-Bu-9YE"/>
+                            <constraint firstItem="8v5-08-uDc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gDI-RU-lnM"/>
                             <constraint firstItem="wbX-3A-zKr" firstAttribute="centerX" secondItem="QZE-kY-pFx" secondAttribute="centerX" id="hqR-B2-Tm3"/>
+                            <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="8v5-08-uDc" secondAttribute="bottom" constant="8" id="n12-fr-x1k"/>
                             <constraint firstAttribute="centerY" secondItem="7Uh-G4-Q4b" secondAttribute="centerY" id="nWW-sg-Yuo"/>
+                            <constraint firstItem="8v5-08-uDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pX8-YT-8nq"/>
                             <constraint firstItem="VeL-z1-It6" firstAttribute="top" secondItem="bSu-d4-Df8" secondAttribute="bottom" id="qDz-oH-Aki"/>
                             <constraint firstAttribute="centerY" secondItem="bSu-d4-Df8" secondAttribute="centerY" id="qWE-vb-2X6"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="top" secondItem="D04-cu-mUu" secondAttribute="bottom" id="uIP-b3-jIk"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="top" secondItem="TzR-Vm-2cD" secondAttribute="bottom" id="wCB-dL-mwC"/>
                             <constraint firstItem="VeL-z1-It6" firstAttribute="centerX" secondItem="bSu-d4-Df8" secondAttribute="centerX" id="wh9-rx-Q4c"/>
+                            <constraint firstItem="8v5-08-uDc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="yAe-Fq-aYZ"/>
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="centerX" secondItem="hNq-fd-cyL" secondAttribute="centerX" id="ylp-uy-rHh"/>
                             <constraint firstAttribute="centerY" secondItem="x9a-cW-vay" secondAttribute="centerY" id="ynR-WE-KWr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBtn" destination="IxM-JL-5ea" id="F8i-ho-vQj"/>
+                        <outlet property="tableview" destination="8v5-08-uDc" id="1P0-Rg-QFa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

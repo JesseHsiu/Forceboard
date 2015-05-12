@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SerialGATT.h"
 
-@interface ViewController : UIViewController
-
-
+@interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate>
+{
+    NSMutableArray *discoveredBLEs;
+    IBOutlet UITableView *tableview;
+    IBOutlet UIButton *searchBtn;
+}
+@property (strong, nonatomic) SerialGATT *sensor;
+-(void) scanTimer:(NSTimer *)timer;
 @end
 

@@ -14,6 +14,8 @@
 		56EF54961B00D34C00589F0B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EF54951B00D34C00589F0B /* Images.xcassets */; };
 		56EF54991B00D34C00589F0B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56EF54971B00D34C00589F0B /* LaunchScreen.xib */; };
 		56EF54A51B00D34C00589F0B /* ForceboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54A41B00D34C00589F0B /* ForceboardTests.m */; };
+		56EF54E41B02229100589F0B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EF54E31B02229100589F0B /* CoreBluetooth.framework */; };
+		56EF54E91B02339D00589F0B /* SerialGATT.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54E71B02339D00589F0B /* SerialGATT.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		56EF549E1B00D34C00589F0B /* ForceboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForceboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EF54A31B00D34C00589F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56EF54A41B00D34C00589F0B /* ForceboardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForceboardTests.m; sourceTree = "<group>"; };
+		56EF54E31B02229100589F0B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		56EF54E71B02339D00589F0B /* SerialGATT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialGATT.m; sourceTree = "<group>"; };
+		56EF54E81B02339D00589F0B /* SerialGATT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialGATT.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56EF54E41B02229100589F0B /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,8 @@
 		56EF54871B00D34C00589F0B /* Forceboard */ = {
 			isa = PBXGroup;
 			children = (
+				56EF54E61B02338E00589F0B /* SerialGATT */,
+				56EF54E51B02229700589F0B /* Frameworks */,
 				56EF548C1B00D34C00589F0B /* AppDelegate.h */,
 				56EF548D1B00D34C00589F0B /* AppDelegate.m */,
 				56EF548F1B00D34C00589F0B /* ViewController.h */,
@@ -117,6 +125,23 @@
 				56EF54A31B00D34C00589F0B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56EF54E51B02229700589F0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56EF54E31B02229100589F0B /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56EF54E61B02338E00589F0B /* SerialGATT */ = {
+			isa = PBXGroup;
+			children = (
+				56EF54E71B02339D00589F0B /* SerialGATT.m */,
+				56EF54E81B02339D00589F0B /* SerialGATT.h */,
+			);
+			name = SerialGATT;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +247,7 @@
 				56EF54911B00D34C00589F0B /* ViewController.m in Sources */,
 				56EF548E1B00D34C00589F0B /* AppDelegate.m in Sources */,
 				56EF548B1B00D34C00589F0B /* main.m in Sources */,
+				56EF54E91B02339D00589F0B /* SerialGATT.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +444,7 @@
 				56EF54AA1B00D34C00589F0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56EF54AB1B00D34C00589F0B /* Build configuration list for PBXNativeTarget "ForceboardTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +453,7 @@
 				56EF54AD1B00D34C00589F0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
