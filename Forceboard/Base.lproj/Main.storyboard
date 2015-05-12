@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatch" translatesAutoresizingMaskIntoConstraints="NO" id="eqw-my-SrF">
+                                <rect key="frame" x="142" y="64" width="320" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="gmB-WJ-RET"/>
+                                    <constraint firstAttribute="height" constant="400" id="yec-9n-o9t"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-mU-UK6">
                                 <rect key="frame" x="225" y="255" width="30" height="30"/>
                                 <state key="normal" title="Q/w">
@@ -137,6 +144,7 @@
                             <constraint firstItem="bAQ-rj-eMN" firstAttribute="centerX" secondItem="7Uh-G4-Q4b" secondAttribute="centerX" id="70o-ya-Bmz"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="leading" secondItem="QZE-kY-pFx" secondAttribute="trailing" id="898-Uw-MU6"/>
                             <constraint firstAttribute="centerY" secondItem="fnJ-7F-kBd" secondAttribute="centerY" id="9lf-d5-uuh"/>
+                            <constraint firstAttribute="centerY" secondItem="eqw-my-SrF" secondAttribute="centerY" constant="36" id="ASF-lB-KEw"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="centerX" secondItem="D04-cu-mUu" secondAttribute="centerX" id="BUf-dY-mZj"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="centerX" secondItem="Pma-Fe-N1U" secondAttribute="centerX" id="Fvn-Un-yot"/>
                             <constraint firstItem="x9a-cW-vay" firstAttribute="top" secondItem="tvp-mU-UK6" secondAttribute="bottom" id="HLR-CG-fJx"/>
@@ -148,6 +156,7 @@
                             <constraint firstItem="8N2-6J-jtO" firstAttribute="top" secondItem="x9a-cW-vay" secondAttribute="bottom" id="OSf-Qd-SzW"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="centerY" secondItem="QZE-kY-pFx" secondAttribute="centerY" id="S4K-YR-wEY"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="centerX" secondItem="TzR-Vm-2cD" secondAttribute="centerX" id="TtL-cR-NLx"/>
+                            <constraint firstAttribute="centerX" secondItem="eqw-my-SrF" secondAttribute="centerX" constant="-2" id="VUb-30-y5b"/>
                             <constraint firstItem="hNq-fd-cyL" firstAttribute="top" secondItem="QZE-kY-pFx" secondAttribute="bottom" id="Vwe-wk-Hk4"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="width" secondItem="QZE-kY-pFx" secondAttribute="width" id="W0K-5B-aZU"/>
                             <constraint firstItem="Pma-Fe-N1U" firstAttribute="top" secondItem="fnJ-7F-kBd" secondAttribute="bottom" id="W7h-Rk-MhP"/>
@@ -180,4 +189,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppleWatch" width="919" height="1412"/>
+    </resources>
 </document>

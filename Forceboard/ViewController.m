@@ -120,8 +120,6 @@
 }
 
 #pragma mark - HMSoftSendingFunction
-
-
 -(void)sendStringToArduino:(NSString*)string{
     NSData *data = [string dataUsingEncoding:[NSString defaultCStringEncoding]];
     if(data.length > 20)
