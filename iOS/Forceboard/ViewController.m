@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KeysBtnView.h"
 
-#define THERSHOLD 100
+#define THERSHOLD 2
 
 @interface ViewController ()
 
@@ -144,7 +144,6 @@
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-    
     [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
 }
 -(void)changecurrentValue
@@ -241,10 +240,8 @@
 //    calibrateValues
     bool overthreshold = false;
     
-    
-    
     for (int i =0 ; i<[currentSensorValue count]; i++) {
-        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * 1.3) {
+        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * THERSHOLD && [[currentSensorValue objectAtIndex:i] floatValue] > 200) {
             overthreshold = true;
         }
     }
@@ -260,6 +257,8 @@
     }
     upperCase = false;
     [movedKey removeAllObjects];
+    
+    [self performSelector:@selector(calibrateValue:) withObject:self afterDelay:0.1];
 }
 
 -(NSString*)uplowerCasingString:(NSString*)string
@@ -300,6 +299,16 @@
 }
 - (IBAction)calibrateValue:(id)sender {
     calibrateValues = gonnaSetSensorValue;
+//    bool shouldcalibrate = true;
+//    for (int i = 0 ; i< [calibrateValues count]; i++) {
+//        if ([[calibrateValues objectAtIndex:i] floatValue] * 1.5 < [[gonnaSetSensorValue objectAtIndex:i] floatValue]) {
+//            shouldcalibrate = false;
+//        }
+//    }
+//    if (shouldcalibrate) {
+//        
+//    }
+    
 }
 
 @end

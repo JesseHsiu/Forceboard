@@ -42,13 +42,12 @@ void loop() { // read the value from the sensor:
     Serial.print("/");
     Serial.print(sensorValue2);
     Serial.print("/");
-    Serial.print(sensorValue3);
-    Serial.println("");
+    Serial.println(sensorValue3);
 //      Serial.println(AvgValue);
 
 //        mySerial.write("Hello");
         
-    delay(150);
+    delay(100);
         
 	if(AvgValue > 200){ 
 	//if the value is greater than 1000 it will light the led 
