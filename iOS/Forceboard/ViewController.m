@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KeysBtnView.h"
 
-#define THERSHOLD 300
+#define THERSHOLD 100
 
 @interface ViewController ()
 
@@ -141,7 +141,13 @@
 - (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    currentSensorValue = value.floatValue;
+    gonnaSetSensorValue = value.floatValue;
+    
+    [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+}
+-(void)changecurrentValue
+{
+    currentSensorValue = gonnaSetSensorValue;
 }
 
 - (void) setConnect
@@ -275,6 +281,9 @@
         default:
             break;
     }
+}
+- (IBAction)ClearUILabel:(id)sender {
+    outputText.text = @"";
 }
 
 @end

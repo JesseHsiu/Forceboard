@@ -17,6 +17,7 @@
     IBOutlet UILabel *outputText;
     
     NSMutableArray *movedKey;
+    float gonnaSetSensorValue;
     float currentSensorValue;
     BOOL upperCase;
     
