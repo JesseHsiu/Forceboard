@@ -24,49 +24,59 @@
                                     <constraint firstAttribute="height" constant="400" id="yec-9n-o9t"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-mU-UK6">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rT-ds-aPP">
+                                <rect key="frame" x="225" y="190" width="150" height="57"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="MgT-F5-zoR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-mU-UK6" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="255" width="30" height="30"/>
                                 <state key="normal" title="Q/w">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzR-Vm-2cD">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzR-Vm-2cD" customClass="KeysBtnView">
                                 <rect key="frame" x="255" y="255" width="30" height="30"/>
                                 <state key="normal" title="E/r">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D04-cu-mUu">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D04-cu-mUu" customClass="KeysBtnView">
                                 <rect key="frame" x="285" y="255" width="30" height="30"/>
                                 <state key="normal" title="T/y">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-3A-zKr">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-3A-zKr" customClass="KeysBtnView">
                                 <rect key="frame" x="315" y="255" width="30" height="30"/>
                                 <state key="normal" title="U/i">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAQ-rj-eMN">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAQ-rj-eMN" customClass="KeysBtnView">
                                 <rect key="frame" x="345" y="255" width="30" height="30"/>
                                 <state key="normal" title="O/p">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9a-cW-vay">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9a-cW-vay" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="285" width="30" height="30"/>
                                 <state key="normal" title="A/s">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnJ-7F-kBd">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnJ-7F-kBd" customClass="KeysBtnView">
                                 <rect key="frame" x="255" y="285" width="30" height="30"/>
                                 <state key="normal" title="D/f">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSu-d4-Df8">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSu-d4-Df8" customClass="KeysBtnView">
                                 <rect key="frame" x="285" y="285" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="NfU-6O-EBT"/>
@@ -76,43 +86,43 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZE-kY-pFx">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZE-kY-pFx" customClass="KeysBtnView">
                                 <rect key="frame" x="315" y="285" width="30" height="30"/>
                                 <state key="normal" title="J/k">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uh-G4-Q4b">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uh-G4-Q4b" customClass="KeysBtnView">
                                 <rect key="frame" x="345" y="285" width="30" height="30"/>
                                 <state key="normal" title="L/;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N2-6J-jtO">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N2-6J-jtO" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="315" width="30" height="30"/>
                                 <state key="normal" title="Z/x">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pma-Fe-N1U">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pma-Fe-N1U" customClass="KeysBtnView">
                                 <rect key="frame" x="255" y="315" width="30" height="30"/>
                                 <state key="normal" title="C/v">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeL-z1-It6">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeL-z1-It6" customClass="KeysBtnView">
                                 <rect key="frame" x="285" y="315" width="30" height="30"/>
                                 <state key="normal" title="B/n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-fd-cyL">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-fd-cyL" customClass="KeysBtnView">
                                 <rect key="frame" x="315" y="315" width="30" height="30"/>
                                 <state key="normal" title="M/,">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-Mz-kvu">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-Mz-kvu" customClass="KeysBtnView">
                                 <rect key="frame" x="345" y="315" width="30" height="30"/>
                                 <state key="normal" title="./En">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,6 +147,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ahf-Mz-kvu" firstAttribute="top" secondItem="7Uh-G4-Q4b" secondAttribute="bottom" id="4ht-3x-mY3"/>
                             <constraint firstItem="tvp-mU-UK6" firstAttribute="centerX" secondItem="x9a-cW-vay" secondAttribute="centerX" id="4l9-uM-Bt3"/>
@@ -160,6 +171,7 @@
                             <constraint firstItem="hNq-fd-cyL" firstAttribute="top" secondItem="QZE-kY-pFx" secondAttribute="bottom" id="Vwe-wk-Hk4"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="width" secondItem="QZE-kY-pFx" secondAttribute="width" id="W0K-5B-aZU"/>
                             <constraint firstItem="Pma-Fe-N1U" firstAttribute="top" secondItem="fnJ-7F-kBd" secondAttribute="bottom" id="W7h-Rk-MhP"/>
+                            <constraint firstItem="bAQ-rj-eMN" firstAttribute="trailing" secondItem="5rT-ds-aPP" secondAttribute="trailing" id="Y5f-Br-RXn"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="top" secondItem="bAQ-rj-eMN" secondAttribute="bottom" id="Z7k-Bb-9Ef"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="leading" secondItem="x9a-cW-vay" secondAttribute="trailing" id="alB-uS-obo"/>
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="top" secondItem="wbX-3A-zKr" secondAttribute="bottom" id="cmh-ha-pzQ"/>
@@ -167,12 +179,15 @@
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="height" secondItem="QZE-kY-pFx" secondAttribute="height" id="fJW-Bu-9YE"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gDI-RU-lnM"/>
                             <constraint firstItem="wbX-3A-zKr" firstAttribute="centerX" secondItem="QZE-kY-pFx" secondAttribute="centerX" id="hqR-B2-Tm3"/>
+                            <constraint firstItem="tvp-mU-UK6" firstAttribute="leading" secondItem="5rT-ds-aPP" secondAttribute="leading" id="iSu-07-5i9"/>
                             <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="8v5-08-uDc" secondAttribute="bottom" constant="8" id="n12-fr-x1k"/>
                             <constraint firstAttribute="centerY" secondItem="7Uh-G4-Q4b" secondAttribute="centerY" id="nWW-sg-Yuo"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pX8-YT-8nq"/>
                             <constraint firstItem="VeL-z1-It6" firstAttribute="top" secondItem="bSu-d4-Df8" secondAttribute="bottom" id="qDz-oH-Aki"/>
                             <constraint firstAttribute="centerY" secondItem="bSu-d4-Df8" secondAttribute="centerY" id="qWE-vb-2X6"/>
+                            <constraint firstAttribute="centerX" secondItem="5rT-ds-aPP" secondAttribute="centerX" id="st1-ro-Oac"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="top" secondItem="D04-cu-mUu" secondAttribute="bottom" id="uIP-b3-jIk"/>
+                            <constraint firstItem="D04-cu-mUu" firstAttribute="top" secondItem="5rT-ds-aPP" secondAttribute="top" constant="65" id="udv-Vn-DnV"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="top" secondItem="TzR-Vm-2cD" secondAttribute="bottom" id="wCB-dL-mwC"/>
                             <constraint firstItem="VeL-z1-It6" firstAttribute="centerX" secondItem="bSu-d4-Df8" secondAttribute="centerX" id="wh9-rx-Q4c"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="yAe-Fq-aYZ"/>
@@ -181,6 +196,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="outputText" destination="5rT-ds-aPP" id="46q-Q0-sOV"/>
                         <outlet property="searchBtn" destination="IxM-JL-5ea" id="F8i-ho-vQj"/>
                         <outlet property="tableview" destination="8v5-08-uDc" id="1P0-Rg-QFa"/>
                     </connections>

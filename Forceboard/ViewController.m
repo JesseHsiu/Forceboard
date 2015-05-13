@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "KeysBtnView.h"
+
+#define THERSHOLD 300
 
 @interface ViewController ()
 
@@ -21,8 +24,30 @@
     sensor.delegate = self;
     
     discoveredBLEs = [[NSMutableArray alloc]init];
+    movedKey = [[NSMutableArray alloc]init];
     
-    // Do any additional setup after loading the view, typically from a nib.
+    upperCase= false;
+    currentSensorValue = 0;
+
+    
+    //Swipe Recong
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [outputText addGestureRecognizer:swipeRight];
+    [outputText addGestureRecognizer:swipeLeft];
+    [outputText addGestureRecognizer:swipeUp];
+    [outputText addGestureRecognizer:swipeDown];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,7 +141,7 @@
 - (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    NSLog(@"%@",value);
+    currentSensorValue = value.floatValue;
 }
 
 #pragma mark - HMSoftSendingFunction
@@ -142,7 +167,108 @@
         //NSData *data = [MsgToArduino.text dataUsingEncoding:[NSString defaultCStringEncoding]];
         [sensor write:sensor.activePeripheral data:data];
     }
+
 }
 
+
+#pragma mark - Touch Event
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    
+    for (UIView *view in self.view.subviews)
+    {
+        if ([view isKindOfClass:[KeysBtnView class]] &&
+            CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
+        {
+            NSLog(@"Start -> %@",((KeysBtnView*)view).titleLabel.text);
+            [movedKey addObject:view];
+        }
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    
+    for (UIView *view in self.view.subviews)
+    {
+        if ([view isKindOfClass:[KeysBtnView class]] &&
+            CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
+        {
+            NSLog(@"Change to key -> %@",((KeysBtnView*)view).titleLabel.text);
+            [movedKey addObject:view];
+        }
+    }
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self.view];
+    
+    for (UIView *view in self.view.subviews)
+    {
+        if ([view isKindOfClass:[KeysBtnView class]] &&
+            CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
+        {
+            [movedKey addObject:view];
+        }
+    }
+    
+    if ([movedKey count] == 0) {
+        return;
+    }
+    KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
+    NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@"/"];
+    if (currentSensorValue < THERSHOLD) {
+        NSLog(@"%@",containkeys[0]);
+        outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
+    }
+    else
+    {
+        NSLog(@"%@",containkeys[1]);
+        outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
+    }
+    
+    [movedKey removeAllObjects];
+}
+
+-(NSString*)uplowerCasingString:(NSString*)string
+{
+    if (upperCase) {
+        return [string uppercaseString];
+    }
+    else
+    {
+        return [string lowercaseString];
+    }
+}
+
+-(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
+    NSLog(@"hello!!");
+    switch (swipeGestureRecognizer.direction) {
+        case UISwipeGestureRecognizerDirectionRight:
+            outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
+            break;
+        case UISwipeGestureRecognizerDirectionLeft:
+            if ([outputText.text length] == 0) {
+                return;
+            }
+            outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
+            break;
+        case UISwipeGestureRecognizerDirectionUp:
+            upperCase = true;
+            break;
+        case UISwipeGestureRecognizerDirectionDown:
+            upperCase = false;
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

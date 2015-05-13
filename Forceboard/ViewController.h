@@ -14,6 +14,12 @@
     NSMutableArray *discoveredBLEs;
     IBOutlet UITableView *tableview;
     IBOutlet UIButton *searchBtn;
+    IBOutlet UILabel *outputText;
+    
+    NSMutableArray *movedKey;
+    float currentSensorValue;
+    BOOL upperCase;
+    
 }
 @property (strong, nonatomic) SerialGATT *sensor;
 -(void) scanTimer:(NSTimer *)timer;
