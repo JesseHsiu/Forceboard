@@ -17,9 +17,12 @@
     IBOutlet UILabel *outputText;
     
     NSMutableArray *movedKey;
-    float gonnaSetSensorValue;
-    float currentSensorValue;
+    NSArray *gonnaSetSensorValue;
+    NSArray *currentSensorValue;
     BOOL upperCase;
+    
+    
+    NSArray *calibrateValues;
     
 }
 @property (strong, nonatomic) SerialGATT *sensor;

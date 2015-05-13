@@ -28,6 +28,8 @@
     
     upperCase= false;
     currentSensorValue = 0;
+    
+    calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
 
     
     //Swipe Recong
@@ -141,7 +143,7 @@
 - (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    gonnaSetSensorValue = value.floatValue;
+    gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
     
     [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
 }
@@ -236,7 +238,18 @@
     }
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@"/"];
-    if (currentSensorValue < THERSHOLD) {
+//    calibrateValues
+    bool overthreshold = false;
+    
+    
+    
+    for (int i =0 ; i<[currentSensorValue count]; i++) {
+        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * 1.3) {
+            overthreshold = true;
+        }
+    }
+    
+    if (!overthreshold) {
         NSLog(@"%@",containkeys[0]);
         outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
     }
@@ -284,6 +297,9 @@
 }
 - (IBAction)ClearUILabel:(id)sender {
     outputText.text = @"";
+}
+- (IBAction)calibrateValue:(id)sender {
+    calibrateValues = gonnaSetSensorValue;
 }
 
 @end

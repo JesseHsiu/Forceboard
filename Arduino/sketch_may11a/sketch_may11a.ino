@@ -36,15 +36,15 @@ void loop() { // read the value from the sensor:
 
 	float SumValue = (sensorValue0 + sensorValue1 + sensorValue2 + sensorValue3);
     float AvgValue = SumValue/4;
-//    Serial.print(sensorValue0);
-//    Serial.print("/");
-//    Serial.print(sensorValue1);
-//    Serial.print("/");
-//    Serial.print(sensorValue2);
-//    Serial.print("/");
-//    Serial.print(sensorValue3);
-//    Serial.println("");
-      Serial.println(AvgValue);
+    Serial.print(sensorValue0);
+    Serial.print("/");
+    Serial.print(sensorValue1);
+    Serial.print("/");
+    Serial.print(sensorValue2);
+    Serial.print("/");
+    Serial.print(sensorValue3);
+    Serial.println("");
+//      Serial.println(AvgValue);
 
 //        mySerial.write("Hello");
         
