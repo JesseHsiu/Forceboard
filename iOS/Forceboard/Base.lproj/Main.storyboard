@@ -28,6 +28,7 @@
                                 <rect key="frame" x="225" y="190" width="150" height="57"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3JX-Xa-XYY"/>
                                     <constraint firstAttribute="height" constant="57" id="MgT-F5-zoR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -179,7 +180,6 @@
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="height" secondItem="QZE-kY-pFx" secondAttribute="height" id="fJW-Bu-9YE"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gDI-RU-lnM"/>
                             <constraint firstItem="wbX-3A-zKr" firstAttribute="centerX" secondItem="QZE-kY-pFx" secondAttribute="centerX" id="hqR-B2-Tm3"/>
-                            <constraint firstItem="tvp-mU-UK6" firstAttribute="leading" secondItem="5rT-ds-aPP" secondAttribute="leading" id="iSu-07-5i9"/>
                             <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="8v5-08-uDc" secondAttribute="bottom" constant="8" id="n12-fr-x1k"/>
                             <constraint firstAttribute="centerY" secondItem="7Uh-G4-Q4b" secondAttribute="centerY" id="nWW-sg-Yuo"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pX8-YT-8nq"/>

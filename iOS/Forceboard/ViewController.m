@@ -135,13 +135,20 @@
     if (![discoveredBLEs containsObject:peripheral]) {
         [discoveredBLEs addObject:peripheral];
     }
-    
+    [tableview reloadData];
 }
 
 - (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     currentSensorValue = value.floatValue;
+}
+
+- (void) setConnect
+{
+}
+- (void) setDisconnect
+{
 }
 
 #pragma mark - HMSoftSendingFunction
@@ -232,7 +239,7 @@
         NSLog(@"%@",containkeys[1]);
         outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
     }
-    
+    upperCase = false;
     [movedKey removeAllObjects];
 }
 
@@ -263,7 +270,6 @@
             upperCase = true;
             break;
         case UISwipeGestureRecognizerDirectionDown:
-            upperCase = false;
             break;
             
         default:

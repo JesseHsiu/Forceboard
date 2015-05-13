@@ -21,7 +21,7 @@
  *
  *  @param s Uint16 value to byteswap
  *
- *  @discussion swap byteswaps a UInt16 
+ *  @discussion swap byteswaps a UInt16
  *
  *  @return Byteswapped UInt16
  */
@@ -74,9 +74,9 @@
 /*
  *  @method printPeripheralInfo:
  *
- *  @param peripheral Peripheral to print info of 
+ *  @param peripheral Peripheral to print info of
  *
- *  @discussion printPeripheralInfo prints detailed info about peripheral 
+ *  @discussion printPeripheralInfo prints detailed info about peripheral
  *
  */
 - (void) printPeripheralInfo:(CBPeripheral*)peripheral {
@@ -179,7 +179,7 @@
         [delegate peripheralFound:peripheral];
         return;
     }
-//    printf("%s\n", __FUNCTION__);
+    printf("%s\n", __FUNCTION__);
 }
 
 -(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
@@ -199,7 +199,7 @@
 {
     printf("disconnected to the active peripheral\n");
     if(activePeripheral != nil)
-    [delegate setDisconnect];
+        [delegate setDisconnect];
     activePeripheral = nil;
 }
 
@@ -219,8 +219,8 @@
         return;
     }
     [delegate serialGATTCharValueUpdated:@"FFE1" value:characteristic.value];
-
-
+    
+    
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -264,7 +264,7 @@
  *  @param peripheral Pheripheral that got updated
  *  @error error Error message if something went wrong
  *
- *  @discussion didDiscoverServices is called when CoreBluetooth has discovered services on a 
+ *  @discussion didDiscoverServices is called when CoreBluetooth has discovered services on a
  *  peripheral after the discoverServices routine has been called on the peripheral
  *
  */
@@ -286,7 +286,7 @@
  *  @param service Service that characteristics where found on
  *  @error error Error message if something went wrong
  *
- *  @discussion didDiscoverCharacteristicsForService is called when CoreBluetooth has discovered 
+ *  @discussion didDiscoverCharacteristicsForService is called when CoreBluetooth has discovered
  *  characteristics on a service, on a peripheral after the discoverCharacteristics routine has been called on the service
  *
  */
@@ -295,7 +295,7 @@
     if (!error) {
         printf("Characteristics of service with UUID : %s found\r\n",[self CBUUIDToString:service.UUID]);
         for(int i = 0; i < service.characteristics.count; i++) { //Show every one
-            CBCharacteristic *c = [service.characteristics objectAtIndex:i]; 
+            CBCharacteristic *c = [service.characteristics objectAtIndex:i];
             printf("Found characteristic %s\r\n",[ self CBUUIDToString:c.UUID]);
         }
         
@@ -357,7 +357,7 @@
 -(const char *) UUIDToString:(CFUUIDRef)UUID {
     if (!UUID) return "NULL";
     CFStringRef s = CFUUIDCreateString(NULL, UUID);
-    return CFStringGetCStringPtr(s, 0);		
+    return CFStringGetCStringPtr(s, 0);
     
 }
 
@@ -376,8 +376,8 @@
 -(int) compareCBUUID:(CBUUID *) UUID1 UUID2:(CBUUID *)UUID2 {
     char b1[16];
     char b2[16];
-    [UUID1.data getBytes:b1 length:16];
-    [UUID2.data getBytes:b1 length:16];
+    [UUID1.data getBytes:b1];
+    [UUID2.data getBytes:b2];
     if (memcmp(b1, b2, UUID1.data.length) == 0)return 1;
     else return 0;
 }
@@ -391,7 +391,7 @@
  *
  *  @return pointer to CBService if found, nil if not
  *
- *  @discussion findServiceFromUUID searches through the services list of a peripheral to find a 
+ *  @discussion findServiceFromUUID searches through the services list of a peripheral to find a
  *  service with a specific UUID
  *
  */
@@ -411,7 +411,7 @@
  *
  *  @return pointer to CBCharacteristic if found, nil if not
  *
- *  @discussion findCharacteristicFromUUID searches through the characteristic list of a given service 
+ *  @discussion findCharacteristicFromUUID searches through the characteristic list of a given service
  *  to find a characteristic with a specific UUID
  *
  */
@@ -468,7 +468,7 @@
  *
  *  @discussion Main routine for writeValue request, writes without feedback. It converts integer into
  *  CBUUID's used by CoreBluetooth. It then searches through the peripherals services to find a
- *  suitable service, it then checks that there is a suitable characteristic on this service. 
+ *  suitable service, it then checks that there is a suitable characteristic on this service.
  *  If this is found, value is written. If not nothing is done.
  *
  */
@@ -510,8 +510,8 @@
  *
  *  @discussion Main routine for read value request. It converts integers into
  *  CBUUID's used by CoreBluetooth. It then searches through the peripherals services to find a
- *  suitable service, it then checks that there is a suitable characteristic on this service. 
- *  If this is found, the read value is started. When value is read the didUpdateValueForCharacteristic 
+ *  suitable service, it then checks that there is a suitable characteristic on this service.
+ *  If this is found, the read value is started. When value is read the didUpdateValueForCharacteristic
  *  routine is called.
  *
  *  @see didUpdateValueForCharacteristic
@@ -534,7 +534,7 @@
     if (!characteristic) {
         printf("Could not find characteristic with UUID %s on service with UUID %s on peripheral with UUID %s\r\n",[self CBUUIDToString:cu],[self CBUUIDToString:su],[self UUIDToString:(__bridge CFUUIDRef )p.identifier]);
         return;
-    }  
+    }
     [p readValueForCharacteristic:characteristic];
 }
 
