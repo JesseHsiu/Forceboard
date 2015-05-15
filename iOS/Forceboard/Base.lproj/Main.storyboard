@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatch" translatesAutoresizingMaskIntoConstraints="NO" id="eqw-my-SrF">
-                                <rect key="frame" x="142" y="64" width="320" height="400"/>
+                                <rect key="frame" x="142" y="70" width="320" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="gmB-WJ-RET"/>
                                     <constraint firstAttribute="height" constant="400" id="yec-9n-o9t"/>
@@ -37,95 +37,114 @@
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-mU-UK6" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="255" width="30" height="30"/>
-                                <state key="normal" title="Q/w">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kg5-oh-IAM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="q/w">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzR-Vm-2cD" customClass="KeysBtnView">
                                 <rect key="frame" x="255" y="255" width="30" height="30"/>
-                                <state key="normal" title="E/r">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="e/r">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D04-cu-mUu" customClass="KeysBtnView">
                                 <rect key="frame" x="285" y="255" width="30" height="30"/>
-                                <state key="normal" title="T/y">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="t/y">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-3A-zKr" customClass="KeysBtnView">
                                 <rect key="frame" x="315" y="255" width="30" height="30"/>
-                                <state key="normal" title="U/i">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="u/i">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAQ-rj-eMN" customClass="KeysBtnView">
                                 <rect key="frame" x="345" y="255" width="30" height="30"/>
-                                <state key="normal" title="O/p">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="o/p">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9a-cW-vay" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="285" width="30" height="30"/>
-                                <state key="normal" title="A/s">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="a/s">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnJ-7F-kBd" customClass="KeysBtnView">
                                 <rect key="frame" x="255" y="285" width="30" height="30"/>
-                                <state key="normal" title="D/f">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="d/f">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSu-d4-Df8" customClass="KeysBtnView">
                                 <rect key="frame" x="285" y="285" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="NfU-6O-EBT"/>
                                     <constraint firstAttribute="height" constant="30" id="OPE-Nq-cIX"/>
                                 </constraints>
-                                <state key="normal" title="G/h">
+                                <state key="normal" title="g/h">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZE-kY-pFx" customClass="KeysBtnView">
                                 <rect key="frame" x="315" y="285" width="30" height="30"/>
-                                <state key="normal" title="J/k">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="j/k">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uh-G4-Q4b" customClass="KeysBtnView">
                                 <rect key="frame" x="345" y="285" width="30" height="30"/>
-                                <state key="normal" title="L/;">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="l/;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N2-6J-jtO" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="315" width="30" height="30"/>
-                                <state key="normal" title="Z/x">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="z/x">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pma-Fe-N1U" customClass="KeysBtnView">
                                 <rect key="frame" x="255" y="315" width="30" height="30"/>
-                                <state key="normal" title="C/v">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="c/v">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeL-z1-It6" customClass="KeysBtnView">
                                 <rect key="frame" x="285" y="315" width="30" height="30"/>
-                                <state key="normal" title="B/n">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="b/n">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-fd-cyL" customClass="KeysBtnView">
                                 <rect key="frame" x="315" y="315" width="30" height="30"/>
-                                <state key="normal" title="M/,">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="m/,">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-Mz-kvu" customClass="KeysBtnView">
                                 <rect key="frame" x="345" y="315" width="30" height="30"/>
-                                <state key="normal" title="./En">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="./en">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -176,15 +195,13 @@
                         <constraints>
                             <constraint firstItem="u5y-mb-Qbx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="0RY-3x-h8q"/>
                             <constraint firstItem="ahf-Mz-kvu" firstAttribute="top" secondItem="7Uh-G4-Q4b" secondAttribute="bottom" id="4ht-3x-mY3"/>
-                            <constraint firstItem="tvp-mU-UK6" firstAttribute="centerX" secondItem="x9a-cW-vay" secondAttribute="centerX" id="4l9-uM-Bt3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IxM-JL-5ea" secondAttribute="bottom" constant="20" id="6th-m1-vEQ"/>
                             <constraint firstItem="bAQ-rj-eMN" firstAttribute="centerX" secondItem="7Uh-G4-Q4b" secondAttribute="centerX" id="70o-ya-Bmz"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="leading" secondItem="QZE-kY-pFx" secondAttribute="trailing" id="898-Uw-MU6"/>
                             <constraint firstAttribute="centerY" secondItem="fnJ-7F-kBd" secondAttribute="centerY" id="9lf-d5-uuh"/>
-                            <constraint firstAttribute="centerY" secondItem="eqw-my-SrF" secondAttribute="centerY" constant="36" id="ASF-lB-KEw"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="centerX" secondItem="D04-cu-mUu" secondAttribute="centerX" id="BUf-dY-mZj"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="centerX" secondItem="Pma-Fe-N1U" secondAttribute="centerX" id="Fvn-Un-yot"/>
-                            <constraint firstItem="x9a-cW-vay" firstAttribute="top" secondItem="tvp-mU-UK6" secondAttribute="bottom" id="HLR-CG-fJx"/>
+                            <constraint firstItem="TzR-Vm-2cD" firstAttribute="centerY" secondItem="tvp-mU-UK6" secondAttribute="centerY" id="Gym-Iv-i80"/>
                             <constraint firstItem="x9a-cW-vay" firstAttribute="centerX" secondItem="8N2-6J-jtO" secondAttribute="centerX" id="IAK-mW-s9B"/>
                             <constraint firstAttribute="centerX" secondItem="IxM-JL-5ea" secondAttribute="centerX" id="KW0-1s-fHz"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="leading" secondItem="fnJ-7F-kBd" secondAttribute="trailing" id="LYO-jD-cwp"/>
@@ -198,6 +215,7 @@
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="width" secondItem="QZE-kY-pFx" secondAttribute="width" id="W0K-5B-aZU"/>
                             <constraint firstItem="Pma-Fe-N1U" firstAttribute="top" secondItem="fnJ-7F-kBd" secondAttribute="bottom" id="W7h-Rk-MhP"/>
                             <constraint firstItem="bAQ-rj-eMN" firstAttribute="trailing" secondItem="5rT-ds-aPP" secondAttribute="trailing" id="Y5f-Br-RXn"/>
+                            <constraint firstAttribute="centerY" secondItem="eqw-my-SrF" secondAttribute="centerY" constant="30" id="YMx-ZN-URP"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="top" secondItem="bAQ-rj-eMN" secondAttribute="bottom" id="Z7k-Bb-9Ef"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="leading" secondItem="x9a-cW-vay" secondAttribute="trailing" id="alB-uS-obo"/>
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="top" secondItem="wbX-3A-zKr" secondAttribute="bottom" id="cmh-ha-pzQ"/>
@@ -207,6 +225,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dwa-d8-CZ4" secondAttribute="bottom" constant="20" id="hWa-c8-huN"/>
                             <constraint firstItem="dwa-d8-CZ4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hhI-OZ-1C6"/>
                             <constraint firstItem="wbX-3A-zKr" firstAttribute="centerX" secondItem="QZE-kY-pFx" secondAttribute="centerX" id="hqR-B2-Tm3"/>
+                            <constraint firstItem="x9a-cW-vay" firstAttribute="centerX" secondItem="tvp-mU-UK6" secondAttribute="centerX" id="jyg-Ba-fh6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5y-mb-Qbx" secondAttribute="bottom" constant="20" id="lWR-ro-u2n"/>
                             <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="8v5-08-uDc" secondAttribute="bottom" constant="8" id="n12-fr-x1k"/>
                             <constraint firstAttribute="centerY" secondItem="7Uh-G4-Q4b" secondAttribute="centerY" id="nWW-sg-Yuo"/>

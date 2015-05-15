@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SerialGATT.h"
+#import "CircleButtonView.h"
 
 @interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate>
 {

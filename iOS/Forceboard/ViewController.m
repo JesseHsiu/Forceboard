@@ -49,6 +49,8 @@
     [outputText addGestureRecognizer:swipeLeft];
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
+    
+    [self.view addSubview:[[CircleButtonView alloc] initWithFrame:CGRectMake(50,50, 100, 100)]];
 
 }
 
@@ -120,6 +122,7 @@
     [UIView commitAnimations];
 }
 
+#pragma mark - HMSoftSearching
 -(void)scanTimer:(NSTimer *)timer
 {
     [self stopScanning];
@@ -258,6 +261,16 @@
     upperCase = false;
     [movedKey removeAllObjects];
     
+    
+    for (UIView *view in self.view.subviews)
+    {
+        if ([view isKindOfClass:[KeysBtnView class]])
+        {
+            [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] lowercaseString] forState:UIControlStateNormal];
+        }
+    }
+    
+    
     [self performSelector:@selector(calibrateValue:) withObject:self afterDelay:0.1];
 }
 
@@ -271,7 +284,7 @@
         return [string lowercaseString];
     }
 }
-
+#pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
     NSLog(@"hello!!");
     switch (swipeGestureRecognizer.direction) {
@@ -286,6 +299,14 @@
             break;
         case UISwipeGestureRecognizerDirectionUp:
             upperCase = true;
+            for (UIView *view in self.view.subviews)
+            {
+                if ([view isKindOfClass:[KeysBtnView class]])
+                {
+                    [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] uppercaseString] forState:UIControlStateNormal];
+                }
+            }
+            
             break;
         case UISwipeGestureRecognizerDirectionDown:
             break;
