@@ -50,7 +50,7 @@
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
     
-    [self.view addSubview:[[CircleButtonView alloc] initWithFrame:CGRectMake(50,50, 100, 100)]];
+    [self.view addSubview:[[CircleButtonView alloc] initWithFrame:CGRectMake(10,10, 100, 100)]];
 
 }
 
