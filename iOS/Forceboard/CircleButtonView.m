@@ -13,7 +13,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:CGRectMake(frame.origin.x,frame.origin.y,RADIUS + 1,RADIUS + 1)]) {
+    if (self = [super initWithFrame:CGRectMake(frame.origin.x - 25,frame.origin.y - 70,RADIUS + 1,RADIUS + 1)]) {
         circleBackGround = [[UILabel alloc] initWithFrame:CGRectMake(0,0,RADIUS,RADIUS)];
         circleBackGround.backgroundColor = [UIColor colorWithRed:(116/255.0) green:(212/255.0) blue:(253/255.0) alpha:0.8];
         circleBackGround.layer.masksToBounds = YES;
@@ -37,6 +37,7 @@
     }
     return self;
 }
+
 -(void)defaultColor
 {
     circleBackGround.text = @"●";

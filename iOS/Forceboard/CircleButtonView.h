@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <EFCircularSlider.h>
+
 @interface CircleButtonView : UIView
 {
     UILabel *circleBackGround;

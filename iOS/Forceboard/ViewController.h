@@ -16,6 +16,7 @@
     IBOutlet UITableView *tableview;
     IBOutlet UIButton *searchBtn;
     IBOutlet UILabel *outputText;
+    IBOutlet UIView *keyboardView;
     
     NSMutableArray *movedKey;
     NSArray *gonnaSetSensorValue;

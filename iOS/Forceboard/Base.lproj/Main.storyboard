@@ -35,6 +35,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jn7-jj-NUX">
+                                <rect key="frame" x="225" y="255" width="150" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-mU-UK6" customClass="KeysBtnView">
                                 <rect key="frame" x="225" y="255" width="30" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,6 +207,7 @@
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="centerX" secondItem="Pma-Fe-N1U" secondAttribute="centerX" id="Fvn-Un-yot"/>
                             <constraint firstItem="TzR-Vm-2cD" firstAttribute="centerY" secondItem="tvp-mU-UK6" secondAttribute="centerY" id="Gym-Iv-i80"/>
                             <constraint firstItem="x9a-cW-vay" firstAttribute="centerX" secondItem="8N2-6J-jtO" secondAttribute="centerX" id="IAK-mW-s9B"/>
+                            <constraint firstItem="Jn7-jj-NUX" firstAttribute="leading" secondItem="8N2-6J-jtO" secondAttribute="leading" id="Jfx-NC-hSg"/>
                             <constraint firstAttribute="centerX" secondItem="IxM-JL-5ea" secondAttribute="centerX" id="KW0-1s-fHz"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="leading" secondItem="fnJ-7F-kBd" secondAttribute="trailing" id="LYO-jD-cwp"/>
                             <constraint firstItem="ahf-Mz-kvu" firstAttribute="centerX" secondItem="7Uh-G4-Q4b" secondAttribute="centerX" id="N9H-Sb-HK7"/>
@@ -213,7 +218,9 @@
                             <constraint firstAttribute="centerX" secondItem="eqw-my-SrF" secondAttribute="centerX" constant="-2" id="VUb-30-y5b"/>
                             <constraint firstItem="hNq-fd-cyL" firstAttribute="top" secondItem="QZE-kY-pFx" secondAttribute="bottom" id="Vwe-wk-Hk4"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="width" secondItem="QZE-kY-pFx" secondAttribute="width" id="W0K-5B-aZU"/>
+                            <constraint firstItem="Jn7-jj-NUX" firstAttribute="trailing" secondItem="ahf-Mz-kvu" secondAttribute="trailing" id="W7V-Th-x8o"/>
                             <constraint firstItem="Pma-Fe-N1U" firstAttribute="top" secondItem="fnJ-7F-kBd" secondAttribute="bottom" id="W7h-Rk-MhP"/>
+                            <constraint firstItem="Jn7-jj-NUX" firstAttribute="bottom" secondItem="ahf-Mz-kvu" secondAttribute="bottom" id="Y0F-9M-CtA"/>
                             <constraint firstItem="bAQ-rj-eMN" firstAttribute="trailing" secondItem="5rT-ds-aPP" secondAttribute="trailing" id="Y5f-Br-RXn"/>
                             <constraint firstAttribute="centerY" secondItem="eqw-my-SrF" secondAttribute="centerY" constant="30" id="YMx-ZN-URP"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="top" secondItem="bAQ-rj-eMN" secondAttribute="bottom" id="Z7k-Bb-9Ef"/>
@@ -229,6 +236,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5y-mb-Qbx" secondAttribute="bottom" constant="20" id="lWR-ro-u2n"/>
                             <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="8v5-08-uDc" secondAttribute="bottom" constant="8" id="n12-fr-x1k"/>
                             <constraint firstAttribute="centerY" secondItem="7Uh-G4-Q4b" secondAttribute="centerY" id="nWW-sg-Yuo"/>
+                            <constraint firstItem="Jn7-jj-NUX" firstAttribute="top" secondItem="wbX-3A-zKr" secondAttribute="top" id="oF0-eL-mpr"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pX8-YT-8nq"/>
                             <constraint firstItem="VeL-z1-It6" firstAttribute="top" secondItem="bSu-d4-Df8" secondAttribute="bottom" id="qDz-oH-Aki"/>
                             <constraint firstAttribute="centerY" secondItem="bSu-d4-Df8" secondAttribute="centerY" id="qWE-vb-2X6"/>
@@ -241,8 +249,14 @@
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="centerX" secondItem="hNq-fd-cyL" secondAttribute="centerX" id="ylp-uy-rHh"/>
                             <constraint firstAttribute="centerY" secondItem="x9a-cW-vay" secondAttribute="centerY" id="ynR-WE-KWr"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8v5-08-uDc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="keyboardView" destination="Jn7-jj-NUX" id="tWE-bl-tGQ"/>
                         <outlet property="outputText" destination="5rT-ds-aPP" id="46q-Q0-sOV"/>
                         <outlet property="searchBtn" destination="IxM-JL-5ea" id="F8i-ho-vQj"/>
                         <outlet property="tableview" destination="8v5-08-uDc" id="1P0-Rg-QFa"/>

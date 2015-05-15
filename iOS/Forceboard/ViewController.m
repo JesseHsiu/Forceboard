@@ -12,7 +12,7 @@
 #define THERSHOLD 2
 
 @interface ViewController ()
-
+@property CircleButtonView* circleView;
 @end
 
 @implementation ViewController
@@ -27,7 +27,6 @@
     movedKey = [[NSMutableArray alloc]init];
     
     upperCase= false;
-    currentSensorValue = 0;
     
     calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
 
@@ -50,10 +49,7 @@
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
     
-    CircleButtonView *circleView = [[CircleButtonView alloc] initWithFrame:CGRectMake(70,100, 100, 100)];
-    [circleView setSensorvalue:100.0f];
-    [circleView setNeedsDisplay];
-    [self.view addSubview:circleView];
+    
     
 
 }
@@ -207,6 +203,12 @@
             [movedKey addObject:view];
         }
     }
+    
+    if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
+        _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
+        [self updateCircleValue];
+        [self.view addSubview:_circleView];
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -223,10 +225,37 @@
             [movedKey addObject:view];
         }
     }
+    
+    
+    if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
+        
+        if (!_circleView) {
+            _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
+            [self.view addSubview:_circleView];
+        }
+        else
+        {
+            [_circleView setFrame:CGRectMake(touchLocation.x - 25,touchLocation.y - 70, _circleView.bounds.size.width, _circleView.bounds.size.height)];
+        }
+
+        [_circleView setAlpha:1.0f];
+        [self updateCircleValue];
+    }
+    else
+    {
+        [_circleView setAlpha:0.0f];
+    }
+    
+    
+    
+
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [_circleView removeFromSuperview];
+    _circleView = nil;
+    
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     
@@ -290,7 +319,8 @@
 }
 #pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
-    NSLog(@"hello!!");
+    [_circleView removeFromSuperview];
+    _circleView = nil;
     switch (swipeGestureRecognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight:
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
@@ -322,6 +352,22 @@
 - (IBAction)ClearUILabel:(id)sender {
     outputText.text = @"";
 }
+
+-(void)updateCircleValue
+{
+    if (!_circleView) {
+        return;
+    }
+    float avgValue = 0.0f;
+    for (int i = 0; i< [gonnaSetSensorValue count]; i++) {
+        avgValue += [[gonnaSetSensorValue objectAtIndex:i] floatValue]/[gonnaSetSensorValue count];
+    }
+    
+    [_circleView setSensorvalue:avgValue];
+
+}
+
+
 - (IBAction)calibrateValue:(id)sender {
     calibrateValues = gonnaSetSensorValue;
 //    bool shouldcalibrate = true;
