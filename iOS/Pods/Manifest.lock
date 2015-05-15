@@ -1,10 +1,10 @@
 PODS:
-  - EFCircularSlider (0.1.0)
+  - EFCircularSlider (0.2.0)
 
 DEPENDENCIES:
-  - EFCircularSlider (~> 0.1.0)
+  - EFCircularSlider (~> 0.2.0)
 
 SPEC CHECKSUMS:
-  EFCircularSlider: 5a4baa272264e845577945c86e23d5d3996d3c37
+  EFCircularSlider: 3af1dd6f86eb3eeeeaab0345ef3d6d1c2fc93d17
 
 COCOAPODS: 0.37.1

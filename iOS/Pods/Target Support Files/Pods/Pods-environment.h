@@ -9,6 +9,6 @@
 // EFCircularSlider
 #define COCOAPODS_POD_AVAILABLE_EFCircularSlider
 #define COCOAPODS_VERSION_MAJOR_EFCircularSlider 0
-#define COCOAPODS_VERSION_MINOR_EFCircularSlider 1
+#define COCOAPODS_VERSION_MINOR_EFCircularSlider 2
 #define COCOAPODS_VERSION_PATCH_EFCircularSlider 0
 

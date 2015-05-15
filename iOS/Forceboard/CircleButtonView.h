@@ -12,10 +12,9 @@
 {
     UILabel *circleBackGround;
     EFCircularSlider *valueSlider;
-    
-    int sensorValue;
-}
 
+}
+-(void)setSensorvalue:(float)value;
 -(void)changeToForceHarder;
 -(void)changeToForceSlight;
 @end

@@ -12,6 +12,20 @@ The code to make this GIF is in the `ExampleProject/` directory:
   <img src="http://i.imgur.com/cnWYkVz.gif">
 </p>
 
+Installation
+------------
+
+The simplest way to use EFCircularSlider in your application is with [CocoaPods](http://cocoapods.org). See the ["Getting Started" guide for more information](http://guides.cocoapods.org/using/using-cocoapods.html).
+
+#### Podfile
+
+```ruby
+platform :ios, '7.0'
+pod "EFCircularSlider", "~> 0.1.0"
+```
+
+You could instead clone the project and copy the EFCircularSlider/EFCircularSlider.{h,m} files into your project.
+
 
 Initialization
 --------------
@@ -64,7 +78,7 @@ circularSlider.minimumValue = 100.0f;
 
 ####currentValue:(float) - Default 0.0f
 
-Whenever the slider changes position, this value will change. It will be a normalized value based on the minimuimValue and maximumValue properties. **It is currently unsupported to set this value and have it change the slider.**
+Whenever the slider changes position, this value will change. It will be a normalized value based on the minimuimValue and maximumValue properties.
 
 You can get the currentValue with:
 
@@ -96,20 +110,20 @@ CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;
 circularSlider.handleColor = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
 ```
 
-####handleType:(HandleType) - Default semiTransparentWhiteCircle
+####handleType:(EFHandleType) - Default EFSemiTransparentWhiteCircle
 
 EFCircularSlider comes with 4 types of handles:
 
-- semiTransparentWhiteCircle
-- semiTransparentBlackCircle
-- doubleCircleWithOpenCenter
-- doubleCircleWithClosedCenter
-- bigCircle
+- EFSemiTransparentWhiteCircle
+- EFSemiTransparentBlackCircle
+- EFDoubleCircleWithOpenCenter
+- EFDoubleCircleWithClosedCenter
+- EFBigCircle
 
 You can change the handleType with:
 
 ```objc
-circularSlider.handleType = doubleCircleWithClosedCenter;
+circularSlider.handleType = EFDoubleCircleWithClosedCenter;
 ```
 
 ####unfilledColor:(UIColor*) - Default [UIColor blackColor]
