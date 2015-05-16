@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SerialGATT.h"
 #import "CircleButtonView.h"
+#import "TaskLabel.h"
 
 @interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -17,6 +18,9 @@
     IBOutlet UIButton *searchBtn;
     IBOutlet UILabel *outputText;
     IBOutlet UIView *keyboardView;
+
+    IBOutlet TaskLabel *taskLabel;
+    IBOutlet UIButton *nextTaskBtn;
     
     NSMutableArray *movedKey;
     NSArray *gonnaSetSensorValue;

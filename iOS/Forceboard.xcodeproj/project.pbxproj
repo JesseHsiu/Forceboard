@@ -10,6 +10,8 @@
 		5603D8C51B05E3B300717E79 /* CircleButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5603D8C41B05E3B300717E79 /* CircleButtonView.m */; };
 		5603D8D01B05EDEA00717E79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8CF1B05EDEA00717E79 /* CoreGraphics.framework */; };
 		5603D8D21B05EE0400717E79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8D11B05EE0400717E79 /* UIKit.framework */; };
+		56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7DFF1B07828B007FA312 /* TaskLabel.m */; };
+		56AB7E021B0782EE007FA312 /* phrases2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 56AB7E011B0782EE007FA312 /* phrases2.txt */; };
 		56EF548B1B00D34C00589F0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF548A1B00D34C00589F0B /* main.m */; };
 		56EF548E1B00D34C00589F0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF548D1B00D34C00589F0B /* AppDelegate.m */; };
 		56EF54911B00D34C00589F0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54901B00D34C00589F0B /* ViewController.m */; };
@@ -39,6 +41,9 @@
 		5603D8C41B05E3B300717E79 /* CircleButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleButtonView.m; sourceTree = "<group>"; };
 		5603D8CF1B05EDEA00717E79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5603D8D11B05EE0400717E79 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		56AB7DFE1B07828B007FA312 /* TaskLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskLabel.h; sourceTree = "<group>"; };
+		56AB7DFF1B07828B007FA312 /* TaskLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskLabel.m; sourceTree = "<group>"; };
+		56AB7E011B0782EE007FA312 /* phrases2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases2.txt; sourceTree = "<group>"; };
 		56EF54851B00D34C00589F0B /* Forceboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forceboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EF54891B00D34C00589F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56EF548A1B00D34C00589F0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -121,6 +126,9 @@
 				56EF54F31B02FFCC00589F0B /* KeysBtnView.h */,
 				56EF54F41B02FFCC00589F0B /* KeysBtnView.m */,
 				56EF54921B00D34C00589F0B /* Main.storyboard */,
+				56AB7DFE1B07828B007FA312 /* TaskLabel.h */,
+				56AB7DFF1B07828B007FA312 /* TaskLabel.m */,
+				56AB7E011B0782EE007FA312 /* phrases2.txt */,
 				56EF54951B00D34C00589F0B /* Images.xcassets */,
 				56EF54971B00D34C00589F0B /* LaunchScreen.xib */,
 				56EF54881B00D34C00589F0B /* Supporting Files */,
@@ -274,6 +282,7 @@
 			files = (
 				56EF54941B00D34C00589F0B /* Main.storyboard in Resources */,
 				56EF54991B00D34C00589F0B /* LaunchScreen.xib in Resources */,
+				56AB7E021B0782EE007FA312 /* phrases2.txt in Resources */,
 				56EF54961B00D34C00589F0B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +340,7 @@
 				56EF548B1B00D34C00589F0B /* main.m in Sources */,
 				5603D8C51B05E3B300717E79 /* CircleButtonView.m in Sources */,
 				56EF54E91B02339D00589F0B /* SerialGATT.m in Sources */,
+				56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

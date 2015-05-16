@@ -48,6 +48,7 @@
     [outputText addGestureRecognizer:swipeLeft];
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -296,7 +297,12 @@
     }
     
     
-    [self performSelector:@selector(calibrateValue:) withObject:self afterDelay:0.1];
+//    [self performSelector:@selector(calibrateValue:) withObject:self afterDelay:0.1];
+    
+    
+    if ([taskLabel.text length]<= [outputText.text length]) {
+        [nextTaskBtn setEnabled:YES];
+    }
 }
 
 -(NSString*)uplowerCasingString:(NSString*)string
@@ -368,6 +374,12 @@
 
 - (IBAction)calibrateValue:(id)sender {
     calibrateValues = gonnaSetSensorValue;
+}
+- (IBAction)tappedNextBtn:(id)sender {
+    [taskLabel nextTask];
+    
+    [sender setEnabled:false];
+    [self ClearUILabel:sender];
 }
 
 -(NSNumber*)thresholdCheck
