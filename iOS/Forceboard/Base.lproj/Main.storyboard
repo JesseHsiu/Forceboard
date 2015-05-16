@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="400" id="yec-9n-o9t"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rT-ds-aPP">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rT-ds-aPP">
                                 <rect key="frame" x="225" y="190" width="150" height="57"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -162,14 +162,6 @@
                                     <action selector="scanHMSoftDevices:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJX-kQ-DL1"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-08-uDc">
-                                <rect key="frame" x="16" y="28" width="568" height="514"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="TFs-hX-pz7"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eZN-wD-lth"/>
-                                </connections>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5y-mb-Qbx">
                                 <rect key="frame" x="538" y="550" width="46" height="30"/>
                                 <constraints>
@@ -216,6 +208,14 @@
                                     <action selector="tappedNextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oLU-3n-Uuh"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-08-uDc">
+                                <rect key="frame" x="16" y="28" width="568" height="514"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="TFs-hX-pz7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eZN-wD-lth"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -279,9 +279,6 @@
                             <constraint firstAttribute="centerY" secondItem="x9a-cW-vay" secondAttribute="centerY" id="ynR-WE-KWr"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="8v5-08-uDc"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="OU9-iS-wuB"/>
                             </mask>

@@ -48,6 +48,9 @@
     [outputText addGestureRecognizer:swipeLeft];
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
+    
+    outputText.minimumScaleFactor = 0.5;
+    outputText.adjustsFontSizeToFitWidth = YES;
 
 }
 
