@@ -13,9 +13,13 @@
 {
     UILabel *circleBackGround;
     EFCircularSlider *valueSlider;
+    
+    UILabel *textLabel;
 
 }
 -(void)setSensorvalue:(float)value;
+-(void)setText:(NSString*)string AndValue:(float)value;
+-(void)setText:(NSString*)string;
 -(void)changeToForceHarder;
 -(void)changeToForceSlight;
 @end

@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KeysBtnView.h"
 
-#define THERSHOLD 2
+#define THERSHOLD 200
 
 @interface ViewController ()
 @property CircleButtonView* circleView;
@@ -48,10 +48,6 @@
     [outputText addGestureRecognizer:swipeLeft];
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
-    
-    
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,8 +61,6 @@
     [UIView setAnimationDuration:0.5];
     [tableview setAlpha:1.0];
     [UIView commitAnimations];
-    
-    
     
     if ([sensor activePeripheral]) {
         if (sensor.activePeripheral.state == CBPeripheralStateConnected) {
@@ -112,7 +106,6 @@
     sensor.activePeripheral = [discoveredBLEs objectAtIndex:row];
     [sensor connect:sensor.activePeripheral];
     [self stopScanning];
-    
     
     //UI stuff
     [UIView beginAnimations:nil context:NULL];
@@ -258,7 +251,6 @@
     
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
-    
     for (UIView *view in self.view.subviews)
     {
         if ([view isKindOfClass:[KeysBtnView class]] &&
@@ -274,15 +266,15 @@
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@"/"];
 //    calibrateValues
-    bool overthreshold = false;
+//    bool overthreshold = false;
+//    
+//    for (int i =0 ; i<[currentSensorValue count]; i++) {
+//        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * THERSHOLD && [[currentSensorValue objectAtIndex:i] floatValue] > 200) {
+//            overthreshold = true;
+//        }
+//    }
     
-    for (int i =0 ; i<[currentSensorValue count]; i++) {
-        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * THERSHOLD && [[currentSensorValue objectAtIndex:i] floatValue] > 200) {
-            overthreshold = true;
-        }
-    }
-    
-    if (!overthreshold) {
+    if ([[self thresholdCheck] floatValue] < 1) {
         NSLog(@"%@",containkeys[0]);
         outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
     }
@@ -358,28 +350,35 @@
     if (!_circleView) {
         return;
     }
-    float avgValue = 0.0f;
-    for (int i = 0; i< [gonnaSetSensorValue count]; i++) {
-        avgValue += [[gonnaSetSensorValue objectAtIndex:i] floatValue]/[gonnaSetSensorValue count];
-    }
+    float value = [[self thresholdCheck] floatValue];
+    [_circleView setSensorvalue:value*100];
     
-    [_circleView setSensorvalue:avgValue];
+    KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
+    NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@"/"];
+    if (value < 1) {
+        [_circleView setText:[self uplowerCasingString:containkeys[0]]];
+    }
+    else
+    {
+        [_circleView setText:[self uplowerCasingString:containkeys[1]]];
+    }
 
 }
 
 
 - (IBAction)calibrateValue:(id)sender {
     calibrateValues = gonnaSetSensorValue;
-//    bool shouldcalibrate = true;
-//    for (int i = 0 ; i< [calibrateValues count]; i++) {
-//        if ([[calibrateValues objectAtIndex:i] floatValue] * 1.5 < [[gonnaSetSensorValue objectAtIndex:i] floatValue]) {
-//            shouldcalibrate = false;
-//        }
-//    }
-//    if (shouldcalibrate) {
-//        
-//    }
+}
+
+-(NSNumber*)thresholdCheck
+{
+    NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
     
+    for (int i = 0; i< [calibrateValues count]; i++) {
+        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[calibrateValues objectAtIndex:i] floatValue] - [[gonnaSetSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
+    }
+    
+    return [percentageArray valueForKeyPath:@"@max.floatValue"];//[NSNumber numberWithFloat:2.5f];
 }
 
 @end

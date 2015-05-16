@@ -26,7 +26,7 @@
         valueSlider.lineRadiusDisplacement = 1;
         valueSlider.lineWidth = 3;
         valueSlider.minimumValue = 0;
-        valueSlider.maximumValue = 200;
+        valueSlider.maximumValue = 100;
         valueSlider.handleType = EFSemiTransparentWhiteCircle;
         valueSlider.userInteractionEnabled = false;
         
@@ -34,6 +34,15 @@
         CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
         valueSlider.transform = transform;
         [self addSubview:valueSlider];
+        
+        
+        
+        textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,0,RADIUS,RADIUS)];
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        textLabel.textColor = [UIColor blackColor];
+        textLabel.text = @"Q";
+        textLabel.userInteractionEnabled = false;
+        [self addSubview:textLabel];
     }
     return self;
 }
@@ -48,9 +57,32 @@
     circleBackGround.font = [UIFont systemFontOfSize:2*RADIUS];
     circleBackGround.center = self.center;
 }
+
+-(void)setText:(NSString*)string AndValue:(float)value
+{
+    [self setText:string];
+    [self setSensorvalue:value];
+}
+-(void)setText:(NSString*)string
+{
+    textLabel.text = string;
+}
+
 -(void)setSensorvalue:(float)value
 {
-    [valueSlider setCurrentValue:value];
+    
+    if (value >= valueSlider.maximumValue) {
+        [valueSlider setCurrentValue:valueSlider.maximumValue-1];
+        [valueSlider setFilledColor:[UIColor redColor]];
+        
+    }
+    else
+    {
+        [valueSlider setCurrentValue:value];
+        [valueSlider setFilledColor:[UIColor colorWithRed:155/255.0f green:211/255.0f blue:156/255.0f alpha:1.0f]];
+    }
+    
+    
 }
 -(void)changeToForceHarder
 {
