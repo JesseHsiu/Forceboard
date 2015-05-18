@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -208,6 +207,15 @@
                                     <action selector="tappedNextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oLU-3n-Uuh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WPMLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ov-uf-QA6">
+                                <rect key="frame" x="225" y="515" width="150" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="5Wy-Bv-7lx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-08-uDc">
                                 <rect key="frame" x="16" y="28" width="568" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,8 +233,10 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IxM-JL-5ea" secondAttribute="bottom" constant="20" id="6th-m1-vEQ"/>
                             <constraint firstItem="bAQ-rj-eMN" firstAttribute="centerX" secondItem="7Uh-G4-Q4b" secondAttribute="centerX" id="70o-ya-Bmz"/>
                             <constraint firstItem="7Uh-G4-Q4b" firstAttribute="leading" secondItem="QZE-kY-pFx" secondAttribute="trailing" id="898-Uw-MU6"/>
+                            <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="3Ov-uf-QA6" secondAttribute="bottom" constant="14" id="8Ib-xr-5UW"/>
                             <constraint firstAttribute="centerY" secondItem="fnJ-7F-kBd" secondAttribute="centerY" id="9lf-d5-uuh"/>
                             <constraint firstItem="bSu-d4-Df8" firstAttribute="centerX" secondItem="D04-cu-mUu" secondAttribute="centerX" id="BUf-dY-mZj"/>
+                            <constraint firstItem="3Ov-uf-QA6" firstAttribute="centerX" secondItem="IxM-JL-5ea" secondAttribute="centerX" id="DVX-Ah-Bun"/>
                             <constraint firstItem="wiY-Jf-zo8" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="F43-mV-84A"/>
                             <constraint firstItem="fnJ-7F-kBd" firstAttribute="centerX" secondItem="Pma-Fe-N1U" secondAttribute="centerX" id="Fvn-Un-yot"/>
                             <constraint firstItem="TzR-Vm-2cD" firstAttribute="centerY" secondItem="tvp-mU-UK6" secondAttribute="centerY" id="Gym-Iv-i80"/>
@@ -285,6 +295,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="WPMLabel" destination="3Ov-uf-QA6" id="PLL-0m-8jX"/>
                         <outlet property="keyboardView" destination="Jn7-jj-NUX" id="tWE-bl-tGQ"/>
                         <outlet property="nextTaskBtn" destination="dPR-hs-Sjg" id="GU6-wn-Ix3"/>
                         <outlet property="outputText" destination="5rT-ds-aPP" id="46q-Q0-sOV"/>

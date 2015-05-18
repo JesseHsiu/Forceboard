@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KeysBtnView.h"
 
-#define THERSHOLD 200
+#define THERSHOLD 100
 
 @interface ViewController ()
 @property CircleButtonView* circleView;
@@ -181,13 +181,14 @@
         //NSData *data = [MsgToArduino.text dataUsingEncoding:[NSString defaultCStringEncoding]];
         [sensor write:sensor.activePeripheral data:data];
     }
-
 }
 
 
 #pragma mark - Touch Event
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    isTouching = true;
+    
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     
@@ -206,6 +207,8 @@
         [self updateCircleValue];
         [self.view addSubview:_circleView];
     }
+    
+    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -236,7 +239,7 @@
         }
 
         [_circleView setAlpha:1.0f];
-        [self updateCircleValue];
+//        [self updateCircleValue];
     }
     else
     {
@@ -250,6 +253,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    isTouching = false;
     [_circleView removeFromSuperview];
     _circleView = nil;
     
@@ -298,9 +302,6 @@
             [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] lowercaseString] forState:UIControlStateNormal];
         }
     }
-    
-    
-//    [self performSelector:@selector(calibrateValue:) withObject:self afterDelay:0.1];
     
     
     if ([taskLabel.text length]<= [outputText.text length]) {
@@ -360,6 +361,7 @@
         return;
     }
     float value = [[self thresholdCheck] floatValue];
+    NSLog(@"%f",value*100);
     [_circleView setSensorvalue:value*100];
     
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
@@ -371,6 +373,9 @@
     {
         [_circleView setText:[self uplowerCasingString:containkeys[1]]];
     }
+    if (isTouching) {
+        [self performSelector:@selector(updateCircleValue) withObject:self afterDelay:0.01];
+    }
 
 }
 
@@ -379,10 +384,17 @@
     calibrateValues = gonnaSetSensorValue;
 }
 - (IBAction)tappedNextBtn:(id)sender {
+    if (startTime != nil) {
+        [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
+    }
+    startTime = [NSDate date];
     [taskLabel nextTask];
     
     [sender setEnabled:false];
     [self ClearUILabel:sender];
+    
+    
+    
 }
 
 -(NSNumber*)thresholdCheck
@@ -390,7 +402,7 @@
     NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
     
     for (int i = 0; i< [calibrateValues count]; i++) {
-        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[calibrateValues objectAtIndex:i] floatValue] - [[gonnaSetSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
+        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[calibrateValues objectAtIndex:i] floatValue] - [[currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
     }
     
     return [percentageArray valueForKeyPath:@"@max.floatValue"];//[NSNumber numberWithFloat:2.5f];

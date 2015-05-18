@@ -94,7 +94,6 @@
 		56EF547C1B00D34C00589F0B = {
 			isa = PBXGroup;
 			children = (
-				5603D8D11B05EE0400717E79 /* UIKit.framework */,
 				56EF54871B00D34C00589F0B /* Forceboard */,
 				56EF54A11B00D34C00589F0B /* ForceboardTests */,
 				56EF54861B00D34C00589F0B /* Products */,
@@ -125,9 +124,9 @@
 				5603D8C41B05E3B300717E79 /* CircleButtonView.m */,
 				56EF54F31B02FFCC00589F0B /* KeysBtnView.h */,
 				56EF54F41B02FFCC00589F0B /* KeysBtnView.m */,
-				56EF54921B00D34C00589F0B /* Main.storyboard */,
 				56AB7DFE1B07828B007FA312 /* TaskLabel.h */,
 				56AB7DFF1B07828B007FA312 /* TaskLabel.m */,
+				56EF54921B00D34C00589F0B /* Main.storyboard */,
 				56AB7E011B0782EE007FA312 /* phrases2.txt */,
 				56EF54951B00D34C00589F0B /* Images.xcassets */,
 				56EF54971B00D34C00589F0B /* LaunchScreen.xib */,
@@ -192,6 +191,7 @@
 		E872EE6431D87A95F74CA6C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5603D8D11B05EE0400717E79 /* UIKit.framework */,
 				56FC16811B0643370061727D /* QuartzCore.framework */,
 				E1828D8DB3B5121550B623DE /* libPods.a */,
 			);

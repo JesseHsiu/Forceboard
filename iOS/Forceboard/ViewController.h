@@ -17,6 +17,7 @@
     IBOutlet UITableView *tableview;
     IBOutlet UIButton *searchBtn;
     IBOutlet UILabel *outputText;
+    IBOutlet UILabel *WPMLabel;
     IBOutlet UIView *keyboardView;
 
     IBOutlet TaskLabel *taskLabel;
@@ -29,6 +30,11 @@
     
     
     NSArray *calibrateValues;
+    
+    
+    BOOL isTouching;
+    
+    NSDate *startTime;
     
 }
 @property (strong, nonatomic) SerialGATT *sensor;
