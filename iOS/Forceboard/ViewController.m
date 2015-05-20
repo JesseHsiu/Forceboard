@@ -197,7 +197,7 @@
         if ([view isKindOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
-            NSLog(@"Start -> %@",((KeysBtnView*)view).titleLabel.text);
+//            NSLog(@"Start -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
@@ -221,7 +221,7 @@
         if ([view isKindOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
-            NSLog(@"Change to key -> %@",((KeysBtnView*)view).titleLabel.text);
+//            NSLog(@"Change to key -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
@@ -272,7 +272,7 @@
         return;
     }
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
-    NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@"/"];
+    NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
 //    calibrateValues
 //    bool overthreshold = false;
 //    
@@ -283,13 +283,29 @@
 //    }
     
     if ([[self thresholdCheck] floatValue] < 1) {
-        NSLog(@"%@",containkeys[0]);
-        outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
+//        NSLog(@"%@",containkeys[0]);
+        
+        if ([containkeys[0] isEqualToString:@"_space"]) {
+            outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
+        }
+        else
+        {
+            outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
+        }
     }
     else
     {
-        NSLog(@"%@",containkeys[1]);
-        outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
+//        NSLog(@"%@",containkeys[1]);
+        if ([containkeys[1] isEqualToString:@"delete"]) {
+            if ([outputText.text length] == 0) {
+                return;
+            }
+            outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
+        }
+        else
+        {
+            outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
+        }
     }
     upperCase = false;
     [movedKey removeAllObjects];
@@ -361,11 +377,11 @@
         return;
     }
     float value = [[self thresholdCheck] floatValue];
-    NSLog(@"%f",value*100);
+//    NSLog(@"%f",value*100);
     [_circleView setSensorvalue:value*100];
     
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
-    NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@"/"];
+    NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     if (value < 1) {
         [_circleView setText:[self uplowerCasingString:containkeys[0]]];
     }
@@ -386,6 +402,7 @@
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
         [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
+        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]);
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
