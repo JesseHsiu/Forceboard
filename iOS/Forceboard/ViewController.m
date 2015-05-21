@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KeysBtnView.h"
 
-#define THERSHOLD 100
+#define THERSHOLD 200
 
 @interface ViewController ()
 @property CircleButtonView* circleView;
@@ -143,8 +143,18 @@
 - (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-    [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+//
+//    if ([value isEqualToString:@""]) {
+//        return;
+//    }
+    
+    if ([[value componentsSeparatedByString:@"/"] count] != 5) {
+        return;
+    }
+    else{
+        gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
+        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+    }
 }
 -(void)changecurrentValue
 {
@@ -194,7 +204,8 @@
     
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]] &&
+        
+        if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
 //            NSLog(@"Start -> %@",((KeysBtnView*)view).titleLabel.text);
@@ -202,6 +213,9 @@
         }
     }
     
+    if ([movedKey count] == 0) {
+        return;
+    }
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
         _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
         [self updateCircleValue];
@@ -218,14 +232,17 @@
     
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]] &&
+        if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
+//            NSLog(@"%@",view);
 //            NSLog(@"Change to key -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
-    
+    if ([movedKey count] == 0) {
+        return;
+    }
     
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
         
@@ -261,7 +278,7 @@
     CGPoint touchLocation = [touch locationInView:self.view];
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]] &&
+        if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
             [movedKey addObject:view];
@@ -271,8 +288,13 @@
     if ([movedKey count] == 0) {
         return;
     }
+    
+    
+    [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
+    
+//    NSLog(@"3: %@",containkeys);
 //    calibrateValues
 //    bool overthreshold = false;
 //    
@@ -313,7 +335,7 @@
     
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]])
+        if ([view isMemberOfClass:[KeysBtnView class]])
         {
             [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] lowercaseString] forState:UIControlStateNormal];
         }
@@ -342,18 +364,20 @@
     switch (swipeGestureRecognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight:
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
+            [taskLabel cleanNext];
             break;
         case UISwipeGestureRecognizerDirectionLeft:
             if ([outputText.text length] == 0) {
                 return;
             }
             outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
+            [taskLabel backforwad];
             break;
         case UISwipeGestureRecognizerDirectionUp:
             upperCase = true;
             for (UIView *view in self.view.subviews)
             {
-                if ([view isKindOfClass:[KeysBtnView class]])
+                if ([view isMemberOfClass:[KeysBtnView class]])
                 {
                     [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] uppercaseString] forState:UIControlStateNormal];
                 }
@@ -368,7 +392,7 @@
     }
 }
 - (IBAction)ClearUILabel:(id)sender {
-    outputText.text = @"";
+    [taskLabel backToOrigin];
 }
 
 -(void)updateCircleValue
@@ -382,6 +406,7 @@
     
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
+//    NSLog(@"2: %@",containkeys);
     if (value < 1) {
         [_circleView setText:[self uplowerCasingString:containkeys[0]]];
     }
@@ -397,18 +422,17 @@
 
 
 - (IBAction)calibrateValue:(id)sender {
-    calibrateValues = gonnaSetSensorValue;
+    calibrateValues = currentSensorValue;
 }
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
-        [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
-        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]);
+        [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f", ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
+        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]);
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
-    
     [sender setEnabled:false];
-    [self ClearUILabel:sender];
+    outputText.text = @"";
     
     
     

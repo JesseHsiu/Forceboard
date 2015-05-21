@@ -36,6 +36,8 @@
     
     NSDate *startTime;
     
+    NSString *orignTaskText;
+    
 }
 @property (strong, nonatomic) SerialGATT *sensor;
 -(void) scanTimer:(NSTimer *)timer;
