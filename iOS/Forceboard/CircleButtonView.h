@@ -15,6 +15,7 @@
     EFCircularSlider *valueSlider;
     
     UILabel *textLabel;
+    BOOL isTouching;
 
 }
 -(void)setSensorvalue:(float)value;

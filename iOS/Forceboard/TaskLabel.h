@@ -11,6 +11,14 @@
 @interface TaskLabel : UILabel
 {
     NSArray *taskArray;
+    
+    
+    int currentindex;
 }
+@property (nonatomic,readonly) NSString *orignText;
+
 -(void)nextTask;
+-(void)cleanNext;
+-(void)backforwad;
+-(void)backToOrigin;
 @end

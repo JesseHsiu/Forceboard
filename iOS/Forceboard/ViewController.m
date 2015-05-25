@@ -8,15 +8,29 @@
 
 #import "ViewController.h"
 #import "KeysBtnView.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import "CalculateErrorRate.h"
+#import "KeyPressStatistic.h"
+#import <CHCSVParser.h>
+#define THERSHOLD 200
+//use CircleView
+#define CircleView 0
 
-#define THERSHOLD 100
 
 @interface ViewController ()
+#if CircleView
 @property CircleButtonView* circleView;
+#endif
+@property CalculateErrorRate* errorCalculator;
+@property KeyPressStatistic* keysStatistic;
+@property CHCSVWriter *writer;
+@property NSString* userid;
+
 @end
 
 @implementation ViewController
 @synthesize sensor;
+@synthesize touchModes = _touchModes;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sensor = [[SerialGATT alloc] init];
@@ -27,36 +41,30 @@
     movedKey = [[NSMutableArray alloc]init];
     
     upperCase= false;
-    
     calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
-
     
-    //Swipe Recong
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [outputText addGestureRecognizer:swipeRight];
-    [outputText addGestureRecognizer:swipeLeft];
-    [outputText addGestureRecognizer:swipeUp];
-    [outputText addGestureRecognizer:swipeDown];
+    [self addSwipeRecognizers];
     
     outputText.minimumScaleFactor = 0.5;
     outputText.adjustsFontSizeToFitWidth = YES;
+    
+    //error rate
+//    char correctString[] = "the quick brown fox";
+//    char inputString[] = "the quick brown foxxx";
+    _errorCalculator = [[CalculateErrorRate alloc ]init];
+
+//    float errorRate = (float)[_errorCalculator LevenshteinDistance:inputString andCorrect:correctString]/(float)MAX(strlen(correctString), strlen(inputString));
+//    NSLog(@"%f", errorRate);
+    //key press statistic
+    _keysStatistic = [[KeyPressStatistic alloc] init];
 
 }
-
+-(void)dealloc
+{
+    [_writer closeStream];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (IBAction)scanHMSoftDevices:(id)sender {
     
@@ -102,7 +110,6 @@
     
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
@@ -124,7 +131,6 @@
 {
     [self stopScanning];
 }
-
 -(void)stopScanning
 {
     [sensor stopScan];
@@ -139,22 +145,48 @@
     }
     [tableview reloadData];
 }
-
-- (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
+-(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-    [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+    if ([[value componentsSeparatedByString:@"/"] count] != 5) {
+        return;
+    }
+    else{
+        gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
+        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+    }
 }
 -(void)changecurrentValue
 {
     currentSensorValue = gonnaSetSensorValue;
 }
-
-- (void) setConnect
+-(void) setConnect
 {
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"UserID"
+                                          message:@"Please Enter User ID to save CSV file"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"userid";
+         [textField addTarget:self
+                       action:@selector(alertTextFieldDidChange:)
+             forControlEvents:UIControlEventEditingDidEnd];
+     }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                             style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction *action) {
+                                               // do destructive stuff here
+                                           }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
-- (void) setDisconnect
+-(void) setDisconnect
 {
 }
 
@@ -178,35 +210,38 @@
         
     }else
     {
-        //NSData *data = [MsgToArduino.text dataUsingEncoding:[NSString defaultCStringEncoding]];
         [sensor write:sensor.activePeripheral data:data];
     }
 }
-
 
 #pragma mark - Touch Event
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     isTouching = true;
-    
+    self.touchModes = SlightTouch;
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]] &&
+        if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
-//            NSLog(@"Start -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
+    [self updateThreshold];
+    if ([movedKey count] == 0) {
+        return;
+    }
     
+    #if CircleView
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
         _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
         [self updateCircleValue];
         [self.view addSubview:_circleView];
     }
+    #endif
     
     
 }
@@ -218,20 +253,23 @@
     
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]] &&
+        if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
-//            NSLog(@"Change to key -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
+    if ([movedKey count] == 0) {
+        return;
+    }
     
-    
+    #if CircleView
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
         
         if (!_circleView) {
             _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
             [self.view addSubview:_circleView];
+            [self updateCircleValue];
         }
         else
         {
@@ -239,12 +277,12 @@
         }
 
         [_circleView setAlpha:1.0f];
-//        [self updateCircleValue];
     }
     else
     {
         [_circleView setAlpha:0.0f];
     }
+    #endif
     
     
     
@@ -254,14 +292,17 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     isTouching = false;
+    
+    #if CircleView
     [_circleView removeFromSuperview];
     _circleView = nil;
+    #endif
     
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]] &&
+        if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
             [movedKey addObject:view];
@@ -271,20 +312,12 @@
     if ([movedKey count] == 0) {
         return;
     }
+
+    [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
-//    calibrateValues
-//    bool overthreshold = false;
-//    
-//    for (int i =0 ; i<[currentSensorValue count]; i++) {
-//        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * THERSHOLD && [[currentSensorValue objectAtIndex:i] floatValue] > 200) {
-//            overthreshold = true;
-//        }
-//    }
     
-    if ([[self thresholdCheck] floatValue] < 1) {
-//        NSLog(@"%@",containkeys[0]);
-        
+    if (self.touchModes == SlightTouch) {
         if ([containkeys[0] isEqualToString:@"_space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
         }
@@ -295,7 +328,6 @@
     }
     else
     {
-//        NSLog(@"%@",containkeys[1]);
         if ([containkeys[1] isEqualToString:@"delete"]) {
             if ([outputText.text length] == 0) {
                 return;
@@ -307,13 +339,14 @@
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
         }
     }
+    self.touchModes = SlightTouch;
     upperCase = false;
     [movedKey removeAllObjects];
     
     
     for (UIView *view in self.view.subviews)
     {
-        if ([view isKindOfClass:[KeysBtnView class]])
+        if ([view isMemberOfClass:[KeysBtnView class]])
         {
             [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] lowercaseString] forState:UIControlStateNormal];
         }
@@ -324,36 +357,29 @@
         [nextTaskBtn setEnabled:YES];
     }
 }
-
--(NSString*)uplowerCasingString:(NSString*)string
-{
-    if (upperCase) {
-        return [string uppercaseString];
-    }
-    else
-    {
-        return [string lowercaseString];
-    }
-}
 #pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
+    #if CircleView
     [_circleView removeFromSuperview];
     _circleView = nil;
+    #endif
     switch (swipeGestureRecognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight:
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
+            [taskLabel cleanNext];
             break;
         case UISwipeGestureRecognizerDirectionLeft:
             if ([outputText.text length] == 0) {
                 return;
             }
             outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
+            [taskLabel backforwad];
             break;
         case UISwipeGestureRecognizerDirectionUp:
             upperCase = true;
             for (UIView *view in self.view.subviews)
             {
-                if ([view isKindOfClass:[KeysBtnView class]])
+                if ([view isMemberOfClass:[KeysBtnView class]])
                 {
                     [(KeysBtnView*)view setTitle:[[(KeysBtnView*)view currentTitle] uppercaseString] forState:UIControlStateNormal];
                 }
@@ -367,22 +393,58 @@
             break;
     }
 }
+
+-(void)addSwipeRecognizers
+{
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [outputText addGestureRecognizer:swipeRight];
+    [outputText addGestureRecognizer:swipeLeft];
+    [outputText addGestureRecognizer:swipeUp];
+    [outputText addGestureRecognizer:swipeDown];
+}
+
+#pragma mark - Button Action
 - (IBAction)ClearUILabel:(id)sender {
+    [taskLabel backToOrigin];
     outputText.text = @"";
 }
 
+-(void)alertTextFieldDidChange:(UITextField*)textfield
+{
+    _userid = textfield.text;
+    
+    NSString *tempFileName = [NSString stringWithFormat:@"%@.csv",_userid];
+    
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
+    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
+    _writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
+
+
+}
+#pragma mark - Circle View
+#if CircleView
 -(void)updateCircleValue
 {
     if (!_circleView) {
         return;
     }
-    float value = [[self thresholdCheck] floatValue];
-//    NSLog(@"%f",value*100);
-    [_circleView setSensorvalue:value*100];
-    
+    [_circleView setSensorvalue:[thresholdValue floatValue]];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
-    if (value < 1) {
+    if ([self isSlightPress]) {
         [_circleView setText:[self uplowerCasingString:containkeys[0]]];
     }
     else
@@ -394,26 +456,53 @@
     }
 
 }
+#endif
 
-
+#pragma mark - Data Calculation
 - (IBAction)calibrateValue:(id)sender {
-    calibrateValues = gonnaSetSensorValue;
+    calibrateValues = currentSensorValue;
 }
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
-        [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
-        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.text length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]);
+        [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f", ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
+        int hardPress_num;
+        int lightPress_num;
+        [_keysStatistic CalculateHardPressesAndLightPresses:&hardPress_num or:&lightPress_num andInput:[taskLabel orignText]];
+        NSLog(@"data->hard: %d, Slight: %d",hardPress_num,lightPress_num);
+        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f, error:%0.2f%%",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60,(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]);
+        
+        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]];
+        
+        
+        [_writer writeLineOfFields:temp];
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
-    
     [sender setEnabled:false];
-    [self ClearUILabel:sender];
-    
-    
-    
+    outputText.text = @"";
 }
-
+-(void)updateThreshold
+{
+    
+    if (!isTouching) {
+        return;
+    }
+    
+    thresholdValue = [self thresholdCheck];
+    if (![self isSlightPress]) {
+        self.touchModes = HeavyTouch;
+    }
+    if (isTouching) {
+        [self performSelector:@selector(updateThreshold) withObject:self afterDelay:0.01];
+    }
+}
+-(BOOL)isSlightPress
+{
+    if ([thresholdValue floatValue] < 1 && _touchModes == SlightTouch) {
+        return true;
+    }
+    return false;
+}
 -(NSNumber*)thresholdCheck
 {
     NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
@@ -421,8 +510,29 @@
     for (int i = 0; i< [calibrateValues count]; i++) {
         [percentageArray addObject:[NSNumber numberWithFloat:fabs([[calibrateValues objectAtIndex:i] floatValue] - [[currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
     }
-    
-    return [percentageArray valueForKeyPath:@"@max.floatValue"];//[NSNumber numberWithFloat:2.5f];
+    return [percentageArray valueForKeyPath:@"@max.floatValue"];
+}
+-(NSString*)uplowerCasingString:(NSString*)string
+{
+    if (upperCase) {
+        return [string uppercaseString];
+    }
+    else
+    {
+        return [string lowercaseString];
+    }
+}
+#pragma mark - Getter & Setter
+-(void)setTouchModes:(TouchModes)touchModes
+{
+    if (_touchModes == SlightTouch && touchModes == HeavyTouch) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+    _touchModes = touchModes;
+}
+-(TouchModes)touchModes
+{
+    return _touchModes;
 }
 
 @end
