@@ -292,7 +292,7 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     isTouching = false;
-    self.touchModes = SlightTouch;
+    
     #if CircleView
     [_circleView removeFromSuperview];
     _circleView = nil;
@@ -317,7 +317,7 @@
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
-    if ([self isSlightPress]) {
+    if (self.touchModes == SlightTouch) {
         if ([containkeys[0] isEqualToString:@"_space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
         }
@@ -339,6 +339,7 @@
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
         }
     }
+    self.touchModes = SlightTouch;
     upperCase = false;
     [movedKey removeAllObjects];
     
