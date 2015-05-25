@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "KeysBtnView.h"
 #import <AudioToolbox/AudioToolbox.h>
-
+#import "CalculateErrorRate.h"
+#import "KeyPressStatistic.h"
 #define THERSHOLD 200
 //use CircleView
 #define CircleView true
@@ -41,6 +42,22 @@
     
     outputText.minimumScaleFactor = 0.5;
     outputText.adjustsFontSizeToFitWidth = YES;
+    
+    //error rate
+    char correctString[] = "the quick brown fox";
+    char inputString[] = "the quick brown foxxx";
+    CalculateErrorRate *calculator = [[CalculateErrorRate alloc ]init];
+
+    float errorRate = (float)[calculator LevenshteinDistance:inputString andCorrect:correctString]/(float)MAX(strlen(correctString), strlen(inputString));
+    NSLog(@"%f", errorRate);
+    //key press statistic
+    KeyPressStatistic *keypress = [[KeyPressStatistic alloc] init];
+    int hardPress_num;
+    int lightPress_num;
+    [keypress CalculateHardPressesAndLightPresses:&hardPress_num or:&lightPress_num andInput:inputString];
+    NSLog(@"%d, %d", hardPress_num, lightPress_num);
+    
+    
 
 }
 - (void)didReceiveMemoryWarning {

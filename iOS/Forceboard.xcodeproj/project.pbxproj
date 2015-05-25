@@ -24,6 +24,8 @@
 		56EF54E91B02339D00589F0B /* SerialGATT.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54E71B02339D00589F0B /* SerialGATT.m */; };
 		56EF54F51B02FFCC00589F0B /* KeysBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54F41B02FFCC00589F0B /* KeysBtnView.m */; };
 		56FC16821B0643370061727D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FC16811B0643370061727D /* QuartzCore.framework */; };
+		5E6A8F621B121D180002CE2D /* CalculateErrorRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A8F611B121D180002CE2D /* CalculateErrorRate.m */; };
+		5E6A8F651B1237670002CE2D /* KeyPressStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A8F641B1237670002CE2D /* KeyPressStatistic.m */; };
 		B67076032751F32AE99017D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1828D8DB3B5121550B623DE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,10 @@
 		56EF54F31B02FFCC00589F0B /* KeysBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeysBtnView.h; sourceTree = "<group>"; };
 		56EF54F41B02FFCC00589F0B /* KeysBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeysBtnView.m; sourceTree = "<group>"; };
 		56FC16811B0643370061727D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5E6A8F601B121D180002CE2D /* CalculateErrorRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateErrorRate.h; sourceTree = "<group>"; };
+		5E6A8F611B121D180002CE2D /* CalculateErrorRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateErrorRate.m; sourceTree = "<group>"; };
+		5E6A8F631B1237670002CE2D /* KeyPressStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPressStatistic.h; sourceTree = "<group>"; };
+		5E6A8F641B1237670002CE2D /* KeyPressStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPressStatistic.m; sourceTree = "<group>"; };
 		722EFAD0B73D999AA46895CD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E119188F201A3864AEDFD6B0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E1828D8DB3B5121550B623DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +135,10 @@
 				56EF54F41B02FFCC00589F0B /* KeysBtnView.m */,
 				56AB7DFE1B07828B007FA312 /* TaskLabel.h */,
 				56AB7DFF1B07828B007FA312 /* TaskLabel.m */,
+				5E6A8F601B121D180002CE2D /* CalculateErrorRate.h */,
+				5E6A8F611B121D180002CE2D /* CalculateErrorRate.m */,
+				5E6A8F631B1237670002CE2D /* KeyPressStatistic.h */,
+				5E6A8F641B1237670002CE2D /* KeyPressStatistic.m */,
 				56EF54921B00D34C00589F0B /* Main.storyboard */,
 				56AB7E011B0782EE007FA312 /* phrases2.txt */,
 				56EF54951B00D34C00589F0B /* Images.xcassets */,
@@ -341,10 +351,12 @@
 				56EF54911B00D34C00589F0B /* ViewController.m in Sources */,
 				56EF54F51B02FFCC00589F0B /* KeysBtnView.m in Sources */,
 				56EF548E1B00D34C00589F0B /* AppDelegate.m in Sources */,
+				5E6A8F621B121D180002CE2D /* CalculateErrorRate.m in Sources */,
 				56EF548B1B00D34C00589F0B /* main.m in Sources */,
 				5603D8C51B05E3B300717E79 /* CircleButtonView.m in Sources */,
 				56EF54E91B02339D00589F0B /* SerialGATT.m in Sources */,
 				56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */,
+				5E6A8F651B1237670002CE2D /* KeyPressStatistic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
