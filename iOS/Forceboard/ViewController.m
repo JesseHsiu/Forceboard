@@ -20,6 +20,8 @@
 #if CircleView
 @property CircleButtonView* circleView;
 #endif
+@property CalculateErrorRate* errorCalculator;
+@property KeyPressStatistic* keysStatistic;
 
 @end
 
@@ -44,18 +46,16 @@
     outputText.adjustsFontSizeToFitWidth = YES;
     
     //error rate
-    char correctString[] = "the quick brown fox";
-    char inputString[] = "the quick brown foxxx";
-    CalculateErrorRate *calculator = [[CalculateErrorRate alloc ]init];
+//    char correctString[] = "the quick brown fox";
+//    char inputString[] = "the quick brown foxxx";
+    _errorCalculator = [[CalculateErrorRate alloc ]init];
 
-    float errorRate = (float)[calculator LevenshteinDistance:inputString andCorrect:correctString]/(float)MAX(strlen(correctString), strlen(inputString));
-    NSLog(@"%f", errorRate);
+//    float errorRate = (float)[_errorCalculator LevenshteinDistance:inputString andCorrect:correctString]/(float)MAX(strlen(correctString), strlen(inputString));
+//    NSLog(@"%f", errorRate);
     //key press statistic
-    KeyPressStatistic *keypress = [[KeyPressStatistic alloc] init];
-    int hardPress_num;
-    int lightPress_num;
-    [keypress CalculateHardPressesAndLightPresses:&hardPress_num or:&lightPress_num andInput:inputString];
-    NSLog(@"%d, %d", hardPress_num, lightPress_num);
+    _keysStatistic = [[KeyPressStatistic alloc] init];
+
+//    NSLog(@"%d, %d", hardPress_num, lightPress_num);
     
     
 
@@ -423,7 +423,11 @@
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
         [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f", ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
-        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]);
+        int hardPress_num;
+        int lightPress_num;
+        [_keysStatistic CalculateHardPressesAndLightPresses:&hardPress_num or:&lightPress_num andInput:[taskLabel orignText]];
+        NSLog(@"data->hard: %d, Slight: %d",hardPress_num,lightPress_num);
+        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f, error:%0.2f%%",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60,(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]);
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
@@ -434,6 +438,11 @@
 
 -(void)updateThreshold
 {
+    
+    if (!isTouching) {
+        return;
+    }
+    
     thresholdValue = [self thresholdCheck];
     if (![self isSlightPress]) {
         self.touchModes = HeavyTouch;

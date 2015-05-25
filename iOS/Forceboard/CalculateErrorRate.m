@@ -9,10 +9,10 @@
 #import "CalculateErrorRate.h"
 
 @implementation CalculateErrorRate
--(int)LevenshteinDistance:(char *)String1 andCorrect:(char *)String2
+-(int)LevenshteinDistance:(NSString *)String1 andCorrect:(NSString *)String2
     {
-        int len1 = (int)strlen(String1);
-        int len2 = (int)strlen(String2);
+        int len1 = (int)String1.length;
+        int len2 = (int)String2.length;
         
         int d[len1+1][len2+1];
         for (int i = 0;  i <= len1; ++i) {
@@ -29,7 +29,7 @@
         
         for (int j = 1; j <= len2; ++j) {
             for (int i = 1; i <= len1; ++i) {
-                if(String1[i-1] == String2[j-1]){
+                if([String1 characterAtIndex:i-1] == [String2 characterAtIndex:j-1]){
                     d[i][j] = d[i-1][j-1];
 //                    NSLog(@"%d %d %c %c", i, j, String1[i], String2[j]);
                 }

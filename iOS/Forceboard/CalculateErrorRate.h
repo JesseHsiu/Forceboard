@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface CalculateErrorRate : NSObject
--(int)LevenshteinDistance:(char *)String1 andCorrect:(char *)String2;
+-(int)LevenshteinDistance:(NSString *)String1 andCorrect:(NSString *)String2;
 @end

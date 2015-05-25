@@ -9,7 +9,7 @@
 #import "KeyPressStatistic.h"
 
 @implementation KeyPressStatistic
--(void)CalculateHardPressesAndLightPresses:(int *)hard or:(int *)light andInput:(char *)str{
+-(void)CalculateHardPressesAndLightPresses:(int *)hard or:(int *)light andInput:(NSString *)str{
 //    char lihgtPressSet[] = {'q','a','z','e','d','c','t','g','b','u','j','m','o','l','.'};
 //    char hardPressSer[] = {'w','s','x','r','f','v','y','h','n','i','k',',','p',';','/'};
     *hard = 0;
@@ -47,10 +47,10 @@
                                    @"/":@1
                                    };
 //    NSLog(@"%@", [lihgtPressSet objectForKey:@"w"]);
-    for (int i = 0; i < strlen(str); ++i) {
-        if ([lihgtPressSet objectForKey:[NSString stringWithFormat:@"%c", str[i]]]) {
+    for (int i = 0; i < str.length; ++i) {
+        if ([lihgtPressSet objectForKey:[NSString stringWithFormat:@"%c", [str characterAtIndex:i]]]) {
             *light +=1;
-        }else if([hardPressSet objectForKey:[NSString stringWithFormat:@"%c", str[i]]]){
+        }else if([hardPressSet objectForKey:[NSString stringWithFormat:@"%c", [str characterAtIndex:i]]]){
             *hard += 1;
         }
     }

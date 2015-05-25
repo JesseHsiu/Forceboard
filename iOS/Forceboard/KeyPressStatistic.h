@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface KeyPressStatistic : NSObject
--(void)CalculateHardPressesAndLightPresses:(int *)hard or:(int *)light andInput:(char *)str;
+-(void)CalculateHardPressesAndLightPresses:(int *)hard or:(int *)light andInput:(NSString *)str;
 @end
