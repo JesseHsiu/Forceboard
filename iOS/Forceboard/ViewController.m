@@ -14,7 +14,9 @@
 #import <CHCSVParser.h>
 #define THERSHOLD 200
 //use CircleView
-#define CircleView 0
+#define CircleView 1
+
+#define QWERTYBoard 1
 
 
 @interface ViewController ()
@@ -230,7 +232,9 @@
             [movedKey addObject:view];
         }
     }
+    #if !QWERTYBoard
     [self updateThreshold];
+    #endif
     if ([movedKey count] == 0) {
         return;
     }
@@ -315,6 +319,8 @@
 
     [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
+   
+#if !QWERTYBoard
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
     if (self.touchModes == SlightTouch) {
@@ -339,6 +345,9 @@
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
         }
     }
+#else
+    outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,keybtn.titleLabel.text];
+#endif
     self.touchModes = SlightTouch;
     upperCase = false;
     [movedKey removeAllObjects];
@@ -443,6 +452,7 @@
     }
     [_circleView setSensorvalue:[thresholdValue floatValue]];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
+    #if !QWERTYBoard
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     if ([self isSlightPress]) {
         [_circleView setText:[self uplowerCasingString:containkeys[0]]];
@@ -451,9 +461,13 @@
     {
         [_circleView setText:[self uplowerCasingString:containkeys[1]]];
     }
+    #else
+    [_circleView setText:[self uplowerCasingString:keybtn.titleLabel.text]];
+    #endif
     if (isTouching) {
         [self performSelector:@selector(updateCircleValue) withObject:self afterDelay:0.01];
     }
+    
 
 }
 #endif
