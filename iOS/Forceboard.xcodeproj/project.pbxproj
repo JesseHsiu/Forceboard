@@ -12,6 +12,7 @@
 		5603D8D21B05EE0400717E79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8D11B05EE0400717E79 /* UIKit.framework */; };
 		56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7DFF1B07828B007FA312 /* TaskLabel.m */; };
 		56AB7E021B0782EE007FA312 /* phrases2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 56AB7E011B0782EE007FA312 /* phrases2.txt */; };
+		56E8319D1B12CFA300CE410A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56E8319C1B12CFA300CE410A /* AudioToolbox.framework */; };
 		56EF548B1B00D34C00589F0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF548A1B00D34C00589F0B /* main.m */; };
 		56EF548E1B00D34C00589F0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF548D1B00D34C00589F0B /* AppDelegate.m */; };
 		56EF54911B00D34C00589F0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54901B00D34C00589F0B /* ViewController.m */; };
@@ -44,6 +45,7 @@
 		56AB7DFE1B07828B007FA312 /* TaskLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskLabel.h; sourceTree = "<group>"; };
 		56AB7DFF1B07828B007FA312 /* TaskLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskLabel.m; sourceTree = "<group>"; };
 		56AB7E011B0782EE007FA312 /* phrases2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases2.txt; sourceTree = "<group>"; };
+		56E8319C1B12CFA300CE410A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		56EF54851B00D34C00589F0B /* Forceboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forceboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EF54891B00D34C00589F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56EF548A1B00D34C00589F0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E8319D1B12CFA300CE410A /* AudioToolbox.framework in Frameworks */,
 				56FC16821B0643370061727D /* QuartzCore.framework in Frameworks */,
 				5603D8D21B05EE0400717E79 /* UIKit.framework in Frameworks */,
 				5603D8D01B05EDEA00717E79 /* CoreGraphics.framework in Frameworks */,
@@ -191,6 +194,7 @@
 		E872EE6431D87A95F74CA6C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56E8319C1B12CFA300CE410A /* AudioToolbox.framework */,
 				5603D8D11B05EE0400717E79 /* UIKit.framework */,
 				56FC16811B0643370061727D /* QuartzCore.framework */,
 				E1828D8DB3B5121550B623DE /* libPods.a */,

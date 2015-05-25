@@ -8,15 +8,23 @@
 
 #import "ViewController.h"
 #import "KeysBtnView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define THERSHOLD 200
+//use CircleView
+#define CircleView true
+
 
 @interface ViewController ()
+#if CircleView
 @property CircleButtonView* circleView;
+#endif
+
 @end
 
 @implementation ViewController
 @synthesize sensor;
+@synthesize touchModes = _touchModes;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sensor = [[SerialGATT alloc] init];
@@ -27,36 +35,16 @@
     movedKey = [[NSMutableArray alloc]init];
     
     upperCase= false;
-    
     calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
-
     
-    //Swipe Recong
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [outputText addGestureRecognizer:swipeRight];
-    [outputText addGestureRecognizer:swipeLeft];
-    [outputText addGestureRecognizer:swipeUp];
-    [outputText addGestureRecognizer:swipeDown];
+    [self addSwipeRecognizers];
     
     outputText.minimumScaleFactor = 0.5;
     outputText.adjustsFontSizeToFitWidth = YES;
 
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (IBAction)scanHMSoftDevices:(id)sender {
     
@@ -102,7 +90,6 @@
     
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
@@ -124,7 +111,6 @@
 {
     [self stopScanning];
 }
-
 -(void)stopScanning
 {
     [sensor stopScan];
@@ -139,15 +125,9 @@
     }
     [tableview reloadData];
 }
-
-- (void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
+-(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-//
-//    if ([value isEqualToString:@""]) {
-//        return;
-//    }
-    
     if ([[value componentsSeparatedByString:@"/"] count] != 5) {
         return;
     }
@@ -160,11 +140,10 @@
 {
     currentSensorValue = gonnaSetSensorValue;
 }
-
-- (void) setConnect
+-(void) setConnect
 {
 }
-- (void) setDisconnect
+-(void) setDisconnect
 {
 }
 
@@ -188,39 +167,38 @@
         
     }else
     {
-        //NSData *data = [MsgToArduino.text dataUsingEncoding:[NSString defaultCStringEncoding]];
         [sensor write:sensor.activePeripheral data:data];
     }
 }
-
 
 #pragma mark - Touch Event
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     isTouching = true;
-    
+    self.touchModes = SlightTouch;
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
     
     for (UIView *view in self.view.subviews)
     {
-        
         if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
-//            NSLog(@"Start -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
-    
+    [self updateThreshold];
     if ([movedKey count] == 0) {
         return;
     }
+    
+    #if CircleView
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
         _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
         [self updateCircleValue];
         [self.view addSubview:_circleView];
     }
+    #endif
     
     
 }
@@ -235,8 +213,6 @@
         if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
         {
-//            NSLog(@"%@",view);
-//            NSLog(@"Change to key -> %@",((KeysBtnView*)view).titleLabel.text);
             [movedKey addObject:view];
         }
     }
@@ -244,11 +220,13 @@
         return;
     }
     
+    #if CircleView
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
         
         if (!_circleView) {
             _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
             [self.view addSubview:_circleView];
+            [self updateCircleValue];
         }
         else
         {
@@ -256,12 +234,12 @@
         }
 
         [_circleView setAlpha:1.0f];
-//        [self updateCircleValue];
     }
     else
     {
         [_circleView setAlpha:0.0f];
     }
+    #endif
     
     
     
@@ -271,8 +249,11 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     isTouching = false;
+    self.touchModes = SlightTouch;
+    #if CircleView
     [_circleView removeFromSuperview];
     _circleView = nil;
+    #endif
     
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:self.view];
@@ -288,25 +269,12 @@
     if ([movedKey count] == 0) {
         return;
     }
-    
-    
+
     [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
-//    NSLog(@"3: %@",containkeys);
-//    calibrateValues
-//    bool overthreshold = false;
-//    
-//    for (int i =0 ; i<[currentSensorValue count]; i++) {
-//        if ([[currentSensorValue objectAtIndex:i] floatValue] > [[calibrateValues objectAtIndex:i] floatValue] * THERSHOLD && [[currentSensorValue objectAtIndex:i] floatValue] > 200) {
-//            overthreshold = true;
-//        }
-//    }
-    
-    if ([[self thresholdCheck] floatValue] < 1) {
-//        NSLog(@"%@",containkeys[0]);
-        
+    if ([self isSlightPress]) {
         if ([containkeys[0] isEqualToString:@"_space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
         }
@@ -317,7 +285,6 @@
     }
     else
     {
-//        NSLog(@"%@",containkeys[1]);
         if ([containkeys[1] isEqualToString:@"delete"]) {
             if ([outputText.text length] == 0) {
                 return;
@@ -346,21 +313,12 @@
         [nextTaskBtn setEnabled:YES];
     }
 }
-
--(NSString*)uplowerCasingString:(NSString*)string
-{
-    if (upperCase) {
-        return [string uppercaseString];
-    }
-    else
-    {
-        return [string lowercaseString];
-    }
-}
 #pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
+    #if CircleView
     [_circleView removeFromSuperview];
     _circleView = nil;
+    #endif
     switch (swipeGestureRecognizer.direction) {
         case UISwipeGestureRecognizerDirectionRight:
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
@@ -391,23 +349,43 @@
             break;
     }
 }
-- (IBAction)ClearUILabel:(id)sender {
-    [taskLabel backToOrigin];
+
+-(void)addSwipeRecognizers
+{
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [outputText addGestureRecognizer:swipeRight];
+    [outputText addGestureRecognizer:swipeLeft];
+    [outputText addGestureRecognizer:swipeUp];
+    [outputText addGestureRecognizer:swipeDown];
 }
 
+#pragma mark - Button Action
+- (IBAction)ClearUILabel:(id)sender {
+    [taskLabel backToOrigin];
+    outputText.text = @"";
+}
+#pragma mark - Circle View
+#if CircleView
 -(void)updateCircleValue
 {
     if (!_circleView) {
         return;
     }
-    float value = [[self thresholdCheck] floatValue];
-//    NSLog(@"%f",value*100);
-    [_circleView setSensorvalue:value*100];
-    
+    [_circleView setSensorvalue:[thresholdValue floatValue]];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
-//    NSLog(@"2: %@",containkeys);
-    if (value < 1) {
+    if ([self isSlightPress]) {
         [_circleView setText:[self uplowerCasingString:containkeys[0]]];
     }
     else
@@ -419,8 +397,9 @@
     }
 
 }
+#endif
 
-
+#pragma mark - Data Calculation
 - (IBAction)calibrateValue:(id)sender {
     calibrateValues = currentSensorValue;
 }
@@ -433,9 +412,26 @@
     [taskLabel nextTask];
     [sender setEnabled:false];
     outputText.text = @"";
-    
-    
-    
+}
+
+
+-(void)updateThreshold
+{
+    thresholdValue = [self thresholdCheck];
+    if (![self isSlightPress]) {
+        self.touchModes = HeavyTouch;
+    }
+    if (isTouching) {
+        [self performSelector:@selector(updateThreshold) withObject:self afterDelay:0.01];
+    }
+}
+
+-(BOOL)isSlightPress
+{
+    if ([thresholdValue floatValue] < 1 && _touchModes == SlightTouch) {
+        return true;
+    }
+    return false;
 }
 
 -(NSNumber*)thresholdCheck
@@ -445,8 +441,29 @@
     for (int i = 0; i< [calibrateValues count]; i++) {
         [percentageArray addObject:[NSNumber numberWithFloat:fabs([[calibrateValues objectAtIndex:i] floatValue] - [[currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
     }
-    
-    return [percentageArray valueForKeyPath:@"@max.floatValue"];//[NSNumber numberWithFloat:2.5f];
+    return [percentageArray valueForKeyPath:@"@max.floatValue"];
+}
+-(NSString*)uplowerCasingString:(NSString*)string
+{
+    if (upperCase) {
+        return [string uppercaseString];
+    }
+    else
+    {
+        return [string lowercaseString];
+    }
+}
+#pragma mark - Getter & Setter
+-(void)setTouchModes:(TouchModes)touchModes
+{
+    if (_touchModes == SlightTouch && touchModes == HeavyTouch) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+    _touchModes = touchModes;
+}
+-(TouchModes)touchModes
+{
+    return _touchModes;
 }
 
 @end

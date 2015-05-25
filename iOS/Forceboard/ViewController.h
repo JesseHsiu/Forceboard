@@ -10,6 +10,10 @@
 #import "SerialGATT.h"
 #import "CircleButtonView.h"
 #import "TaskLabel.h"
+typedef  enum{
+    SlightTouch = 0,
+    HeavyTouch
+} TouchModes;
 
 @interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -27,6 +31,7 @@
     NSArray *gonnaSetSensorValue;
     NSArray *currentSensorValue;
     BOOL upperCase;
+    NSNumber *thresholdValue;
     
     
     NSArray *calibrateValues;
@@ -40,6 +45,7 @@
     
 }
 @property (strong, nonatomic) SerialGATT *sensor;
+@property (nonatomic)  TouchModes touchModes;
 -(void) scanTimer:(NSTimer *)timer;
 @end
 

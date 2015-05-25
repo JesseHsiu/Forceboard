@@ -43,6 +43,9 @@
         textLabel.text = @"Q";
         textLabel.userInteractionEnabled = false;
         [self addSubview:textLabel];
+        
+        
+        isTouching = YES;
     }
     return self;
 }
@@ -70,6 +73,7 @@
 
 -(void)setSensorvalue:(float)value
 {
+    value *= 100;
     
     if (value >= valueSlider.maximumValue) {
         [valueSlider setCurrentValue:valueSlider.maximumValue-1];
