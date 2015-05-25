@@ -11,9 +11,10 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "CalculateErrorRate.h"
 #import "KeyPressStatistic.h"
+#import <CHCSVParser.h>
 #define THERSHOLD 200
 //use CircleView
-#define CircleView true
+#define CircleView 0
 
 
 @interface ViewController ()
@@ -22,6 +23,8 @@
 #endif
 @property CalculateErrorRate* errorCalculator;
 @property KeyPressStatistic* keysStatistic;
+@property CHCSVWriter *writer;
+@property NSString* userid;
 
 @end
 
@@ -55,10 +58,10 @@
     //key press statistic
     _keysStatistic = [[KeyPressStatistic alloc] init];
 
-//    NSLog(@"%d, %d", hardPress_num, lightPress_num);
-    
-    
-
+}
+-(void)dealloc
+{
+    [_writer closeStream];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -159,6 +162,29 @@
 }
 -(void) setConnect
 {
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"UserID"
+                                          message:@"Please Enter User ID to save CSV file"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = @"userid";
+         [textField addTarget:self
+                       action:@selector(alertTextFieldDidChange:)
+             forControlEvents:UIControlEventEditingDidEnd];
+     }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                             style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction *action) {
+                                               // do destructive stuff here
+                                           }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 -(void) setDisconnect
 {
@@ -392,6 +418,21 @@
     [taskLabel backToOrigin];
     outputText.text = @"";
 }
+
+-(void)alertTextFieldDidChange:(UITextField*)textfield
+{
+    _userid = textfield.text;
+    
+    NSString *tempFileName = [NSString stringWithFormat:@"%@.csv",_userid];
+    
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
+    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
+    _writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
+
+
+}
 #pragma mark - Circle View
 #if CircleView
 -(void)updateCircleValue
@@ -428,14 +469,17 @@
         [_keysStatistic CalculateHardPressesAndLightPresses:&hardPress_num or:&lightPress_num andInput:[taskLabel orignText]];
         NSLog(@"data->hard: %d, Slight: %d",hardPress_num,lightPress_num);
         NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f, error:%0.2f%%",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60,(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]);
+        
+        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]];
+        
+        
+        [_writer writeLineOfFields:temp];
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
     [sender setEnabled:false];
     outputText.text = @"";
 }
-
-
 -(void)updateThreshold
 {
     
@@ -451,7 +495,6 @@
         [self performSelector:@selector(updateThreshold) withObject:self afterDelay:0.01];
     }
 }
-
 -(BOOL)isSlightPress
 {
     if ([thresholdValue floatValue] < 1 && _touchModes == SlightTouch) {
@@ -459,7 +502,6 @@
     }
     return false;
 }
-
 -(NSNumber*)thresholdCheck
 {
     NSMutableArray *percentageArray = [[NSMutableArray alloc]init];

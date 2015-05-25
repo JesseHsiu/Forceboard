@@ -1,10 +1,13 @@
 PODS:
+  - CHCSVParser (2.1.0)
   - EFCircularSlider (0.2.0)
 
 DEPENDENCIES:
+  - CHCSVParser (~> 2.1.0)
   - EFCircularSlider (~> 0.2.0)
 
 SPEC CHECKSUMS:
+  CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
   EFCircularSlider: 3af1dd6f86eb3eeeeaab0345ef3d6d1c2fc93d17
 
 COCOAPODS: 0.37.1
