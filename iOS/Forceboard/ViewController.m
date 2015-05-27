@@ -51,6 +51,11 @@
 //    outputText.minimumScaleFactor = 0.5;
 //    outputText.adjustsFontSizeToFitWidth = YES;
     
+//    zoomboard
+        CGAffineTransform transform = CGAffineTransformMakeScale(1.5, 1.5);
+        // you can implement any int/float value in context of what scale you want to zoom in or out
+        keyboardView.transform = transform;
+    
     _errorCalculator = [[CalculateErrorRate alloc ]init];
     //key press statistic
     _keysStatistic = [[KeyPressStatistic alloc] init];
