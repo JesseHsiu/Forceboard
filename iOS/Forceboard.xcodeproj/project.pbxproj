@@ -10,6 +10,7 @@
 		5603D8C51B05E3B300717E79 /* CircleButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5603D8C41B05E3B300717E79 /* CircleButtonView.m */; };
 		5603D8D01B05EDEA00717E79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8CF1B05EDEA00717E79 /* CoreGraphics.framework */; };
 		5603D8D21B05EE0400717E79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8D11B05EE0400717E79 /* UIKit.framework */; };
+		5645DA861B15794200610227 /* QWERTYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5645DA851B15794200610227 /* QWERTYViewController.m */; };
 		56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7DFF1B07828B007FA312 /* TaskLabel.m */; };
 		56AB7E021B0782EE007FA312 /* phrases2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 56AB7E011B0782EE007FA312 /* phrases2.txt */; };
 		56E8319D1B12CFA300CE410A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56E8319C1B12CFA300CE410A /* AudioToolbox.framework */; };
@@ -44,6 +45,8 @@
 		5603D8C41B05E3B300717E79 /* CircleButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleButtonView.m; sourceTree = "<group>"; };
 		5603D8CF1B05EDEA00717E79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5603D8D11B05EE0400717E79 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5645DA841B15794200610227 /* QWERTYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWERTYViewController.h; sourceTree = "<group>"; };
+		5645DA851B15794200610227 /* QWERTYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWERTYViewController.m; sourceTree = "<group>"; };
 		56AB7DFE1B07828B007FA312 /* TaskLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskLabel.h; sourceTree = "<group>"; };
 		56AB7DFF1B07828B007FA312 /* TaskLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskLabel.m; sourceTree = "<group>"; };
 		56AB7E011B0782EE007FA312 /* phrases2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases2.txt; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				56EF548D1B00D34C00589F0B /* AppDelegate.m */,
 				56EF548F1B00D34C00589F0B /* ViewController.h */,
 				56EF54901B00D34C00589F0B /* ViewController.m */,
+				5645DA841B15794200610227 /* QWERTYViewController.h */,
+				5645DA851B15794200610227 /* QWERTYViewController.m */,
 				5603D8C31B05E3B300717E79 /* CircleButtonView.h */,
 				5603D8C41B05E3B300717E79 /* CircleButtonView.m */,
 				56EF54F31B02FFCC00589F0B /* KeysBtnView.h */,
@@ -350,6 +355,7 @@
 			files = (
 				56EF54911B00D34C00589F0B /* ViewController.m in Sources */,
 				56EF54F51B02FFCC00589F0B /* KeysBtnView.m in Sources */,
+				5645DA861B15794200610227 /* QWERTYViewController.m in Sources */,
 				56EF548E1B00D34C00589F0B /* AppDelegate.m in Sources */,
 				5E6A8F621B121D180002CE2D /* CalculateErrorRate.m in Sources */,
 				56EF548B1B00D34C00589F0B /* main.m in Sources */,

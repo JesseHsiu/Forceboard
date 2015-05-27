@@ -14,9 +14,9 @@
 #import <CHCSVParser.h>
 #define THERSHOLD 200
 //use CircleView
-#define CircleView 1
+#define CircleView 0
 
-#define QWERTYBoard 1
+#define QWERTYBoard 0
 
 
 @interface ViewController ()
