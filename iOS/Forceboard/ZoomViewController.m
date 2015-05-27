@@ -8,7 +8,7 @@
 
 #import "ZoomViewController.h"
 #define ZOOMTIME 0.2
-#define SCALESIZE 1.5
+#define SCALESIZE 1.8
 
 @implementation ZoomViewController
 
@@ -50,15 +50,19 @@
             keyboardView.transform = transform;
             keyboardView.center = CGPointMake(screenWidth - touchLocation.x,screenHeight- touchLocation.y);
         }];
+        
+        
     }
     else
     {
         [super touchesEnded:touches withEvent:event];
+        
         CGAffineTransform transform = CGAffineTransformMakeScale(1, 1);
         [UIView animateWithDuration:ZOOMTIME animations:^{
             keyboardView.transform = transform;
             keyboardView.center = orignCenter;
         }];
+        
     }
     
     firstTap = !firstTap;

@@ -313,7 +313,7 @@
         }
     }
     
-    if ([movedKey count] == 0 || [movedKey count]>= 2) {
+    if ([movedKey count] == 0) {
         [movedKey removeAllObjects];
         return;
     }
