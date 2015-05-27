@@ -12,6 +12,7 @@
 @interface ZoomViewController : ViewController
 {
     BOOL firstTap;
+    CGPoint orignCenter;
 
 }
 

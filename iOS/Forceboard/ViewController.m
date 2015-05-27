@@ -222,9 +222,9 @@
     isTouching = true;
     self.touchModes = SlightTouch;
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:self.view];
+    CGPoint touchLocation = [touch locationInView:keyboardView];
     
-    for (UIView *view in self.view.subviews)
+    for (UIView *view in keyboardView.subviews)
     {
         if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
@@ -253,9 +253,9 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:self.view];
+    CGPoint touchLocation = [touch locationInView:keyboardView];
     
-    for (UIView *view in self.view.subviews)
+    for (UIView *view in keyboardView.subviews)
     {
         if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
@@ -303,8 +303,8 @@
     #endif
     
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:self.view];
-    for (UIView *view in self.view.subviews)
+    CGPoint touchLocation = [touch locationInView:keyboardView];
+    for (UIView *view in keyboardView.subviews)
     {
         if ([view isMemberOfClass:[KeysBtnView class]] &&
             CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
@@ -353,7 +353,7 @@
     [movedKey removeAllObjects];
     
     
-    for (UIView *view in self.view.subviews)
+    for (UIView *view in keyboardView.subviews)
     {
         if ([view isMemberOfClass:[KeysBtnView class]])
         {
@@ -386,7 +386,7 @@
             break;
         case UISwipeGestureRecognizerDirectionUp:
             upperCase = true;
-            for (UIView *view in self.view.subviews)
+            for (UIView *view in keyboardView.subviews)
             {
                 if ([view isMemberOfClass:[KeysBtnView class]])
                 {
