@@ -15,8 +15,10 @@
     CGPoint leftCenter;
     CGPoint rightCenter;
     
+    BOOL isCurrentLeft;
     
     IBOutlet KeysBtnView *dKey;
     IBOutlet KeysBtnView *kKey;
 }
+-(void)adjustPosition;
 @end

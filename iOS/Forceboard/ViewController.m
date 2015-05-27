@@ -11,6 +11,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "CalculateErrorRate.h"
 #import "KeyPressStatistic.h"
+#import "SplitViewController.h"
+#import "ZoomViewController.h"
+#import "QWERTYViewController.h"
 #import <CHCSVParser.h>
 #define THERSHOLD 200
 //use CircleView
@@ -232,9 +235,9 @@
             [movedKey addObject:view];
         }
     }
-    #if !QWERTYBoard
-    [self updateThreshold];
-    #endif
+    if (![self isOtherClass]) {
+        [self updateThreshold];
+    }
     if ([movedKey count] == 0) {
         return;
     }
@@ -287,10 +290,6 @@
         [_circleView setAlpha:0.0f];
     }
     #endif
-    
-    
-    
-
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -321,10 +320,10 @@
     [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
 
-#if !QWERTYBoard
+
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
-    if (self.touchModes == SlightTouch) {
+    if (self.touchModes == SlightTouch || [containkeys count] == 1) {
         if ([containkeys[0] isEqualToString:@"_space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
         }
@@ -346,9 +345,6 @@
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
         }
     }
-#else
-    outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,keybtn.titleLabel.text];
-#endif
     self.touchModes = SlightTouch;
     upperCase = false;
     [movedKey removeAllObjects];
@@ -366,6 +362,10 @@
     if ([taskLabel.text length]<= [outputText.text length]) {
         [nextTaskBtn setEnabled:YES];
     }
+    
+    
+    NSRange range = NSMakeRange(outputText.text.length - 1, 1);
+    [outputText scrollRangeToVisible:range];
 }
 #pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
@@ -401,6 +401,11 @@
             
         default:
             break;
+    }
+    
+    if([self isKindOfClass:[SplitViewController class]])
+    {
+        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
     }
 }
 
@@ -453,18 +458,18 @@
     }
     [_circleView setSensorvalue:[thresholdValue floatValue]];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
-    #if !QWERTYBoard
+
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
-    if ([self isSlightPress]) {
+    if ([self isSlightPress] || [containkeys count] == 1) {
         [_circleView setText:[self uplowerCasingString:containkeys[0]]];
     }
     else
     {
         [_circleView setText:[self uplowerCasingString:containkeys[1]]];
     }
-    #else
+
     [_circleView setText:[self uplowerCasingString:keybtn.titleLabel.text]];
-    #endif
+
     if (isTouching) {
         [self performSelector:@selector(updateCircleValue) withObject:self afterDelay:0.01];
     }
@@ -495,6 +500,10 @@
     [taskLabel nextTask];
     [sender setEnabled:false];
     outputText.text = @"";
+    if([self isKindOfClass:[SplitViewController class]])
+    {
+        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
+    }
 }
 -(void)updateThreshold
 {
@@ -553,6 +562,22 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [outputText resignFirstResponder];
+    if([self isKindOfClass:[SplitViewController class]])
+    {
+        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
+    }
+}
+
+-(BOOL)isOtherClass
+{
+    if ([self isKindOfClass:[SplitViewController class]] || [self isKindOfClass:[ZoomViewController class]] || [self isKindOfClass:[QWERTYViewController class]]) {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+
 }
 
 @end
