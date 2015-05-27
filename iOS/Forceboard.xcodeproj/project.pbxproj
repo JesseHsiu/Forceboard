@@ -11,6 +11,7 @@
 		5603D8D01B05EDEA00717E79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8CF1B05EDEA00717E79 /* CoreGraphics.framework */; };
 		5603D8D21B05EE0400717E79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5603D8D11B05EE0400717E79 /* UIKit.framework */; };
 		562444FD1B1597DF00A02BCE /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562444FC1B1597DF00A02BCE /* ZoomViewController.m */; };
+		562445001B15A61700A02BCE /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562444FF1B15A61700A02BCE /* SplitViewController.m */; };
 		5645DA861B15794200610227 /* QWERTYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5645DA851B15794200610227 /* QWERTYViewController.m */; };
 		56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7DFF1B07828B007FA312 /* TaskLabel.m */; };
 		56AB7E021B0782EE007FA312 /* phrases2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 56AB7E011B0782EE007FA312 /* phrases2.txt */; };
@@ -48,6 +49,8 @@
 		5603D8D11B05EE0400717E79 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		562444FB1B1597DF00A02BCE /* ZoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomViewController.h; sourceTree = "<group>"; };
 		562444FC1B1597DF00A02BCE /* ZoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomViewController.m; sourceTree = "<group>"; };
+		562444FE1B15A61700A02BCE /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewController.h; sourceTree = "<group>"; };
+		562444FF1B15A61700A02BCE /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
 		5645DA841B15794200610227 /* QWERTYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWERTYViewController.h; sourceTree = "<group>"; };
 		5645DA851B15794200610227 /* QWERTYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWERTYViewController.m; sourceTree = "<group>"; };
 		56AB7DFE1B07828B007FA312 /* TaskLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskLabel.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				5645DA851B15794200610227 /* QWERTYViewController.m */,
 				562444FB1B1597DF00A02BCE /* ZoomViewController.h */,
 				562444FC1B1597DF00A02BCE /* ZoomViewController.m */,
+				562444FE1B15A61700A02BCE /* SplitViewController.h */,
+				562444FF1B15A61700A02BCE /* SplitViewController.m */,
 				5603D8C31B05E3B300717E79 /* CircleButtonView.h */,
 				5603D8C41B05E3B300717E79 /* CircleButtonView.m */,
 				56EF54F31B02FFCC00589F0B /* KeysBtnView.h */,
@@ -365,6 +370,7 @@
 				5E6A8F621B121D180002CE2D /* CalculateErrorRate.m in Sources */,
 				56EF548B1B00D34C00589F0B /* main.m in Sources */,
 				5603D8C51B05E3B300717E79 /* CircleButtonView.m in Sources */,
+				562445001B15A61700A02BCE /* SplitViewController.m in Sources */,
 				56EF54E91B02339D00589F0B /* SerialGATT.m in Sources */,
 				562444FD1B1597DF00A02BCE /* ZoomViewController.m in Sources */,
 				56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */,
