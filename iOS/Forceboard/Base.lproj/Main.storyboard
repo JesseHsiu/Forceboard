@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tEA-uC-TN7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1056,6 +1057,7 @@
                         <outlet property="WPMLabel" destination="FBC-qU-oT5" id="8zL-dz-BPo"/>
                         <outlet property="keyboardView" destination="0Kk-c5-rb8" id="fFQ-g4-Drr"/>
                         <outlet property="nextTaskBtn" destination="MOc-sP-FoY" id="r5O-zi-Aqb"/>
+                        <outlet property="outputText" destination="swY-Tt-7tb" id="MwU-C5-x29"/>
                         <outlet property="searchBtn" destination="Ufw-5W-SQs" id="b3S-jC-VU7"/>
                         <outlet property="tableview" destination="3mF-fG-UeP" id="Ezi-qA-2UW"/>
                         <outlet property="taskLabel" destination="Vhd-p3-Y6n" id="sJd-8h-iyb"/>
