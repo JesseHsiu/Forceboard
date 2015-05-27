@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2kT-rG-Fug">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -343,10 +343,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjL-rS-qZd">
-                                <rect key="frame" x="236" y="187" width="129" height="45"/>
+                                <rect key="frame" x="236" y="182" width="129" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="C6Z-XG-yRr"/>
+                                    <constraint firstAttribute="height" constant="50" id="C6Z-XG-yRr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -987,9 +987,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swY-Tt-7tb">
-                                <rect key="frame" x="229" y="188" width="129" height="45"/>
+                                <rect key="frame" x="229" y="183" width="129" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="313-1v-YFw"/>
+                                    <constraint firstAttribute="height" constant="50" id="313-1v-YFw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1048,6 +1048,680 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkc-C3-rRs" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="881" y="433"/>
+        </scene>
+        <!--Zoom View Controller-->
+        <scene sceneID="EqB-ir-Ofn">
+            <objects>
+                <viewController storyboardIdentifier="ZoomViewController" id="2kT-rG-Fug" customClass="ZoomViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="imi-Qn-Za0"/>
+                        <viewControllerLayoutGuide type="bottom" id="M8W-eo-sYB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="591-tx-9py">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cve-DG-SgQ">
+                                <rect key="frame" x="229" y="254" width="129" height="92"/>
+                                <subviews>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73z-Vo-ifZ" customClass="KeysBtnView">
+                                        <rect key="frame" x="0.0" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Mwl-po-meS"/>
+                                            <constraint firstAttribute="width" constant="12" id="ppu-Ic-2Qi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="q" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukG-Rd-Ip9" customClass="KeysBtnView">
+                                        <rect key="frame" x="26" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="J4A-EV-Wtz"/>
+                                            <constraint firstAttribute="height" constant="30" id="v7R-Od-NdX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="e" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESc-x6-aaf" customClass="KeysBtnView">
+                                        <rect key="frame" x="13" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CTS-cT-ADT"/>
+                                            <constraint firstAttribute="width" constant="12" id="FXS-Xi-bJc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="w" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrI-zU-WOV" customClass="KeysBtnView">
+                                        <rect key="frame" x="39" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Ks2-jq-OVV"/>
+                                            <constraint firstAttribute="width" constant="12" id="bwo-10-ZsU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="r" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPo-oq-RSr" customClass="KeysBtnView">
+                                        <rect key="frame" x="65" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="805-bU-YfR"/>
+                                            <constraint firstAttribute="width" constant="12" id="Wwe-kV-5hJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="y" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbL-ag-EJu" customClass="KeysBtnView">
+                                        <rect key="frame" x="52" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="X03-ZB-w9V"/>
+                                            <constraint firstAttribute="height" constant="30" id="xrG-8v-Hf8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="t" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvl-lD-N32" customClass="KeysBtnView">
+                                        <rect key="frame" x="104" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="SGa-8L-Xec"/>
+                                            <constraint firstAttribute="height" constant="30" id="fxm-fI-2UV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="o" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9c-LE-vu4" customClass="KeysBtnView">
+                                        <rect key="frame" x="91" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="i7q-Ti-coX"/>
+                                            <constraint firstAttribute="height" constant="30" id="ofv-Hi-uFL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="i" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYI-ZZ-iHk" customClass="KeysBtnView">
+                                        <rect key="frame" x="117" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Zox-lr-tCH"/>
+                                            <constraint firstAttribute="height" constant="30" id="il4-fe-P3F"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="p" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2p-m6-jPp" customClass="KeysBtnView">
+                                        <rect key="frame" x="0.0" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Y2p-Tb-hsi"/>
+                                            <constraint firstAttribute="height" constant="30" id="qed-cJ-rfo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="a" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGV-RL-Kjv" customClass="KeysBtnView">
+                                        <rect key="frame" x="26" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XWg-7t-29I"/>
+                                            <constraint firstAttribute="width" constant="12" id="icu-1O-3FP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="d" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gb9-Qz-6ic" customClass="KeysBtnView">
+                                        <rect key="frame" x="13" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="f65-KS-6fP"/>
+                                            <constraint firstAttribute="height" constant="30" id="s4e-C2-laA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="s" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61D-nc-Iqc" customClass="KeysBtnView">
+                                        <rect key="frame" x="39" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Mgg-Qi-L1t"/>
+                                            <constraint firstAttribute="width" constant="12" id="xEO-hE-Jq3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="f" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM4-rY-KJv" customClass="KeysBtnView">
+                                        <rect key="frame" x="52" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Qsf-sK-hyK"/>
+                                            <constraint firstAttribute="height" constant="30" id="rNI-4I-CKv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="g" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCS-s1-PLL" customClass="KeysBtnView">
+                                        <rect key="frame" x="78" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ErI-gd-rPh"/>
+                                            <constraint firstAttribute="width" constant="12" id="xzu-ld-ehy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="j" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43w-si-GUP" customClass="KeysBtnView">
+                                        <rect key="frame" x="104" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Bav-wV-irA"/>
+                                            <constraint firstAttribute="width" constant="12" id="qoP-dy-fYd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="l" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CI8-XO-scY" customClass="KeysBtnView">
+                                        <rect key="frame" x="91" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Psb-cw-SoI"/>
+                                            <constraint firstAttribute="width" constant="12" id="nzK-NR-chh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="k" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4h-RE-Z4G" customClass="KeysBtnView">
+                                        <rect key="frame" x="117" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Ano-xO-t1s"/>
+                                            <constraint firstAttribute="height" constant="30" id="lqL-8G-SY2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title=";" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDm-YU-EXd" customClass="KeysBtnView">
+                                        <rect key="frame" x="0.0" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="5ZI-yt-yEh"/>
+                                            <constraint firstAttribute="height" constant="30" id="IGE-S0-oEW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="z" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3c-J5-lmm" customClass="KeysBtnView">
+                                        <rect key="frame" x="26" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="427-lE-1cZ"/>
+                                            <constraint firstAttribute="height" constant="30" id="Drs-DX-7O6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="c" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udZ-4Y-Ndx" customClass="KeysBtnView">
+                                        <rect key="frame" x="13" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Uip-MR-u1e"/>
+                                            <constraint firstAttribute="height" constant="30" id="YQJ-bk-iLJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="x" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L5-AI-dDY" customClass="KeysBtnView">
+                                        <rect key="frame" x="39" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="EMM-CF-5e9"/>
+                                            <constraint firstAttribute="width" constant="12" id="pmY-WQ-VwE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="v" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7K-kj-ydw" customClass="KeysBtnView">
+                                        <rect key="frame" x="65" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Ott-XH-nrQ"/>
+                                            <constraint firstAttribute="height" constant="30" id="c6r-HW-Q4P"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="n" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SY-zI-74M" customClass="KeysBtnView">
+                                        <rect key="frame" x="52" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Ukn-8K-nBl"/>
+                                            <constraint firstAttribute="height" constant="30" id="tSo-WR-g2N"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="b" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIj-xa-AUw" customClass="KeysBtnView">
+                                        <rect key="frame" x="78" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0Pl-Z0-cpT"/>
+                                            <constraint firstAttribute="width" constant="12" id="Cou-ds-CPV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="m" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge3-mo-eRY" customClass="KeysBtnView">
+                                        <rect key="frame" x="104" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="Cmk-DR-BMw"/>
+                                            <constraint firstAttribute="height" constant="30" id="mZU-ib-Dzr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="." backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcM-m3-ZYn" customClass="KeysBtnView">
+                                        <rect key="frame" x="91" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="fQU-7a-U7L"/>
+                                            <constraint firstAttribute="height" constant="30" id="kvS-lP-EhX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="," backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFK-yP-HSd" customClass="KeysBtnView">
+                                        <rect key="frame" x="117" y="62" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="GwI-aC-pCP"/>
+                                            <constraint firstAttribute="height" constant="30" id="rvg-br-v1I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="/" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Il-8b-oUS" customClass="KeysBtnView">
+                                        <rect key="frame" x="65" y="31" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="J5G-ar-oBp"/>
+                                            <constraint firstAttribute="height" constant="30" id="cji-WC-gUv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="h" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtK-cU-uqw" customClass="KeysBtnView">
+                                        <rect key="frame" x="78" y="0.0" width="12" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="74Z-F2-DnN"/>
+                                            <constraint firstAttribute="height" constant="30" id="PtN-2B-mde"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="u" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="fIj-xa-AUw" firstAttribute="centerY" secondItem="u7K-kj-ydw" secondAttribute="centerY" id="14W-Cg-fie"/>
+                                    <constraint firstItem="GPo-oq-RSr" firstAttribute="centerY" secondItem="LbL-ag-EJu" secondAttribute="centerY" id="2Ma-c3-UK7"/>
+                                    <constraint firstItem="43w-si-GUP" firstAttribute="leading" secondItem="CI8-XO-scY" secondAttribute="trailing" constant="1" id="2X7-Y7-HGe"/>
+                                    <constraint firstItem="u9c-LE-vu4" firstAttribute="leading" secondItem="mtK-cU-uqw" secondAttribute="trailing" constant="1" id="2wR-Wy-UJW"/>
+                                    <constraint firstItem="61D-nc-Iqc" firstAttribute="top" secondItem="vrI-zU-WOV" secondAttribute="bottom" constant="1" id="3nR-up-P5R"/>
+                                    <constraint firstItem="43w-si-GUP" firstAttribute="top" secondItem="lvl-lD-N32" secondAttribute="bottom" constant="1" id="3rL-Zy-HVI"/>
+                                    <constraint firstItem="pCS-s1-PLL" firstAttribute="leading" secondItem="6Il-8b-oUS" secondAttribute="trailing" constant="1" id="4DZ-MR-c85"/>
+                                    <constraint firstItem="udZ-4Y-Ndx" firstAttribute="top" secondItem="gb9-Qz-6ic" secondAttribute="bottom" constant="1" id="4iu-0v-PqJ"/>
+                                    <constraint firstItem="ZFK-yP-HSd" firstAttribute="top" secondItem="s4h-RE-Z4G" secondAttribute="bottom" constant="1" id="5U6-ij-m1R"/>
+                                    <constraint firstItem="FM4-rY-KJv" firstAttribute="leading" secondItem="61D-nc-Iqc" secondAttribute="trailing" constant="1" id="5V2-SF-XNy"/>
+                                    <constraint firstItem="vrI-zU-WOV" firstAttribute="centerY" secondItem="ukG-Rd-Ip9" secondAttribute="centerY" id="7xA-83-3ZW"/>
+                                    <constraint firstItem="s4h-RE-Z4G" firstAttribute="top" secondItem="YYI-ZZ-iHk" secondAttribute="bottom" constant="1" id="8HG-MC-Qy8"/>
+                                    <constraint firstItem="mtK-cU-uqw" firstAttribute="leading" secondItem="GPo-oq-RSr" secondAttribute="trailing" constant="1" id="8WL-iF-7XU"/>
+                                    <constraint firstItem="udZ-4Y-Ndx" firstAttribute="leading" secondItem="aDm-YU-EXd" secondAttribute="trailing" constant="1" id="A1S-Sm-YGh"/>
+                                    <constraint firstItem="FM4-rY-KJv" firstAttribute="top" secondItem="LbL-ag-EJu" secondAttribute="bottom" constant="1" id="AOO-L0-wxn"/>
+                                    <constraint firstItem="7L5-AI-dDY" firstAttribute="centerY" secondItem="u7K-kj-ydw" secondAttribute="centerY" id="BKy-ks-opP"/>
+                                    <constraint firstItem="6Il-8b-oUS" firstAttribute="centerY" secondItem="s4h-RE-Z4G" secondAttribute="centerY" id="C5L-cY-VP4"/>
+                                    <constraint firstItem="ukG-Rd-Ip9" firstAttribute="leading" secondItem="ESc-x6-aaf" secondAttribute="trailing" constant="1" id="Cj9-oY-Zgz"/>
+                                    <constraint firstItem="GPo-oq-RSr" firstAttribute="centerY" secondItem="mtK-cU-uqw" secondAttribute="centerY" id="CvC-RM-vpI"/>
+                                    <constraint firstItem="b3c-J5-lmm" firstAttribute="top" secondItem="wGV-RL-Kjv" secondAttribute="bottom" constant="1" id="Cy5-xo-zX3"/>
+                                    <constraint firstItem="ESc-x6-aaf" firstAttribute="leading" secondItem="73z-Vo-ifZ" secondAttribute="trailing" constant="1" id="DCg-mK-EfY"/>
+                                    <constraint firstItem="gb9-Qz-6ic" firstAttribute="leading" secondItem="m2p-m6-jPp" secondAttribute="trailing" constant="1" id="DYa-fy-Oue"/>
+                                    <constraint firstItem="vrI-zU-WOV" firstAttribute="centerY" secondItem="LbL-ag-EJu" secondAttribute="centerY" id="FHq-it-Qop"/>
+                                    <constraint firstItem="1SY-zI-74M" firstAttribute="top" secondItem="FM4-rY-KJv" secondAttribute="bottom" constant="1" id="G55-nj-q8k"/>
+                                    <constraint firstItem="b3c-J5-lmm" firstAttribute="leading" secondItem="udZ-4Y-Ndx" secondAttribute="trailing" constant="1" id="G8i-UE-1n2"/>
+                                    <constraint firstItem="s4h-RE-Z4G" firstAttribute="leading" secondItem="43w-si-GUP" secondAttribute="trailing" constant="1" id="HIX-QF-NOm"/>
+                                    <constraint firstItem="m2p-m6-jPp" firstAttribute="centerY" secondItem="gb9-Qz-6ic" secondAttribute="centerY" id="IP6-Wd-Hh4"/>
+                                    <constraint firstItem="ESc-x6-aaf" firstAttribute="centerY" secondItem="ukG-Rd-Ip9" secondAttribute="centerY" id="Igp-Cw-7Hk"/>
+                                    <constraint firstItem="u7K-kj-ydw" firstAttribute="centerY" secondItem="ge3-mo-eRY" secondAttribute="centerY" id="J09-1U-FZE"/>
+                                    <constraint firstItem="6Il-8b-oUS" firstAttribute="leading" secondItem="FM4-rY-KJv" secondAttribute="trailing" constant="1" id="K8a-mn-j8X"/>
+                                    <constraint firstItem="YYI-ZZ-iHk" firstAttribute="centerY" secondItem="GPo-oq-RSr" secondAttribute="centerY" id="KPn-91-Hfc"/>
+                                    <constraint firstItem="GPo-oq-RSr" firstAttribute="centerY" secondItem="u9c-LE-vu4" secondAttribute="centerY" id="KVf-1c-SC6"/>
+                                    <constraint firstItem="fIj-xa-AUw" firstAttribute="top" secondItem="pCS-s1-PLL" secondAttribute="bottom" constant="1" id="L2z-np-yfC"/>
+                                    <constraint firstItem="aDm-YU-EXd" firstAttribute="top" secondItem="m2p-m6-jPp" secondAttribute="bottom" constant="1" id="LYw-em-kys"/>
+                                    <constraint firstItem="CI8-XO-scY" firstAttribute="leading" secondItem="pCS-s1-PLL" secondAttribute="trailing" constant="1" id="N3M-d5-1T7"/>
+                                    <constraint firstItem="pCS-s1-PLL" firstAttribute="top" secondItem="mtK-cU-uqw" secondAttribute="bottom" constant="1" id="NJ7-dy-7cg"/>
+                                    <constraint firstAttribute="width" constant="129" id="NW1-yG-ryW"/>
+                                    <constraint firstItem="wGV-RL-Kjv" firstAttribute="leading" secondItem="gb9-Qz-6ic" secondAttribute="trailing" constant="1" id="Oon-fx-beB"/>
+                                    <constraint firstItem="wGV-RL-Kjv" firstAttribute="leading" secondItem="gb9-Qz-6ic" secondAttribute="trailing" constant="1" id="P8D-Al-a3d"/>
+                                    <constraint firstItem="b3c-J5-lmm" firstAttribute="centerY" secondItem="u7K-kj-ydw" secondAttribute="centerY" id="P9f-tC-vPT"/>
+                                    <constraint firstItem="6Il-8b-oUS" firstAttribute="centerX" secondItem="GPo-oq-RSr" secondAttribute="centerX" id="Q5Q-UI-9O0"/>
+                                    <constraint firstItem="u7K-kj-ydw" firstAttribute="centerY" secondItem="gcM-m3-ZYn" secondAttribute="centerY" id="RSZ-1y-HKC"/>
+                                    <constraint firstItem="wGV-RL-Kjv" firstAttribute="top" secondItem="ukG-Rd-Ip9" secondAttribute="bottom" constant="1" id="Uig-C0-3aQ"/>
+                                    <constraint firstItem="LbL-ag-EJu" firstAttribute="leading" secondItem="vrI-zU-WOV" secondAttribute="trailing" constant="1" id="UqA-CV-Wki"/>
+                                    <constraint firstItem="m2p-m6-jPp" firstAttribute="top" secondItem="73z-Vo-ifZ" secondAttribute="bottom" constant="1" id="YET-DQ-1sh"/>
+                                    <constraint firstAttribute="height" constant="92" id="a0x-Af-9uf"/>
+                                    <constraint firstItem="lvl-lD-N32" firstAttribute="leading" secondItem="u9c-LE-vu4" secondAttribute="trailing" constant="1" id="bCq-Ar-dFJ"/>
+                                    <constraint firstItem="1SY-zI-74M" firstAttribute="leading" secondItem="7L5-AI-dDY" secondAttribute="trailing" constant="1" id="dSC-hX-wAq"/>
+                                    <constraint firstAttribute="centerX" secondItem="6Il-8b-oUS" secondAttribute="centerX" constant="-6.5" id="dvc-bt-Vcp"/>
+                                    <constraint firstItem="6Il-8b-oUS" firstAttribute="centerX" secondItem="u7K-kj-ydw" secondAttribute="centerX" id="eGG-yV-API"/>
+                                    <constraint firstItem="ukG-Rd-Ip9" firstAttribute="leading" secondItem="ESc-x6-aaf" secondAttribute="trailing" constant="1" id="eRt-D8-dtq"/>
+                                    <constraint firstItem="6Il-8b-oUS" firstAttribute="centerY" secondItem="CI8-XO-scY" secondAttribute="centerY" id="f2w-Ke-hlk"/>
+                                    <constraint firstItem="gcM-m3-ZYn" firstAttribute="top" secondItem="CI8-XO-scY" secondAttribute="bottom" constant="1" id="faZ-EF-XKA"/>
+                                    <constraint firstItem="gcM-m3-ZYn" firstAttribute="leading" secondItem="fIj-xa-AUw" secondAttribute="trailing" constant="1" id="fj0-qD-mkU"/>
+                                    <constraint firstItem="FM4-rY-KJv" firstAttribute="centerY" secondItem="6Il-8b-oUS" secondAttribute="centerY" id="gPD-y0-Yj3"/>
+                                    <constraint firstItem="pCS-s1-PLL" firstAttribute="centerY" secondItem="6Il-8b-oUS" secondAttribute="centerY" id="gf2-6g-Tb9"/>
+                                    <constraint firstItem="u7K-kj-ydw" firstAttribute="centerY" secondItem="aDm-YU-EXd" secondAttribute="centerY" id="gtd-M9-1w9"/>
+                                    <constraint firstItem="GPo-oq-RSr" firstAttribute="leading" secondItem="LbL-ag-EJu" secondAttribute="trailing" constant="1" id="hm3-Cn-5pM"/>
+                                    <constraint firstItem="YYI-ZZ-iHk" firstAttribute="leading" secondItem="lvl-lD-N32" secondAttribute="trailing" constant="1" id="hvT-Al-gzn"/>
+                                    <constraint firstItem="u7K-kj-ydw" firstAttribute="top" secondItem="6Il-8b-oUS" secondAttribute="bottom" constant="1" id="iQN-8B-FLg"/>
+                                    <constraint firstAttribute="centerY" secondItem="6Il-8b-oUS" secondAttribute="centerY" id="lO8-IN-azb"/>
+                                    <constraint firstItem="1SY-zI-74M" firstAttribute="centerY" secondItem="u7K-kj-ydw" secondAttribute="centerY" id="lQF-my-nkU"/>
+                                    <constraint firstItem="73z-Vo-ifZ" firstAttribute="centerY" secondItem="ESc-x6-aaf" secondAttribute="centerY" id="m3B-Y4-MRd"/>
+                                    <constraint firstItem="ge3-mo-eRY" firstAttribute="leading" secondItem="gcM-m3-ZYn" secondAttribute="trailing" constant="1" id="mNg-Zj-xDY"/>
+                                    <constraint firstItem="vrI-zU-WOV" firstAttribute="leading" secondItem="ukG-Rd-Ip9" secondAttribute="trailing" constant="1" id="mY9-oK-LqM"/>
+                                    <constraint firstItem="7L5-AI-dDY" firstAttribute="top" secondItem="61D-nc-Iqc" secondAttribute="bottom" constant="1" id="nRi-J7-mOy"/>
+                                    <constraint firstItem="6Il-8b-oUS" firstAttribute="top" secondItem="GPo-oq-RSr" secondAttribute="bottom" constant="1" id="nod-6d-Qsp"/>
+                                    <constraint firstItem="udZ-4Y-Ndx" firstAttribute="centerY" secondItem="u7K-kj-ydw" secondAttribute="centerY" id="nrl-Bp-168"/>
+                                    <constraint firstItem="7L5-AI-dDY" firstAttribute="leading" secondItem="b3c-J5-lmm" secondAttribute="trailing" constant="1" id="oR9-l0-MKY"/>
+                                    <constraint firstItem="b3c-J5-lmm" firstAttribute="leading" secondItem="udZ-4Y-Ndx" secondAttribute="trailing" constant="1" id="pim-1q-eLd"/>
+                                    <constraint firstItem="u7K-kj-ydw" firstAttribute="leading" secondItem="1SY-zI-74M" secondAttribute="trailing" constant="1" id="ptQ-EW-RZp"/>
+                                    <constraint firstItem="u7K-kj-ydw" firstAttribute="centerY" secondItem="ZFK-yP-HSd" secondAttribute="centerY" id="rUp-Xg-bzC"/>
+                                    <constraint firstItem="wGV-RL-Kjv" firstAttribute="centerY" secondItem="61D-nc-Iqc" secondAttribute="centerY" id="rjq-2y-dKR"/>
+                                    <constraint firstItem="ge3-mo-eRY" firstAttribute="top" secondItem="43w-si-GUP" secondAttribute="bottom" constant="1" id="rny-Nz-Ds7"/>
+                                    <constraint firstItem="ZFK-yP-HSd" firstAttribute="leading" secondItem="ge3-mo-eRY" secondAttribute="trailing" constant="1" id="rzH-y0-xqm"/>
+                                    <constraint firstItem="gb9-Qz-6ic" firstAttribute="centerY" secondItem="wGV-RL-Kjv" secondAttribute="centerY" id="s4b-i7-Pxl"/>
+                                    <constraint firstItem="61D-nc-Iqc" firstAttribute="centerY" secondItem="6Il-8b-oUS" secondAttribute="centerY" id="saF-HB-2M2"/>
+                                    <constraint firstItem="gb9-Qz-6ic" firstAttribute="top" secondItem="ESc-x6-aaf" secondAttribute="bottom" constant="1" id="uAf-V3-qWQ"/>
+                                    <constraint firstItem="fIj-xa-AUw" firstAttribute="leading" secondItem="u7K-kj-ydw" secondAttribute="trailing" constant="1" id="v3r-US-oaj"/>
+                                    <constraint firstItem="GPo-oq-RSr" firstAttribute="centerY" secondItem="lvl-lD-N32" secondAttribute="centerY" id="v4o-NX-VNk"/>
+                                    <constraint firstItem="61D-nc-Iqc" firstAttribute="leading" secondItem="wGV-RL-Kjv" secondAttribute="trailing" constant="1" id="vob-4N-h8Q"/>
+                                    <constraint firstItem="CI8-XO-scY" firstAttribute="top" secondItem="u9c-LE-vu4" secondAttribute="bottom" constant="1" id="yE4-aC-jxC"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wso-Fo-xKw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVk-28-U0E" userLabel="WhiteBackGround1">
+                                <rect key="frame" x="0.0" y="20" width="166" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWx-xx-HEe" userLabel="WhiteBackGround2">
+                                <rect key="frame" x="426" y="20" width="174" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-BI-7kn" userLabel="WhiteBackGround2">
+                                <rect key="frame" x="16" y="469" width="568" height="131"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-9e-3u9" userLabel="WhiteBackGround2">
+                                <rect key="frame" x="16" y="4" width="568" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatch" translatesAutoresizingMaskIntoConstraints="NO" id="xrW-Vn-kSR">
+                                <rect key="frame" x="166" y="69" width="260" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="LzE-Dt-Cxy"/>
+                                    <constraint firstAttribute="width" constant="260" id="WNb-5R-xvT"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="krp-Eg-Wzh">
+                                <rect key="frame" x="16" y="28" width="568" height="514"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2kT-rG-Fug" id="h68-3k-yNO"/>
+                                    <outlet property="delegate" destination="2kT-rG-Fug" id="YjL-D2-MHY"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGX-o0-2vf">
+                                <rect key="frame" x="276" y="550" width="48" height="30"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanHMSoftDevices:" destination="2kT-rG-Fug" eventType="touchUpInside" id="0Ru-FT-kop"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fr2-Td-nlI">
+                                <rect key="frame" x="538" y="550" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="a24-nH-9PN"/>
+                                </constraints>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClearUILabel:" destination="2kT-rG-Fug" eventType="touchUpInside" id="2NY-rS-QIH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6i-Nl-G6l">
+                                <rect key="frame" x="16" y="550" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="MVc-o6-eCf"/>
+                                </constraints>
+                                <state key="normal" title="Calibrate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="calibrateValue:" destination="2kT-rG-Fug" eventType="touchUpInside" id="3sv-eu-0fr"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WPMLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOP-n5-nQq">
+                                <rect key="frame" x="225" y="515" width="150" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Hpy-XM-JdA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQb-vz-ypC">
+                                <rect key="frame" x="277" y="477" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Ftf-ce-AbH"/>
+                                </constraints>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedNextBtn:" destination="2kT-rG-Fug" eventType="touchUpInside" id="1WE-bE-Hhs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready -&gt; Press Next" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtF-xY-yzP" customClass="TaskLabel">
+                                <rect key="frame" x="229" y="233" width="129" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="2de-tI-CyW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ei-5H-EZh">
+                                <rect key="frame" x="229" y="183" width="129" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P6B-Tf-4Lk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="GOP-n5-nQq" firstAttribute="centerX" secondItem="jQb-vz-ypC" secondAttribute="centerX" id="2pO-CO-8sY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uWx-xx-HEe" secondAttribute="trailing" constant="-16" id="6BC-RU-3DL"/>
+                            <constraint firstItem="VGX-o0-2vf" firstAttribute="top" secondItem="krp-Eg-Wzh" secondAttribute="bottom" constant="8" id="6kG-8J-RHA"/>
+                            <constraint firstAttribute="centerX" secondItem="wso-Fo-xKw" secondAttribute="centerX" id="Ad2-lt-s4H"/>
+                            <constraint firstItem="wso-Fo-xKw" firstAttribute="height" secondItem="591-tx-9py" secondAttribute="height" id="ByZ-Lf-AaP"/>
+                            <constraint firstAttribute="centerX" secondItem="VGX-o0-2vf" secondAttribute="centerX" id="Caq-gu-ga0"/>
+                            <constraint firstItem="Cve-DG-SgQ" firstAttribute="top" secondItem="KtF-xY-yzP" secondAttribute="bottom" constant="1" id="Cl1-Lf-dSw"/>
+                            <constraint firstItem="Cve-DG-SgQ" firstAttribute="trailing" secondItem="1Ei-5H-EZh" secondAttribute="trailing" id="DRM-Ws-6Fe"/>
+                            <constraint firstItem="Cve-DG-SgQ" firstAttribute="leading" secondItem="1Ei-5H-EZh" secondAttribute="leading" id="E7Y-oj-e76"/>
+                            <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="Fr2-Td-nlI" secondAttribute="bottom" constant="20" id="E9Z-VY-YYk"/>
+                            <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="RWP-BI-7kn" secondAttribute="bottom" id="FXd-Rp-hym"/>
+                            <constraint firstItem="Fr2-Td-nlI" firstAttribute="trailing" secondItem="591-tx-9py" secondAttribute="trailingMargin" id="G3l-fQ-tc4"/>
+                            <constraint firstItem="Cve-DG-SgQ" firstAttribute="leading" secondItem="KtF-xY-yzP" secondAttribute="leading" id="KXL-wu-MVp"/>
+                            <constraint firstItem="VGX-o0-2vf" firstAttribute="top" secondItem="GOP-n5-nQq" secondAttribute="bottom" constant="14" id="MyU-aH-usp"/>
+                            <constraint firstItem="Cve-DG-SgQ" firstAttribute="trailing" secondItem="KtF-xY-yzP" secondAttribute="trailing" id="PhV-Be-x5W"/>
+                            <constraint firstItem="wso-Fo-xKw" firstAttribute="width" secondItem="591-tx-9py" secondAttribute="width" id="Sc6-cx-uOy"/>
+                            <constraint firstItem="jQb-vz-ypC" firstAttribute="top" secondItem="KtF-xY-yzP" secondAttribute="bottom" constant="8" id="Spt-Bz-6Nu"/>
+                            <constraint firstAttribute="centerY" secondItem="xrW-Vn-kSR" secondAttribute="centerY" constant="31" id="TZs-nM-xFx"/>
+                            <constraint firstItem="krp-Eg-Wzh" firstAttribute="trailing" secondItem="591-tx-9py" secondAttribute="trailingMargin" id="Ufb-2f-haX"/>
+                            <constraint firstItem="krp-Eg-Wzh" firstAttribute="top" secondItem="imi-Qn-Za0" secondAttribute="bottom" constant="8" id="Vlu-Ik-nX2"/>
+                            <constraint firstItem="RWP-BI-7kn" firstAttribute="leading" secondItem="591-tx-9py" secondAttribute="leadingMargin" id="Y4v-aP-hzf"/>
+                            <constraint firstItem="uWx-xx-HEe" firstAttribute="leading" secondItem="xrW-Vn-kSR" secondAttribute="trailing" id="bet-QJ-5iy"/>
+                            <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="B6i-Nl-G6l" secondAttribute="bottom" constant="20" id="cNJ-fJ-pez"/>
+                            <constraint firstItem="Cve-DG-SgQ" firstAttribute="leading" secondItem="KtF-xY-yzP" secondAttribute="trailing" constant="-129" id="dLU-OU-Ufw"/>
+                            <constraint firstAttribute="centerY" secondItem="wso-Fo-xKw" secondAttribute="centerY" id="duh-bQ-8Zz"/>
+                            <constraint firstItem="GOP-n5-nQq" firstAttribute="centerX" secondItem="VGX-o0-2vf" secondAttribute="centerX" id="eCp-lj-PSq"/>
+                            <constraint firstItem="KVk-28-U0E" firstAttribute="top" secondItem="imi-Qn-Za0" secondAttribute="bottom" id="gBW-GL-oam"/>
+                            <constraint firstAttribute="centerX" secondItem="xrW-Vn-kSR" secondAttribute="centerX" constant="4" id="gX9-Bk-5wO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RVn-9e-3u9" secondAttribute="trailing" id="ghy-6y-qVc"/>
+                            <constraint firstItem="krp-Eg-Wzh" firstAttribute="leading" secondItem="591-tx-9py" secondAttribute="leadingMargin" id="hFm-sw-slX"/>
+                            <constraint firstItem="uWx-xx-HEe" firstAttribute="top" secondItem="imi-Qn-Za0" secondAttribute="bottom" id="hoo-M1-aMq"/>
+                            <constraint firstItem="xrW-Vn-kSR" firstAttribute="leading" secondItem="KVk-28-U0E" secondAttribute="trailing" id="j67-q0-4Nr"/>
+                            <constraint firstItem="RVn-9e-3u9" firstAttribute="top" secondItem="imi-Qn-Za0" secondAttribute="bottom" constant="-16" id="jMU-7e-fRe"/>
+                            <constraint firstItem="KtF-xY-yzP" firstAttribute="top" secondItem="1Ei-5H-EZh" secondAttribute="bottom" id="jhJ-8L-EK7"/>
+                            <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="VGX-o0-2vf" secondAttribute="bottom" constant="20" id="m7j-BC-KjG"/>
+                            <constraint firstItem="B6i-Nl-G6l" firstAttribute="leading" secondItem="591-tx-9py" secondAttribute="leadingMargin" id="mPC-iy-fje"/>
+                            <constraint firstItem="KVk-28-U0E" firstAttribute="leading" secondItem="591-tx-9py" secondAttribute="leadingMargin" constant="-16" id="nuw-TU-8Jz"/>
+                            <constraint firstItem="RVn-9e-3u9" firstAttribute="leading" secondItem="591-tx-9py" secondAttribute="leadingMargin" id="rfY-dp-zkN"/>
+                            <constraint firstItem="RWP-BI-7kn" firstAttribute="top" secondItem="xrW-Vn-kSR" secondAttribute="bottom" id="t7z-NV-ELV"/>
+                            <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="uWx-xx-HEe" secondAttribute="bottom" id="tbJ-8a-Dnz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RWP-BI-7kn" secondAttribute="trailing" id="uO3-ya-ZKM"/>
+                            <constraint firstAttribute="centerX" secondItem="Cve-DG-SgQ" secondAttribute="centerX" constant="6.5" id="utW-MG-LV0"/>
+                            <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="KVk-28-U0E" secondAttribute="bottom" id="uys-cr-meG"/>
+                            <constraint firstAttribute="centerY" secondItem="Cve-DG-SgQ" secondAttribute="centerY" id="vs5-06-7pY"/>
+                            <constraint firstItem="GOP-n5-nQq" firstAttribute="top" secondItem="jQb-vz-ypC" secondAttribute="bottom" constant="8" id="ymh-nO-X8m"/>
+                            <constraint firstItem="xrW-Vn-kSR" firstAttribute="top" secondItem="RVn-9e-3u9" secondAttribute="bottom" id="z3b-sh-cdP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wso-Fo-xKw"/>
+                                <exclude reference="krp-Eg-Wzh"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="dLU-OU-Ufw"/>
+                                <exclude reference="Spt-Bz-6Nu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="WPMLabel" destination="GOP-n5-nQq" id="Req-PO-tMF"/>
+                        <outlet property="keyboardView" destination="Cve-DG-SgQ" id="Jbx-S7-Ngy"/>
+                        <outlet property="nextTaskBtn" destination="jQb-vz-ypC" id="hDl-JM-oyt"/>
+                        <outlet property="outputText" destination="1Ei-5H-EZh" id="2NQ-wV-Aue"/>
+                        <outlet property="searchBtn" destination="VGX-o0-2vf" id="gpC-IC-qq7"/>
+                        <outlet property="tableview" destination="krp-Eg-Wzh" id="M6H-zc-9Gt"/>
+                        <outlet property="taskLabel" destination="KtF-xY-yzP" id="KrH-WV-Hxa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNr-V0-SCV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1522" y="433"/>
         </scene>
     </scenes>
     <resources>
