@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "KeysBtnView.h"
 @interface SplitViewController : ViewController
-
+{
+    CGPoint orignCenter;
+    CGPoint leftCenter;
+    CGPoint rightCenter;
+    
+    
+    IBOutlet KeysBtnView *dKey;
+    IBOutlet KeysBtnView *kKey;
+}
 @end

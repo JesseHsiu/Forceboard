@@ -313,13 +313,14 @@
         }
     }
     
-    if ([movedKey count] == 0) {
+    if ([movedKey count] == 0 || [movedKey count]>= 2) {
+        [movedKey removeAllObjects];
         return;
     }
 
     [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
-   
+
 #if !QWERTYBoard
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
