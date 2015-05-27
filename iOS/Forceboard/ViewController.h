@@ -15,12 +15,12 @@ typedef  enum{
     HeavyTouch
 } TouchModes;
 
-@interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 {
     NSMutableArray *discoveredBLEs;
     IBOutlet UITableView *tableview;
     IBOutlet UIButton *searchBtn;
-    IBOutlet UILabel *outputText;
+    IBOutlet UITextView *outputText;
     IBOutlet UILabel *WPMLabel;
     IBOutlet UIView *keyboardView;
 

@@ -45,16 +45,11 @@
     
     [self addSwipeRecognizers];
     
-    outputText.minimumScaleFactor = 0.5;
-    outputText.adjustsFontSizeToFitWidth = YES;
+    outputText.delegate = self;
+//    outputText.minimumScaleFactor = 0.5;
+//    outputText.adjustsFontSizeToFitWidth = YES;
     
-    //error rate
-//    char correctString[] = "the quick brown fox";
-//    char inputString[] = "the quick brown foxxx";
     _errorCalculator = [[CalculateErrorRate alloc ]init];
-
-//    float errorRate = (float)[_errorCalculator LevenshteinDistance:inputString andCorrect:correctString]/(float)MAX(strlen(correctString), strlen(inputString));
-//    NSLog(@"%f", errorRate);
     //key press statistic
     _keysStatistic = [[KeyPressStatistic alloc] init];
 
@@ -533,6 +528,11 @@
 -(TouchModes)touchModes
 {
     return _touchModes;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [outputText resignFirstResponder];
 }
 
 @end

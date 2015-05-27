@@ -291,6 +291,14 @@
                                     <action selector="tappedNextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oLU-3n-Uuh"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjL-rS-qZd">
+                                <rect key="frame" x="225" y="170" width="150" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="j92-Lq-F5L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8v5-08-uDc">
                                 <rect key="frame" x="16" y="28" width="568" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,7 +356,9 @@
                             <constraint firstItem="x9a-cW-vay" firstAttribute="centerX" secondItem="tvp-mU-UK6" secondAttribute="centerX" id="jyg-Ba-fh6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5y-mb-Qbx" secondAttribute="bottom" constant="20" id="lWR-ro-u2n"/>
                             <constraint firstItem="IxM-JL-5ea" firstAttribute="top" secondItem="8v5-08-uDc" secondAttribute="bottom" constant="8" id="n12-fr-x1k"/>
+                            <constraint firstItem="xjL-rS-qZd" firstAttribute="trailing" secondItem="bAQ-rj-eMN" secondAttribute="trailing" constant="-4" id="nTb-dG-3fh"/>
                             <constraint firstAttribute="centerY" secondItem="7Uh-G4-Q4b" secondAttribute="centerY" constant="-2" id="nWW-sg-Yuo"/>
+                            <constraint firstItem="wiY-Jf-zo8" firstAttribute="top" secondItem="xjL-rS-qZd" secondAttribute="bottom" constant="1" id="oUI-lU-Zp4"/>
                             <constraint firstItem="8v5-08-uDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pX8-YT-8nq"/>
                             <constraint firstItem="VeL-z1-It6" firstAttribute="top" secondItem="bSu-d4-Df8" secondAttribute="bottom" constant="1" id="qDz-oH-Aki"/>
                             <constraint firstAttribute="centerY" secondItem="bSu-d4-Df8" secondAttribute="centerY" constant="-2" id="qWE-vb-2X6"/>
@@ -365,8 +375,13 @@
                             <constraint firstItem="QZE-kY-pFx" firstAttribute="centerX" secondItem="hNq-fd-cyL" secondAttribute="centerX" id="ylp-uy-rHh"/>
                             <constraint firstAttribute="centerY" secondItem="x9a-cW-vay" secondAttribute="centerY" constant="-2" id="ynR-WE-KWr"/>
                             <constraint firstItem="D04-cu-mUu" firstAttribute="centerX" secondItem="wiY-Jf-zo8" secondAttribute="centerX" id="zjt-LW-T6s"/>
+                            <constraint firstItem="xjL-rS-qZd" firstAttribute="leading" secondItem="tvp-mU-UK6" secondAttribute="leading" constant="4" id="zyy-RQ-KuS"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5rT-ds-aPP"/>
+                                <exclude reference="8v5-08-uDc"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="OU9-iS-wuB"/>
                                 <exclude reference="SWt-6b-rBC"/>
@@ -377,7 +392,7 @@
                         <outlet property="WPMLabel" destination="3Ov-uf-QA6" id="PLL-0m-8jX"/>
                         <outlet property="keyboardView" destination="Jn7-jj-NUX" id="tWE-bl-tGQ"/>
                         <outlet property="nextTaskBtn" destination="dPR-hs-Sjg" id="GU6-wn-Ix3"/>
-                        <outlet property="outputText" destination="5rT-ds-aPP" id="46q-Q0-sOV"/>
+                        <outlet property="outputText" destination="xjL-rS-qZd" id="DQW-CR-PCB"/>
                         <outlet property="searchBtn" destination="IxM-JL-5ea" id="F8i-ho-vQj"/>
                         <outlet property="tableview" destination="8v5-08-uDc" id="1P0-Rg-QFa"/>
                         <outlet property="taskLabel" destination="wiY-Jf-zo8" id="Wys-9X-OO8"/>
