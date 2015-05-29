@@ -15,6 +15,9 @@
 #import "ZoomViewController.h"
 #import "QWERTYViewController.h"
 #import <CHCSVParser.h>
+#import "AppDelegate.h"
+
+
 #define THERSHOLD 200
 //use CircleView
 #define CircleView 0
@@ -28,25 +31,26 @@
 #endif
 @property CalculateErrorRate* errorCalculator;
 @property KeyPressStatistic* keysStatistic;
-@property CHCSVWriter *writer;
+//@property CHCSVWriter *writer;
 @property NSString* userid;
+@property AppDelegate *appDelegate;
 
 @end
 
 @implementation ViewController
-@synthesize sensor;
+//@synthesize sensor;
 @synthesize touchModes = _touchModes;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    sensor = [[SerialGATT alloc] init];
-    [sensor setup];
-    sensor.delegate = self;
+//    sensor = [[SerialGATT alloc] init];
+//    [sensor setup];
+//    sensor.delegate = self;
     
-    discoveredBLEs = [[NSMutableArray alloc]init];
+//    discoveredBLEs = [[NSMutableArray alloc]init];
     movedKey = [[NSMutableArray alloc]init];
     
     upperCase= false;
-    calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
+//    calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
     
     [self addSwipeRecognizers];
     
@@ -62,11 +66,14 @@
     _errorCalculator = [[CalculateErrorRate alloc ]init];
     //key press statistic
     _keysStatistic = [[KeyPressStatistic alloc] init];
+    
+    
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
 
 }
 -(void)dealloc
 {
-    [_writer closeStream];
+    [self.appDelegate.writer closeStream];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -79,27 +86,14 @@
     [tableview setAlpha:1.0];
     [UIView commitAnimations];
     
-    if ([sensor activePeripheral]) {
-        if (sensor.activePeripheral.state == CBPeripheralStateConnected) {
-            [sensor.manager cancelPeripheralConnection:sensor.activePeripheral];
-            sensor.activePeripheral = nil;
-        }
-    }
-    
-    if ([sensor peripherals]) {
-        sensor.peripherals = nil;
-    }
-    
-    sensor.delegate = self;
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(scanTimer:) userInfo:nil repeats:NO];
-    
-    [sensor findHMSoftPeripherals:10];
+    //need to call delegate to start searching
+    [self.appDelegate startScanningBLE];
 }
 
 #pragma mark - tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [discoveredBLEs count];
+    return [self.appDelegate.discoveredBLEs count];
 
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,7 +105,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = ((CBPeripheral *)[discoveredBLEs objectAtIndex:indexPath.row]).name;
+    cell.textLabel.text = ((CBPeripheral *)[self.appDelegate.discoveredBLEs objectAtIndex:indexPath.row]).name;
     
     return cell;
 }
@@ -119,9 +113,9 @@
 {
     NSUInteger row = [indexPath row];
     
-    sensor.activePeripheral = [discoveredBLEs objectAtIndex:row];
-    [sensor connect:sensor.activePeripheral];
-    [self stopScanning];
+    self.appDelegate.bleSerial.activePeripheral = [self.appDelegate.discoveredBLEs objectAtIndex:row];
+    [self.appDelegate.bleSerial connect:self.appDelegate.bleSerial.activePeripheral];
+    [self.appDelegate stopScanning];
     
     //UI stuff
     [UIView beginAnimations:nil context:NULL];
@@ -131,93 +125,93 @@
     [UIView commitAnimations];
 }
 
-#pragma mark - HMSoftSearching
--(void)scanTimer:(NSTimer *)timer
-{
-    [self stopScanning];
-}
--(void)stopScanning
-{
-    [sensor stopScan];
-    [discoveredBLEs removeAllObjects];
-}
+//#pragma mark - HMSoftSearching
+//-(void)scanTimer:(NSTimer *)timer
+//{
+//    [self stopScanning];
+//}
+//-(void)stopScanning
+//{
+//    [sensor stopScan];
+//    [discoveredBLEs removeAllObjects];
+//}
+//
+//#pragma mark - HMSoftSensorDelegate
+//-(void) peripheralFound:(CBPeripheral *)peripheral
+//{
+//    if (![discoveredBLEs containsObject:peripheral]) {
+//        [discoveredBLEs addObject:peripheral];
+//    }
+//    [tableview reloadData];
+//}
+//-(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
+//{
+//    NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//    if ([[value componentsSeparatedByString:@"/"] count] != 5) {
+//        return;
+//    }
+//    else{
+//        gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
+//        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+//    }
+//}
+//-(void)changecurrentValue
+//{
+//    currentSensorValue = gonnaSetSensorValue;
+//}
+//-(void) setConnect
+//{
+//    UIAlertController *alertController = [UIAlertController
+//                                          alertControllerWithTitle:@"UserID"
+//                                          message:@"Please Enter User ID to save CSV file"
+//                                          preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+//     {
+//         textField.placeholder = @"userid";
+//         [textField addTarget:self
+//                       action:@selector(alertTextFieldDidChange:)
+//             forControlEvents:UIControlEventEditingDidEnd];
+//     }];
+//    
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+//                                             style:UIAlertActionStyleDefault
+//                                           handler:^(UIAlertAction *action) {
+//                                               // do destructive stuff here
+//                                           }];
+//    
+//    [alertController addAction:okAction];
+//    [self presentViewController:alertController animated:YES completion:nil];
+//    
+//    
+//}
+//-(void) setDisconnect
+//{
+//}
 
-#pragma mark - HMSoftSensorDelegate
--(void) peripheralFound:(CBPeripheral *)peripheral
-{
-    if (![discoveredBLEs containsObject:peripheral]) {
-        [discoveredBLEs addObject:peripheral];
-    }
-    [tableview reloadData];
-}
--(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
-{
-    NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    if ([[value componentsSeparatedByString:@"/"] count] != 5) {
-        return;
-    }
-    else{
-        gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
-    }
-}
--(void)changecurrentValue
-{
-    currentSensorValue = gonnaSetSensorValue;
-}
--(void) setConnect
-{
-    UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"UserID"
-                                          message:@"Please Enter User ID to save CSV file"
-                                          preferredStyle:UIAlertControllerStyleAlert];
-    
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
-     {
-         textField.placeholder = @"userid";
-         [textField addTarget:self
-                       action:@selector(alertTextFieldDidChange:)
-             forControlEvents:UIControlEventEditingDidEnd];
-     }];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
-                                             style:UIAlertActionStyleDefault
-                                           handler:^(UIAlertAction *action) {
-                                               // do destructive stuff here
-                                           }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated:YES completion:nil];
-    
-    
-}
--(void) setDisconnect
-{
-}
-
-#pragma mark - HMSoftSendingFunction
--(void)sendStringToArduino:(NSString*)string{
-    NSData *data = [string dataUsingEncoding:[NSString defaultCStringEncoding]];
-    if(data.length > 20)
-    {
-        int i = 0;
-        while ((i + 1) * 20 <= data.length) {
-            NSData *dataSend = [data subdataWithRange:NSMakeRange(i * 20, 20)];
-            [sensor write:sensor.activePeripheral data:dataSend];
-            i++;
-        }
-        i = data.length % 20;
-        if(i > 0)
-        {
-            NSData *dataSend = [data subdataWithRange:NSMakeRange(data.length - i, i)];
-            [sensor write:sensor.activePeripheral data:dataSend];
-        }
-        
-    }else
-    {
-        [sensor write:sensor.activePeripheral data:data];
-    }
-}
+//#pragma mark - HMSoftSendingFunction
+//-(void)sendStringToArduino:(NSString*)string{
+//    NSData *data = [string dataUsingEncoding:[NSString defaultCStringEncoding]];
+//    if(data.length > 20)
+//    {
+//        int i = 0;
+//        while ((i + 1) * 20 <= data.length) {
+//            NSData *dataSend = [data subdataWithRange:NSMakeRange(i * 20, 20)];
+//            [sensor write:sensor.activePeripheral data:dataSend];
+//            i++;
+//        }
+//        i = data.length % 20;
+//        if(i > 0)
+//        {
+//            NSData *dataSend = [data subdataWithRange:NSMakeRange(data.length - i, i)];
+//            [sensor write:sensor.activePeripheral data:dataSend];
+//        }
+//        
+//    }else
+//    {
+//        [sensor write:sensor.activePeripheral data:data];
+//    }
+//}
 
 #pragma mark - Touch Event
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -435,20 +429,20 @@
     outputText.text = @"";
 }
 
--(void)alertTextFieldDidChange:(UITextField*)textfield
-{
-    _userid = textfield.text;
-    
-    NSString *tempFileName = [NSString stringWithFormat:@"%@.csv",_userid];
-    
-    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsPath = [paths objectAtIndex:0];
-    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
-    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
-    _writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
-
-
-}
+//-(void)alertTextFieldDidChange:(UITextField*)textfield
+//{
+//    _userid = textfield.text;
+//    
+//    NSString *tempFileName = [NSString stringWithFormat:@"%@.csv",_userid];
+//    
+//    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *docsPath = [paths objectAtIndex:0];
+//    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
+//    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
+//    _writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
+//
+//
+//}
 #pragma mark - Circle View
 #if CircleView
 -(void)updateCircleValue
@@ -480,7 +474,7 @@
 
 #pragma mark - Data Calculation
 - (IBAction)calibrateValue:(id)sender {
-    calibrateValues = currentSensorValue;
+    self.appDelegate.calibrateValues = self.appDelegate.currentSensorValue;
 }
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
@@ -494,7 +488,7 @@
         NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]];
         
         
-        [_writer writeLineOfFields:temp];
+        [self.appDelegate.writer writeLineOfFields:temp];
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
@@ -531,8 +525,8 @@
 {
     NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
     
-    for (int i = 0; i< [calibrateValues count]; i++) {
-        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[calibrateValues objectAtIndex:i] floatValue] - [[currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
+    for (int i = 0; i< [self.appDelegate.calibrateValues count]; i++) {
+        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[self.appDelegate.calibrateValues objectAtIndex:i] floatValue] - [[self.appDelegate.currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
     }
     return [percentageArray valueForKeyPath:@"@max.floatValue"];
 }

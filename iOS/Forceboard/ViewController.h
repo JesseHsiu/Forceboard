@@ -15,9 +15,9 @@ typedef  enum{
     HeavyTouch
 } TouchModes;
 
-@interface ViewController : UIViewController<BTSmartSensorDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 {
-    NSMutableArray *discoveredBLEs;
+
     IBOutlet UITableView *tableview;
     IBOutlet UIButton *searchBtn;
     IBOutlet UITextView *outputText;
@@ -28,13 +28,15 @@ typedef  enum{
     IBOutlet UIButton *nextTaskBtn;
     
     NSMutableArray *movedKey;
-    NSArray *gonnaSetSensorValue;
-    NSArray *currentSensorValue;
+    
+//    NSMutableArray *discoveredBLEs;
+//    NSArray *gonnaSetSensorValue;
+//    NSArray *currentSensorValue;
     BOOL upperCase;
     NSNumber *thresholdValue;
     
     
-    NSArray *calibrateValues;
+//    NSArray *calibrateValues;
     
     
     BOOL isTouching;
@@ -44,8 +46,8 @@ typedef  enum{
     NSString *orignTaskText;
     
 }
-@property (strong, nonatomic) SerialGATT *sensor;
+//@property (strong, nonatomic) SerialGATT *sensor;
 @property (nonatomic)  TouchModes touchModes;
--(void) scanTimer:(NSTimer *)timer;
+//-(void) scanTimer:(NSTimer *)timer;
 @end
 

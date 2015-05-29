@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SerialGATT.h"
+#import <CHCSVParser.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,BTSmartSensorDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) SerialGATT *bleSerial;
+@property (strong, nonatomic) NSArray *gonnaSetSensorValue;
+@property (strong, nonatomic) NSArray *currentSensorValue;
+@property (strong, nonatomic) NSMutableArray *discoveredBLEs;
+@property (strong, nonatomic) CHCSVWriter *writer;
+@property (strong, nonatomic) NSArray *calibrateValues;
 
-
+-(void)startScanningBLE;
+-(void)stopScanning;
 @end
 
