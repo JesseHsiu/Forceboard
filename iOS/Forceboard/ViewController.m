@@ -69,6 +69,9 @@
     if ([self.appDelegate isBleConnected]) {
         [searchBtn removeFromSuperview];
     }
+    [self.appDelegate changeCSVFileName:self];
+    
+    
     self.totalErrorCount = 0;
     self.preErrorCount = 0;
 }
@@ -366,16 +369,19 @@
         case 1:{
             QWERTYViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"QWERTYViewController"];
             [self presentViewController:vc animated:YES completion:nil];
+            
             break;
         }
         case 2:{
             ZoomViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ZoomViewController"];
             [self presentViewController:vc animated:YES completion:nil];
+            
             break;
         }
         case 3:{
             SplitViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"SplitViewController"];
             [self presentViewController:vc animated:YES completion:nil];
+            
             
             break;
         }

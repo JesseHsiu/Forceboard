@@ -14,6 +14,7 @@
 
 @interface AppDelegate ()
 @property (nonatomic,assign) BOOL userNameSaved;
+@property (nonatomic,strong) NSString* userID;
 @end
 
 @implementation AppDelegate
@@ -105,32 +106,35 @@
 
 -(void)alertTextFieldDidChange:(UITextField*)textfield
 {
-    NSString* userid = textfield.text;
-    [self changeCSVFileName:userid];
+    self.userID = textfield.text;
     self.userNameSaved = true;
-    
+    [self changeCSVFileName:self.window.rootViewController];
 }
 
 
--(void)changeCSVFileName:(NSString*)name
+-(void)changeCSVFileName:(id)viewController
 {
+    if (self.userNameSaved == FALSE) {
+        return;
+    }
     
     NSString *tempFileName;
-    if ([self.window.rootViewController isKindOfClass:[ViewController class]]) {
-        tempFileName = [NSString stringWithFormat:@"%@_force.csv",name];
-    }
-    else if ([self.window.rootViewController isKindOfClass:[ZoomViewController class]])
+    if ([viewController isKindOfClass:[QWERTYViewController class]])
     {
-        tempFileName = [NSString stringWithFormat:@"%@_zoom.csv",name];
+        tempFileName = [NSString stringWithFormat:@"%@_qwerty.csv",self.userID];
     }
-    else if ([self.window.rootViewController isKindOfClass:[SplitViewController class]])
+    else if ([viewController isKindOfClass:[ZoomViewController class]])
     {
-        tempFileName = [NSString stringWithFormat:@"%@_split.csv",name];
+        tempFileName = [NSString stringWithFormat:@"%@_zoom.csv",self.userID];
     }
-    else if ([self.window.rootViewController isKindOfClass:[QWERTYViewController class]])
+    else if ([viewController isKindOfClass:[SplitViewController class]])
     {
-        tempFileName = [NSString stringWithFormat:@"%@_qwerty.csv",name];
+        tempFileName = [NSString stringWithFormat:@"%@_split.csv",self.userID];
     }
+    else if ([viewController isKindOfClass:[ViewController class]]) {
+        tempFileName = [NSString stringWithFormat:@"%@_force.csv",self.userID];
+    }
+    
     
     
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

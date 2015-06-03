@@ -66,7 +66,6 @@
     }
     
     firstTap = !firstTap;
-
 }
 
 @end

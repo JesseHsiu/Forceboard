@@ -24,5 +24,6 @@
 -(void)startScanningBLE;
 -(void)stopScanning;
 -(void)showAlertToNotifyUser;
+-(void)changeCSVFileName:(id)viewController;
 @end
 
