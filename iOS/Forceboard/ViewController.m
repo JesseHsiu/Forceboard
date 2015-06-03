@@ -33,6 +33,8 @@
 //@property CHCSVWriter *writer;
 @property NSString* userid;
 @property AppDelegate *appDelegate;
+@property int totalErrorCount;
+@property int preErrorCount;
 
 @end
 
@@ -67,6 +69,8 @@
     if ([self.appDelegate isBleConnected]) {
         [searchBtn removeFromSuperview];
     }
+    self.totalErrorCount = 0;
+    self.preErrorCount = 0;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -273,13 +277,16 @@
     }
     
     
-    if ([taskLabel.text length]<= [outputText.text length]) {
+    if ([taskLabel.orignText length]<= [outputText.text length]) {
         [nextTaskBtn setEnabled:YES];
     }
     
     
     NSRange range = NSMakeRange(outputText.text.length - 1, 1);
     [outputText scrollRangeToVisible:range];
+    
+    [self countErrorOperation];
+    
 }
 #pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
@@ -321,6 +328,20 @@
     {
         [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
     }
+    
+    
+    [self countErrorOperation];
+}
+-(void)countErrorOperation{
+    int currentError = [_errorCalculator LevenshteinDistance:outputText.text andCorrect:[[taskLabel orignText] substringToIndex:[outputText.text length]]];
+//    NSLog(@"\n%@\n%@\n%d vs %d",outputText.text,[[taskLabel orignText] substringToIndex:[outputText.text length]],currentError,self.preErrorCount);
+    
+    if ( currentError > self.preErrorCount) {
+        self.totalErrorCount++;
+    }
+    
+    self.preErrorCount = currentError;
+    
 }
 
 -(void)handleRightEdgeGesture:(UIScreenEdgePanGestureRecognizer *)swipeGestureRecognizer{
@@ -452,7 +473,14 @@
         NSLog(@"data->hard: %d, Slight: %d",hardPress_num,lightPress_num);
         NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f, error:%0.2f%%",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60,(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]);
         
-        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]];
+        
+        //[NSNumber numberWithFloat:(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]
+        
+        int hardError = [_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]];
+        int softError = self.totalErrorCount - hardError;
+        
+        
+        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:outputText.text.length], [NSNumber numberWithInt:self.totalErrorCount], [NSNumber numberWithInt:hardError], [NSNumber numberWithInt:softError]];
         
         
         [self.appDelegate.writer writeLineOfFields:temp];
@@ -461,6 +489,9 @@
     [taskLabel nextTask];
     [sender setEnabled:false];
     outputText.text = @"";
+    self.totalErrorCount = 0;
+    self.preErrorCount = 0;
+    
     if([self isKindOfClass:[SplitViewController class]])
     {
         [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
