@@ -17,6 +17,7 @@
 @end
 
 @implementation AppDelegate
+@synthesize bleConnected;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -94,12 +95,11 @@
 }
 -(void) setConnect
 {
-    
-    
-    
+    bleConnected = YES;
 }
 -(void) setDisconnect
 {
+    bleConnected = false;
 }
 
 
@@ -186,5 +186,8 @@
     [alertController addAction:okAction];
     [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
 }
-
+-(BOOL)isBleConnected
+{
+    return bleConnected;
+}
 @end

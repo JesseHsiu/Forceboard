@@ -61,6 +61,12 @@
     
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    
+    
+    if ([self.appDelegate isBleConnected]) {
+        [searchBtn removeFromSuperview];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated

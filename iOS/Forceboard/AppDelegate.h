@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *discoveredBLEs;
 @property (strong, nonatomic) CHCSVWriter *writer;
 @property (strong, nonatomic) NSArray *calibrateValues;
+@property (nonatomic, readonly, getter=isBleConnected) BOOL bleConnected;
 
 -(void)startScanningBLE;
 -(void)stopScanning;
