@@ -22,5 +22,6 @@
 
 -(void)startScanningBLE;
 -(void)stopScanning;
+-(void)showAlertToNotifyUser;
 @end
 

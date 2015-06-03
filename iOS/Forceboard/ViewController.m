@@ -21,7 +21,6 @@
 #define THERSHOLD 200
 //use CircleView
 #define CircleView 0
-
 #define QWERTYBoard 0
 
 
@@ -42,15 +41,8 @@
 @synthesize touchModes = _touchModes;
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    sensor = [[SerialGATT alloc] init];
-//    [sensor setup];
-//    sensor.delegate = self;
-    
-//    discoveredBLEs = [[NSMutableArray alloc]init];
     movedKey = [[NSMutableArray alloc]init];
-    
     upperCase= false;
-//    calibrateValues = [[NSArray alloc]initWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f] ,nil];
     
     [self addSwipeRecognizers];
     
@@ -69,7 +61,17 @@
     
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+}
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.appDelegate showAlertToNotifyUser];
+    
+//    if ([self isKindOfClass:[ViewController class]]) {
+//        [self.appDelegate showAlertToNotifyUser];
+//    }
+    
 }
 -(void)dealloc
 {
@@ -124,94 +126,6 @@
     [searchBtn setAlpha:0];
     [UIView commitAnimations];
 }
-
-//#pragma mark - HMSoftSearching
-//-(void)scanTimer:(NSTimer *)timer
-//{
-//    [self stopScanning];
-//}
-//-(void)stopScanning
-//{
-//    [sensor stopScan];
-//    [discoveredBLEs removeAllObjects];
-//}
-//
-//#pragma mark - HMSoftSensorDelegate
-//-(void) peripheralFound:(CBPeripheral *)peripheral
-//{
-//    if (![discoveredBLEs containsObject:peripheral]) {
-//        [discoveredBLEs addObject:peripheral];
-//    }
-//    [tableview reloadData];
-//}
-//-(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
-//{
-//    NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-//    if ([[value componentsSeparatedByString:@"/"] count] != 5) {
-//        return;
-//    }
-//    else{
-//        gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-//        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
-//    }
-//}
-//-(void)changecurrentValue
-//{
-//    currentSensorValue = gonnaSetSensorValue;
-//}
-//-(void) setConnect
-//{
-//    UIAlertController *alertController = [UIAlertController
-//                                          alertControllerWithTitle:@"UserID"
-//                                          message:@"Please Enter User ID to save CSV file"
-//                                          preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
-//     {
-//         textField.placeholder = @"userid";
-//         [textField addTarget:self
-//                       action:@selector(alertTextFieldDidChange:)
-//             forControlEvents:UIControlEventEditingDidEnd];
-//     }];
-//    
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
-//                                             style:UIAlertActionStyleDefault
-//                                           handler:^(UIAlertAction *action) {
-//                                               // do destructive stuff here
-//                                           }];
-//    
-//    [alertController addAction:okAction];
-//    [self presentViewController:alertController animated:YES completion:nil];
-//    
-//    
-//}
-//-(void) setDisconnect
-//{
-//}
-
-//#pragma mark - HMSoftSendingFunction
-//-(void)sendStringToArduino:(NSString*)string{
-//    NSData *data = [string dataUsingEncoding:[NSString defaultCStringEncoding]];
-//    if(data.length > 20)
-//    {
-//        int i = 0;
-//        while ((i + 1) * 20 <= data.length) {
-//            NSData *dataSend = [data subdataWithRange:NSMakeRange(i * 20, 20)];
-//            [sensor write:sensor.activePeripheral data:dataSend];
-//            i++;
-//        }
-//        i = data.length % 20;
-//        if(i > 0)
-//        {
-//            NSData *dataSend = [data subdataWithRange:NSMakeRange(data.length - i, i)];
-//            [sensor write:sensor.activePeripheral data:dataSend];
-//        }
-//        
-//    }else
-//    {
-//        [sensor write:sensor.activePeripheral data:data];
-//    }
-//}
 
 #pragma mark - Touch Event
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -403,6 +317,59 @@
     }
 }
 
+-(void)handleRightEdgeGesture:(UIScreenEdgePanGestureRecognizer *)swipeGestureRecognizer{
+    
+    if (swipeGestureRecognizer.state == UIGestureRecognizerStateEnded)
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Types of Keyboard" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"Force",@"QWERTY",@"Zoom", @"Split", nil];
+        [actionSheet showInView:self.view];
+    }
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    
+    switch (buttonIndex) {
+        case 0:{
+            ViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ViewController"];
+            [self presentViewController:vc animated:YES completion:nil];
+            break;
+        }
+        case 1:{
+            QWERTYViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"QWERTYViewController"];
+            [self presentViewController:vc animated:YES completion:nil];
+            break;
+        }
+        case 2:{
+            ZoomViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ZoomViewController"];
+            [self presentViewController:vc animated:YES completion:nil];
+            break;
+        }
+        case 3:{
+            SplitViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"SplitViewController"];
+            [self presentViewController:vc animated:YES completion:nil];
+            
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    
+    
+//    [self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>]
+//    
+//    
+//    
+//    presentViewController:animated:completion:
+    
+    
+    
+    NSLog(@"%ld",(long)buttonIndex);
+}
+
 -(void)addSwipeRecognizers
 {
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
@@ -421,6 +388,14 @@
     [outputText addGestureRecognizer:swipeLeft];
     [outputText addGestureRecognizer:swipeUp];
     [outputText addGestureRecognizer:swipeDown];
+    
+    
+    
+    
+    UIScreenEdgePanGestureRecognizer *rightEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightEdgeGesture:)];
+    rightEdgeGesture.edges = UIRectEdgeRight;
+//    rightEdgeGesture.delegate = self;
+    [self.view addGestureRecognizer:rightEdgeGesture];
 }
 
 #pragma mark - Button Action
@@ -429,20 +404,6 @@
     outputText.text = @"";
 }
 
-//-(void)alertTextFieldDidChange:(UITextField*)textfield
-//{
-//    _userid = textfield.text;
-//    
-//    NSString *tempFileName = [NSString stringWithFormat:@"%@.csv",_userid];
-//    
-//    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *docsPath = [paths objectAtIndex:0];
-//    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
-//    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
-//    _writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
-//
-//
-//}
 #pragma mark - Circle View
 #if CircleView
 -(void)updateCircleValue

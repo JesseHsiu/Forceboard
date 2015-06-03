@@ -15,7 +15,7 @@ typedef  enum{
     HeavyTouch
 } TouchModes;
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIActionSheetDelegate>
 {
 
     IBOutlet UITableView *tableview;

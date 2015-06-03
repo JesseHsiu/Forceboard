@@ -13,7 +13,7 @@
 #import "QWERTYViewController.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic,assign) BOOL userNameSaved;
 @end
 
 @implementation AppDelegate
@@ -25,6 +25,7 @@
     [self.bleSerial setup];
     self.bleSerial.delegate = self;
     self.discoveredBLEs = [[NSMutableArray alloc]init];
+    self.userNameSaved = false;
     
     
     self.calibrateValues = @[[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f]];
@@ -93,6 +94,76 @@
 }
 -(void) setConnect
 {
+    
+    
+    
+}
+-(void) setDisconnect
+{
+}
+
+
+-(void)alertTextFieldDidChange:(UITextField*)textfield
+{
+    NSString* userid = textfield.text;
+    [self changeCSVFileName:userid];
+    self.userNameSaved = true;
+    
+}
+
+
+-(void)changeCSVFileName:(NSString*)name
+{
+    
+    NSString *tempFileName;
+    if ([self.window.rootViewController isKindOfClass:[ViewController class]]) {
+        tempFileName = [NSString stringWithFormat:@"%@_force.csv",name];
+    }
+    else if ([self.window.rootViewController isKindOfClass:[ZoomViewController class]])
+    {
+        tempFileName = [NSString stringWithFormat:@"%@_zoom.csv",name];
+    }
+    else if ([self.window.rootViewController isKindOfClass:[SplitViewController class]])
+    {
+        tempFileName = [NSString stringWithFormat:@"%@_split.csv",name];
+    }
+    else if ([self.window.rootViewController isKindOfClass:[QWERTYViewController class]])
+    {
+        tempFileName = [NSString stringWithFormat:@"%@_qwerty.csv",name];
+    }
+    
+    
+    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
+    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
+    self.writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
+}
+
+-(void)startScanningBLE
+{
+
+    if ([self.bleSerial activePeripheral]) {
+        if (self.bleSerial.activePeripheral.state == CBPeripheralStateConnected) {
+            [self.bleSerial.manager cancelPeripheralConnection:self.bleSerial.activePeripheral];
+            self.bleSerial.activePeripheral = nil;
+        }
+    }
+    
+    if ([self.bleSerial peripherals]) {
+        self.bleSerial.peripherals = nil;
+    }
+    
+    self.bleSerial.delegate = self;
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(scanTimer:) userInfo:nil repeats:NO];
+    
+    [self.bleSerial findHMSoftPeripherals:10];
+}
+-(void)showAlertToNotifyUser
+{
+    if (self.userNameSaved == true) {
+        return;
+    }
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"UserID"
                                           message:@"Please Enter User ID to save CSV file"
@@ -114,61 +185,6 @@
     
     [alertController addAction:okAction];
     [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
-    
-    
-}
--(void) setDisconnect
-{
-}
-
-
--(void)alertTextFieldDidChange:(UITextField*)textfield
-{
-    NSString* userid = textfield.text;
-    NSString *tempFileName;
-    if ([self.window.rootViewController isKindOfClass:[ViewController class]]) {
-        tempFileName = [NSString stringWithFormat:@"%@_force.csv",userid];
-    }
-    else if ([self.window.rootViewController isKindOfClass:[ZoomViewController class]])
-    {
-        tempFileName = [NSString stringWithFormat:@"%@_zoom.csv",userid];
-    }
-    else if ([self.window.rootViewController isKindOfClass:[SplitViewController class]])
-    {
-        tempFileName = [NSString stringWithFormat:@"%@_split.csv",userid];
-    }
-    else if ([self.window.rootViewController isKindOfClass:[QWERTYViewController class]])
-    {
-        tempFileName = [NSString stringWithFormat:@"%@_qwerty.csv",userid];
-    }
-    
-    
-    NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsPath = [paths objectAtIndex:0];
-    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
-    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
-    self.writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
-}
-
-
--(void)startScanningBLE
-{
-
-    if ([self.bleSerial activePeripheral]) {
-        if (self.bleSerial.activePeripheral.state == CBPeripheralStateConnected) {
-            [self.bleSerial.manager cancelPeripheralConnection:self.bleSerial.activePeripheral];
-            self.bleSerial.activePeripheral = nil;
-        }
-    }
-    
-    if ([self.bleSerial peripherals]) {
-        self.bleSerial.peripherals = nil;
-    }
-    
-    self.bleSerial.delegate = self;
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(scanTimer:) userInfo:nil repeats:NO];
-    
-    [self.bleSerial findHMSoftPeripherals:10];
 }
 
 @end
