@@ -31,20 +31,9 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    orignCenter = keyboardView.center;
-    leftCenter =CGPointMake(197, orignCenter.y);
-    rightCenter =CGPointMake(111, orignCenter.y);
-    
-    
-    
     [super viewDidAppear:animated];
     NSLog(@"%f, %f", [dKey convertPoint:dKey.center toView:self.view].x,[dKey convertPoint:dKey.center toView:self.view].y);
-    
-    CGAffineTransform transform = CGAffineTransformMakeScale(1.65, 1);
-    [UIView animateWithDuration:0.2 animations:^{
-        keyboardView.transform = transform;
-        keyboardView.center = leftCenter;
-    }];
+    [keyboardView setTranslatesAutoresizingMaskIntoConstraints:NO];
 }
 
 
@@ -61,46 +50,25 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-//    [keyboardView removeFromSuperview];
-//    [self.view addSubview:keyboardView];
-    
-    
-    [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.001];
-    
 }
-
 
 -(void)handleSwipe:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
     
     if (swipeGestureRecognizer.direction == UISwipeGestureRecognizerDirectionRight ) {
         isCurrentLeft = YES;
-        
-        [UIView animateWithDuration:0.2 animations:^{
-            keyboardView.center = leftCenter;
-        }];
-        
+        middleLineConstraint.constant = -38;
     }
     else if (swipeGestureRecognizer.direction == UISwipeGestureRecognizerDirectionLeft)
     {
         isCurrentLeft = NO;
-        [UIView animateWithDuration:0.2 animations:^{
-            keyboardView.center = rightCenter;
-        }];
+        middleLineConstraint.constant = 45;
     }
     
-    [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.001];
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view setNeedsDisplay];
+    }];
     [movedKey removeAllObjects];
     isTouching = false;
-}
--(void)adjustPosition
-{
-    if (isCurrentLeft) {
-        keyboardView.center = leftCenter;
-    }
-    else
-    {
-        keyboardView.center = rightCenter;
-    }
 }
 
 

@@ -1739,14 +1739,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khJ-kG-kqz">
-                                <rect key="frame" x="229" y="254" width="129" height="92"/>
+                                <rect key="frame" x="232" y="254" width="213" height="92"/>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzX-gA-9K8" customClass="KeysBtnView">
-                                        <rect key="frame" x="0.0" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="-2" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Fxs-RL-WTb"/>
-                                            <constraint firstAttribute="width" constant="12" id="Pgf-Gh-gXr"/>
+                                            <constraint firstAttribute="width" constant="20" id="Pgf-Gh-gXr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="q" backgroundImage="test">
@@ -1755,11 +1755,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aus-Ks-T3W" customClass="KeysBtnView">
-                                        <rect key="frame" x="26" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="40" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="0KS-d1-uLa"/>
-                                            <constraint firstAttribute="width" constant="12" id="3D1-yl-frY"/>
+                                            <constraint firstAttribute="width" constant="20" id="3D1-yl-frY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="e" backgroundImage="test">
@@ -1768,11 +1768,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJC-8l-m44" customClass="KeysBtnView">
-                                        <rect key="frame" x="13" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="19" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2VV-f8-OoF"/>
-                                            <constraint firstAttribute="width" constant="12" id="uaP-6t-XLS"/>
+                                            <constraint firstAttribute="width" constant="20" id="uaP-6t-XLS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="w" backgroundImage="test">
@@ -1781,10 +1781,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UK4-N3-frW" customClass="KeysBtnView">
-                                        <rect key="frame" x="39" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="61" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="7WX-fs-Fdb"/>
+                                            <constraint firstAttribute="width" constant="20" id="7WX-fs-Fdb"/>
                                             <constraint firstAttribute="height" constant="30" id="ADu-af-mL4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1794,11 +1794,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-dp-x0r" customClass="KeysBtnView">
-                                        <rect key="frame" x="65" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="103" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="BPR-pX-5Lg"/>
-                                            <constraint firstAttribute="width" constant="12" id="Bir-OY-lZJ"/>
+                                            <constraint firstAttribute="width" constant="20" id="Bir-OY-lZJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="y" backgroundImage="test">
@@ -1807,11 +1807,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRz-tA-7jA" customClass="KeysBtnView">
-                                        <rect key="frame" x="52" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="82" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="O6E-3U-LRF"/>
-                                            <constraint firstAttribute="width" constant="12" id="qeo-bx-CM9"/>
+                                            <constraint firstAttribute="width" constant="20" id="qeo-bx-CM9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="t" backgroundImage="test">
@@ -1820,11 +1820,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekr-LO-kjM" customClass="KeysBtnView">
-                                        <rect key="frame" x="104" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="166" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="6vJ-vy-lAm"/>
-                                            <constraint firstAttribute="width" constant="12" id="VSz-9a-MQK"/>
+                                            <constraint firstAttribute="width" constant="20" id="VSz-9a-MQK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="o" backgroundImage="test">
@@ -1833,10 +1833,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTS-Qq-hzm" customClass="KeysBtnView">
-                                        <rect key="frame" x="91" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="145" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="2UR-sT-cbj"/>
+                                            <constraint firstAttribute="width" constant="20" id="2UR-sT-cbj"/>
                                             <constraint firstAttribute="height" constant="30" id="ULo-6A-8h7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1846,11 +1846,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMC-mo-yTc" customClass="KeysBtnView">
-                                        <rect key="frame" x="117" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="187" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hbc-oA-Jka"/>
-                                            <constraint firstAttribute="width" constant="12" id="o6d-7r-Sge"/>
+                                            <constraint firstAttribute="width" constant="20" id="o6d-7r-Sge"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="p" backgroundImage="test">
@@ -1859,10 +1859,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g74-QN-q6m" customClass="KeysBtnView">
-                                        <rect key="frame" x="0.0" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="-2" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="029-bn-pv0"/>
+                                            <constraint firstAttribute="width" constant="20" id="029-bn-pv0"/>
                                             <constraint firstAttribute="height" constant="30" id="zAx-54-o27"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1872,10 +1872,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdk-BP-Ri9" customClass="KeysBtnView">
-                                        <rect key="frame" x="26" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="40" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="wNq-qP-r2x"/>
+                                            <constraint firstAttribute="width" constant="20" id="wNq-qP-r2x"/>
                                             <constraint firstAttribute="height" constant="30" id="yYV-Qj-tgH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1885,11 +1885,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAO-BA-ltX" customClass="KeysBtnView">
-                                        <rect key="frame" x="13" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="19" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GFe-Wq-aEd"/>
-                                            <constraint firstAttribute="width" constant="12" id="eaJ-BC-L5e"/>
+                                            <constraint firstAttribute="width" constant="20" id="eaJ-BC-L5e"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="s" backgroundImage="test">
@@ -1898,10 +1898,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQw-tj-aZ3" customClass="KeysBtnView">
-                                        <rect key="frame" x="39" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="61" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="3Jf-aw-2gS"/>
+                                            <constraint firstAttribute="width" constant="20" id="3Jf-aw-2gS"/>
                                             <constraint firstAttribute="height" constant="30" id="SZ2-2d-Uhf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1911,10 +1911,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nij-SR-CAr" customClass="KeysBtnView">
-                                        <rect key="frame" x="52" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="82" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="4yM-Ib-A0f"/>
+                                            <constraint firstAttribute="width" constant="20" id="4yM-Ib-A0f"/>
                                             <constraint firstAttribute="height" constant="30" id="mTf-4D-oDD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1924,10 +1924,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-Mk-4Pw" customClass="KeysBtnView">
-                                        <rect key="frame" x="78" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="124" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="5Tj-Av-Gmx"/>
+                                            <constraint firstAttribute="width" constant="20" id="5Tj-Av-Gmx"/>
                                             <constraint firstAttribute="height" constant="30" id="EZw-ls-bOg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1937,11 +1937,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y34-8J-Rli" customClass="KeysBtnView">
-                                        <rect key="frame" x="104" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="166" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ado-Wm-3LW"/>
-                                            <constraint firstAttribute="width" constant="12" id="daU-D2-n91"/>
+                                            <constraint firstAttribute="width" constant="20" id="daU-D2-n91"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="l" backgroundImage="test">
@@ -1950,11 +1950,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FN2-eQ-igo" customClass="KeysBtnView">
-                                        <rect key="frame" x="91" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="145" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="FcI-eZ-mDG"/>
-                                            <constraint firstAttribute="width" constant="12" id="fTh-4n-wIL"/>
+                                            <constraint firstAttribute="width" constant="20" id="fTh-4n-wIL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="k" backgroundImage="test">
@@ -1963,10 +1963,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-fb-Wej" customClass="KeysBtnView">
-                                        <rect key="frame" x="117" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="187" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="Apb-XM-Odg"/>
+                                            <constraint firstAttribute="width" constant="20" id="Apb-XM-Odg"/>
                                             <constraint firstAttribute="height" constant="30" id="XyR-kT-ozF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -1976,11 +1976,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5U-Hv-5Rs" customClass="KeysBtnView">
-                                        <rect key="frame" x="0.0" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="-2" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="FYm-wR-TuE"/>
-                                            <constraint firstAttribute="width" constant="12" id="TWu-OF-buz"/>
+                                            <constraint firstAttribute="width" constant="20" id="TWu-OF-buz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="z" backgroundImage="test">
@@ -1989,11 +1989,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwr-4U-OyO" customClass="KeysBtnView">
-                                        <rect key="frame" x="26" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="40" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="TJy-5j-CLW"/>
-                                            <constraint firstAttribute="width" constant="12" id="xJI-VV-aiR"/>
+                                            <constraint firstAttribute="width" constant="20" id="xJI-VV-aiR"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="c" backgroundImage="test">
@@ -2002,11 +2002,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIe-5F-byd" customClass="KeysBtnView">
-                                        <rect key="frame" x="13" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="19" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Rp0-ii-gDs"/>
-                                            <constraint firstAttribute="width" constant="12" id="TNk-JP-VQC"/>
+                                            <constraint firstAttribute="width" constant="20" id="TNk-JP-VQC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="x" backgroundImage="test">
@@ -2015,10 +2015,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzN-RA-Xe4" customClass="KeysBtnView">
-                                        <rect key="frame" x="39" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="61" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="5ID-ch-KTV"/>
+                                            <constraint firstAttribute="width" constant="20" id="5ID-ch-KTV"/>
                                             <constraint firstAttribute="height" constant="30" id="FE8-UT-Ycz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -2028,10 +2028,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBW-hP-L5e" customClass="KeysBtnView">
-                                        <rect key="frame" x="65" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="103" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="Q6O-J6-caI"/>
+                                            <constraint firstAttribute="width" constant="20" id="Q6O-J6-caI"/>
                                             <constraint firstAttribute="height" constant="30" id="pgu-YN-grH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -2041,11 +2041,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-VF-0vt" customClass="KeysBtnView">
-                                        <rect key="frame" x="52" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="82" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="CIK-wj-r50"/>
-                                            <constraint firstAttribute="width" constant="12" id="EzT-48-P3h"/>
+                                            <constraint firstAttribute="width" constant="20" id="EzT-48-P3h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="b" backgroundImage="test">
@@ -2054,11 +2054,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHY-L0-ONb" customClass="KeysBtnView">
-                                        <rect key="frame" x="78" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="124" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="6eu-VD-9Wt"/>
-                                            <constraint firstAttribute="width" constant="12" id="8ar-KA-9zH"/>
+                                            <constraint firstAttribute="width" constant="20" id="8ar-KA-9zH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="m" backgroundImage="test">
@@ -2067,10 +2067,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-WV-14y" customClass="KeysBtnView">
-                                        <rect key="frame" x="104" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="166" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="3K5-cA-ECQ"/>
+                                            <constraint firstAttribute="width" constant="20" id="3K5-cA-ECQ"/>
                                             <constraint firstAttribute="height" constant="30" id="gDB-kW-aQb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -2080,11 +2080,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVP-Si-2gc" customClass="KeysBtnView">
-                                        <rect key="frame" x="91" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="145" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="31A-y8-hbQ"/>
-                                            <constraint firstAttribute="width" constant="12" id="68M-u5-wGH"/>
+                                            <constraint firstAttribute="width" constant="20" id="68M-u5-wGH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="," backgroundImage="test">
@@ -2093,11 +2093,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-EK-trg" customClass="KeysBtnView">
-                                        <rect key="frame" x="117" y="62" width="12" height="30"/>
+                                        <rect key="frame" x="187" y="62" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ZD5-1Q-qIH"/>
-                                            <constraint firstAttribute="width" constant="12" id="dIa-Ud-vT4"/>
+                                            <constraint firstAttribute="width" constant="20" id="dIa-Ud-vT4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="/" backgroundImage="test">
@@ -2106,10 +2106,10 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMT-Fa-vfV" customClass="KeysBtnView">
-                                        <rect key="frame" x="65" y="31" width="12" height="30"/>
+                                        <rect key="frame" x="103" y="31" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="GyH-9H-NZO"/>
+                                            <constraint firstAttribute="width" constant="20" id="GyH-9H-NZO"/>
                                             <constraint firstAttribute="height" constant="30" id="afy-L6-AXT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
@@ -2119,11 +2119,11 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pw-ba-5k7" customClass="KeysBtnView">
-                                        <rect key="frame" x="78" y="0.0" width="12" height="30"/>
+                                        <rect key="frame" x="124" y="0.0" width="20" height="30"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4IN-oW-dIg"/>
-                                            <constraint firstAttribute="width" constant="12" id="wKH-yc-zAQ"/>
+                                            <constraint firstAttribute="width" constant="20" id="wKH-yc-zAQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <state key="normal" title="u" backgroundImage="test">
@@ -2199,7 +2199,7 @@
                                     <constraint firstItem="W1o-fb-Wej" firstAttribute="top" secondItem="JMC-mo-yTc" secondAttribute="bottom" constant="1" id="k73-Dr-1G9"/>
                                     <constraint firstItem="xJC-8l-m44" firstAttribute="leading" secondItem="qzX-gA-9K8" secondAttribute="trailing" constant="1" id="pUE-sW-bhR"/>
                                     <constraint firstItem="dHY-L0-ONb" firstAttribute="leading" secondItem="BBW-hP-L5e" secondAttribute="trailing" constant="1" id="px7-OA-pE6"/>
-                                    <constraint firstAttribute="width" constant="129" id="qz6-hg-37w"/>
+                                    <constraint firstAttribute="width" constant="213" id="qz6-hg-37w"/>
                                     <constraint firstItem="oMT-Fa-vfV" firstAttribute="centerY" secondItem="FN2-eQ-igo" secondAttribute="centerY" id="rGK-cq-8xM"/>
                                     <constraint firstItem="eQw-tj-aZ3" firstAttribute="top" secondItem="UK4-N3-frW" secondAttribute="bottom" constant="1" id="rNZ-Tv-af2"/>
                                     <constraint firstItem="BBW-hP-L5e" firstAttribute="centerY" secondItem="x5U-Hv-5Rs" secondAttribute="centerY" id="rZm-Hy-ZQ6"/>
@@ -2372,9 +2372,9 @@
                             <constraint firstAttribute="centerY" secondItem="gTt-BE-jXk" secondAttribute="centerY" id="vBX-h0-guX"/>
                             <constraint firstItem="tg1-y4-YmJ" firstAttribute="top" secondItem="b9I-9W-Ytf" secondAttribute="bottom" id="vI4-zv-s6c"/>
                             <constraint firstItem="DAd-Jc-ffJ" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" id="wVo-4M-krU"/>
-                            <constraint firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="6.5" id="xvp-30-5Bd"/>
                             <constraint firstItem="oaa-Qa-GYO" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" id="y8G-X6-RHr"/>
                             <constraint firstItem="v1a-BF-6pu" firstAttribute="top" secondItem="e2i-1p-40M" secondAttribute="bottom" id="yJS-Gt-RR5"/>
+                            <constraint firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="-38" id="zOz-9H-N7c"/>
                             <constraint firstItem="gTt-BE-jXk" firstAttribute="height" secondItem="LIE-we-ys3" secondAttribute="height" id="zfU-dw-t4g"/>
                         </constraints>
                         <variation key="default">
@@ -2393,6 +2393,7 @@
                         <outlet property="dKey" destination="Wdk-BP-Ri9" id="u1w-EC-5ce"/>
                         <outlet property="kKey" destination="FN2-eQ-igo" id="HuQ-bU-NYX"/>
                         <outlet property="keyboardView" destination="khJ-kG-kqz" id="C8b-ip-YgM"/>
+                        <outlet property="middleLineConstraint" destination="zOz-9H-N7c" id="NHT-xD-OXH"/>
                         <outlet property="nextTaskBtn" destination="C3z-eY-Vfm" id="frf-Or-GWW"/>
                         <outlet property="outputText" destination="dxC-pp-bz1" id="ift-tm-5Pn"/>
                         <outlet property="searchBtn" destination="btN-I5-eKN" id="ASD-Aq-Fmf"/>

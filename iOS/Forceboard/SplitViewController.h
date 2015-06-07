@@ -19,6 +19,9 @@
     
     IBOutlet KeysBtnView *dKey;
     IBOutlet KeysBtnView *kKey;
+    
+    
+    IBOutlet NSLayoutConstraint *middleLineConstraint;
+    
 }
--(void)adjustPosition;
 @end
