@@ -35,6 +35,10 @@
 {
     currentindex = 0;
     self.text = orignText;
+    
+    [self replaceSpaces];
+    [self addSpaces];
+    [self updateAttributed];
 
 }
 
@@ -44,7 +48,13 @@
     int value = arc4random() % 500;
     self.text = [taskArray objectAtIndex:abs(value)*2];
     orignText = self.text;
+    
+    
     currentindex = 0;
+    
+    [self replaceSpaces];
+    [self addSpaces];
+    [self updateAttributed];
 }
 
 -(void)cleanNext
@@ -52,14 +62,50 @@
     if ([orignText length] == currentindex) {
         return;
     }
-    currentindex++;
-    self.text = [self.text substringFromIndex:1];
+    else
+    {
+        currentindex++;
+        self.text = [orignText substringFromIndex:currentindex];
+
+        [self replaceSpaces];
+        [self addSpaces];
+        [self updateAttributed];
+    }
+    
+    
+//    NSMutableAttributedString *attDescribe = 
+    
+    
+//    NSAttributedString *attString = [[NSAttributedString alloc]initWithString:self.text];
+    
 }
 
 -(void)backforwad
 {
     currentindex--;
     self.text = [orignText substringFromIndex:currentindex];
+
+    [self replaceSpaces];
+    [self addSpaces];
+    [self updateAttributed];
+}
+-(void)replaceSpaces
+{
+    self.text = [self.text stringByReplacingOccurrencesOfString:@" "
+                                         withString:@"_"];
+}
+
+-(void)addSpaces
+{
+    self.text = [NSString stringWithFormat:@"          %@          ",self.text];
+}
+
+-(void)updateAttributed
+{
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc]initWithString:self.text];
+    [attString addAttribute: NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(10,1)];
+    
+    [self setAttributedText:attString];
 }
 
 @end

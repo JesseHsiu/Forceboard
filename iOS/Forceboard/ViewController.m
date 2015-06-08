@@ -74,6 +74,14 @@
     
     self.totalErrorCount = 0;
     self.preErrorCount = 0;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateBLEList) name:@"updateBLEList" object:nil];
+    
+    
+    currentTaskNumberText = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, 50, 30)];
+    [self.view addSubview:currentTaskNumberText];
+    currentTaskNumber = 0;
+    currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -88,6 +96,7 @@
 }
 -(void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.appDelegate.writer closeStream];
 }
 - (void)didReceiveMemoryWarning {
@@ -327,16 +336,16 @@
             break;
     }
     
-    if([self isKindOfClass:[SplitViewController class]])
-    {
-        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
-    }
+//    if([self isKindOfClass:[SplitViewController class]])
+//    {
+//        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
+//    }
     
     
     [self countErrorOperation];
 }
 -(void)countErrorOperation{
-    int currentError = [_errorCalculator LevenshteinDistance:outputText.text andCorrect:[[taskLabel orignText] substringToIndex:[outputText.text length]]];
+    int currentError = [_errorCalculator LevenshteinDistance:outputText.text andCorrect:[[taskLabel orignText] substringToIndex:([outputText.text length] > [[taskLabel orignText] length] ? [[taskLabel orignText] length]:[outputText.text length])]];
 //    NSLog(@"\n%@\n%@\n%d vs %d",outputText.text,[[taskLabel orignText] substringToIndex:[outputText.text length]],currentError,self.preErrorCount);
     
     if ( currentError > self.preErrorCount) {
@@ -498,10 +507,14 @@
     self.totalErrorCount = 0;
     self.preErrorCount = 0;
     
-    if([self isKindOfClass:[SplitViewController class]])
-    {
-        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
-    }
+    
+    currentTaskNumber++;
+    currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
+    
+//    if([self isKindOfClass:[SplitViewController class]])
+//    {
+//        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
+//    }
 }
 -(void)updateThreshold
 {
@@ -560,10 +573,10 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [outputText resignFirstResponder];
-    if([self isKindOfClass:[SplitViewController class]])
-    {
-        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
-    }
+//    if([self isKindOfClass:[SplitViewController class]])
+//    {
+//        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
+//    }
 }
 
 -(BOOL)isOtherClass
@@ -576,6 +589,11 @@
         return NO;
     }
 
+}
+
+-(void)updateBLEList
+{
+    [tableview reloadData];
 }
 
 @end

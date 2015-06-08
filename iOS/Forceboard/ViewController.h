@@ -27,6 +27,9 @@ typedef  enum{
     IBOutlet TaskLabel *taskLabel;
     IBOutlet UIButton *nextTaskBtn;
     
+    UILabel *currentTaskNumberText;
+    int currentTaskNumber;
+    
     NSMutableArray *movedKey;
     
 //    NSMutableArray *discoveredBLEs;

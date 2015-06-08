@@ -77,12 +77,13 @@
 {
     if (![self.discoveredBLEs containsObject:peripheral]) {
         [self.discoveredBLEs addObject:peripheral];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateBLEList" object:nil];
     }
 }
 -(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    if ([[value componentsSeparatedByString:@"/"] count] != 5) {
+    if ([[value componentsSeparatedByString:@"/"] count] != 4) {
         return;
     }
     else{
