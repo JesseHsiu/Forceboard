@@ -51,6 +51,7 @@
     
     
     currentindex = 0;
+    extraTextCount = 0;
     
     [self replaceSpaces];
     [self addSpaces];
