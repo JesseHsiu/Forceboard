@@ -14,6 +14,7 @@
     
     
     int currentindex;
+    int extraTextCount;
 }
 @property (nonatomic,readonly) NSString *orignText;
 

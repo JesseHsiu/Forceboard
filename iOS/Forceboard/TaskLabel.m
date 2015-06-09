@@ -22,7 +22,7 @@
         // first, separate by new line
         taskArray = [fileContents componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
         
-        
+        extraTextCount = 0;
 //        self.minimumScaleFactor = 0.5;
 //        self.adjustsFontSizeToFitWidth = YES;
         
@@ -60,6 +60,7 @@
 -(void)cleanNext
 {
     if ([orignText length] == currentindex) {
+        extraTextCount++;
         return;
     }
     else
@@ -82,12 +83,19 @@
 
 -(void)backforwad
 {
-    currentindex--;
-    self.text = [orignText substringFromIndex:currentindex];
-
-    [self replaceSpaces];
-    [self addSpaces];
-    [self updateAttributed];
+    
+    if (extraTextCount >= 1) {
+        extraTextCount --;
+    }
+    else
+    {
+        currentindex--;
+        self.text = [orignText substringFromIndex:currentindex];
+        
+        [self replaceSpaces];
+        [self addSpaces];
+        [self updateAttributed];
+    }
 }
 -(void)replaceSpaces
 {
