@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "KeysBtnView.h"
-#import <AudioToolbox/AudioToolbox.h>
+//#import <AudioToolbox/AudioToolbox.h>
 #import "CalculateErrorRate.h"
 #import "KeyPressStatistic.h"
 #import "SplitViewController.h"
@@ -477,7 +477,7 @@
 
 #pragma mark - Data Calculation
 - (IBAction)calibrateValue:(id)sender {
-    self.appDelegate.calibrateValues = self.appDelegate.currentSensorValue;
+    //self.appDelegate.calibrateValues = self.appDelegate.currentSensorValue;
 }
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
@@ -523,7 +523,7 @@
         return;
     }
     
-    thresholdValue = [self thresholdCheck];
+    //thresholdValue = [NSNumber numberWithFloat:THERSHOLD];//[self thresholdCheck];
     if (![self isSlightPress]) {
         self.touchModes = HeavyTouch;
     }
@@ -533,20 +533,20 @@
 }
 -(BOOL)isSlightPress
 {
-    if ([thresholdValue floatValue] < 1 && _touchModes == SlightTouch) {
+    if (self.appDelegate.currentSensorValue < THERSHOLD && _touchModes == SlightTouch) {
         return true;
     }
     return false;
 }
--(NSNumber*)thresholdCheck
-{
-    NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
-    
-    for (int i = 0; i< [self.appDelegate.calibrateValues count]; i++) {
-        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[self.appDelegate.calibrateValues objectAtIndex:i] floatValue] - [[self.appDelegate.currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
-    }
-    return [percentageArray valueForKeyPath:@"@max.floatValue"];
-}
+//-(NSNumber*)thresholdCheck
+//{
+//    NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
+//    
+//    for (int i = 0; i< [self.appDelegate.calibrateValues count]; i++) {
+//        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[self.appDelegate.calibrateValues objectAtIndex:i] floatValue] - [[self.appDelegate.currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
+//    }
+//    return [percentageArray valueForKeyPath:@"@max.floatValue"];
+//}
 -(NSString*)uplowerCasingString:(NSString*)string
 {
     if (upperCase) {
@@ -561,7 +561,7 @@
 -(void)setTouchModes:(TouchModes)touchModes
 {
     if (_touchModes == SlightTouch && touchModes == HeavyTouch) {
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
     _touchModes = touchModes;
 }

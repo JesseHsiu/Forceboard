@@ -83,17 +83,24 @@
 -(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
 {
     NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    if ([[value componentsSeparatedByString:@"/"] count] != 4) {
-        return;
-    }
-    else{
-        self.gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
-    }
+    
+    NSLog(@"%@",value);
+    
+    self.currentSensorValue = [value floatValue];
+    
+    
+    
+//    if ([[value componentsSeparatedByString:@"/"] count] != 4) {
+//        return;
+//    }
+//    else{
+//        self.gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
+//        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
+//    }
 }
 -(void)changecurrentValue
 {
-    self.currentSensorValue = self.gonnaSetSensorValue;
+    //self.currentSensorValue = self.gonnaSetSensorValue;
 }
 -(void) setConnect
 {

@@ -15,7 +15,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) SerialGATT *bleSerial;
 @property (strong, nonatomic) NSArray *gonnaSetSensorValue;
-@property (strong, nonatomic) NSArray *currentSensorValue;
+@property (nonatomic) float currentSensorValue;
 @property (strong, nonatomic) NSMutableArray *discoveredBLEs;
 @property (strong, nonatomic) CHCSVWriter *writer;
 @property (strong, nonatomic) NSArray *calibrateValues;
