@@ -32,16 +32,12 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-        
-        
-        
-        
+
         for touch in touches{
             
             if detectView.pointInside(touch.locationInView(detectView), withEvent: event)
             {
-                print("start")
+//                print("start")
                 currentTouchInDetectView = true
             }
         }
@@ -53,7 +49,7 @@ class ViewController: UIViewController {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if currentTouchInDetectView
         {
-            dataToWrite[count].append(1.234)
+//            dataToWrite[count].append(1.234)
             let stringArray = dataToWrite[count].map{String($0)}
             
             if stringArray.count != 0
@@ -61,7 +57,7 @@ class ViewController: UIViewController {
                 print(stringArray.joinWithSeparator(","))
             }
             
-            print("end")
+//            print("end")
             count++
         }
         
