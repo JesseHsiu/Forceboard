@@ -36,6 +36,7 @@ typedef  enum{
     NSDate *startTime;
     
     NSString *orignTaskText;
+    NSMutableArray *forceData;
     
 }
 @property (nonatomic)  TouchModes touchModes;

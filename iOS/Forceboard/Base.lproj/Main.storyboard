@@ -1463,10 +1463,6 @@
                                     <constraint firstItem="CI8-XO-scY" firstAttribute="top" secondItem="u9c-LE-vu4" secondAttribute="bottom" constant="1" id="yE4-aC-jxC"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wso-Fo-xKw">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVk-28-U0E" userLabel="WhiteBackGround1">
                                 <rect key="frame" x="4" y="20" width="162" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1549,8 +1545,6 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="uWx-xx-HEe" secondAttribute="trailing" constant="-16" id="6BC-RU-3DL"/>
-                            <constraint firstAttribute="centerX" secondItem="wso-Fo-xKw" secondAttribute="centerX" id="Ad2-lt-s4H"/>
-                            <constraint firstItem="wso-Fo-xKw" firstAttribute="height" secondItem="591-tx-9py" secondAttribute="height" id="ByZ-Lf-AaP"/>
                             <constraint firstItem="Cve-DG-SgQ" firstAttribute="top" secondItem="KtF-xY-yzP" secondAttribute="bottom" constant="1" id="Cl1-Lf-dSw"/>
                             <constraint firstItem="Cve-DG-SgQ" firstAttribute="trailing" secondItem="1Ei-5H-EZh" secondAttribute="trailing" id="DRM-Ws-6Fe"/>
                             <constraint firstItem="Cve-DG-SgQ" firstAttribute="leading" secondItem="1Ei-5H-EZh" secondAttribute="leading" id="E7Y-oj-e76"/>
@@ -1559,14 +1553,12 @@
                             <constraint firstItem="Fr2-Td-nlI" firstAttribute="trailing" secondItem="591-tx-9py" secondAttribute="trailingMargin" id="G3l-fQ-tc4"/>
                             <constraint firstItem="Cve-DG-SgQ" firstAttribute="leading" secondItem="KtF-xY-yzP" secondAttribute="leading" id="KXL-wu-MVp"/>
                             <constraint firstItem="Cve-DG-SgQ" firstAttribute="trailing" secondItem="KtF-xY-yzP" secondAttribute="trailing" id="PhV-Be-x5W"/>
-                            <constraint firstItem="wso-Fo-xKw" firstAttribute="width" secondItem="591-tx-9py" secondAttribute="width" id="Sc6-cx-uOy"/>
                             <constraint firstItem="jQb-vz-ypC" firstAttribute="top" secondItem="KtF-xY-yzP" secondAttribute="bottom" constant="8" id="Spt-Bz-6Nu"/>
                             <constraint firstAttribute="centerY" secondItem="xrW-Vn-kSR" secondAttribute="centerY" constant="31" id="TZs-nM-xFx"/>
                             <constraint firstItem="RWP-BI-7kn" firstAttribute="leading" secondItem="591-tx-9py" secondAttribute="leadingMargin" id="Y4v-aP-hzf"/>
                             <constraint firstItem="uWx-xx-HEe" firstAttribute="leading" secondItem="xrW-Vn-kSR" secondAttribute="trailing" id="bet-QJ-5iy"/>
                             <constraint firstItem="GOP-n5-nQq" firstAttribute="centerX" secondItem="jQb-vz-ypC" secondAttribute="centerX" id="bma-Cx-7IM"/>
                             <constraint firstItem="Cve-DG-SgQ" firstAttribute="leading" secondItem="KtF-xY-yzP" secondAttribute="trailing" constant="-129" id="dLU-OU-Ufw"/>
-                            <constraint firstAttribute="centerY" secondItem="wso-Fo-xKw" secondAttribute="centerY" id="duh-bQ-8Zz"/>
                             <constraint firstItem="KVk-28-U0E" firstAttribute="top" secondItem="imi-Qn-Za0" secondAttribute="bottom" id="gBW-GL-oam"/>
                             <constraint firstAttribute="centerX" secondItem="xrW-Vn-kSR" secondAttribute="centerX" constant="4" id="gX9-Bk-5wO"/>
                             <constraint firstItem="jQb-vz-ypC" firstAttribute="centerX" secondItem="591-tx-9py" secondAttribute="centerX" id="gY9-pF-dQD"/>
@@ -1588,9 +1580,6 @@
                             <constraint firstItem="xrW-Vn-kSR" firstAttribute="top" secondItem="RVn-9e-3u9" secondAttribute="bottom" id="z3b-sh-cdP"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="wso-Fo-xKw"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="dLU-OU-Ufw"/>
                                 <exclude reference="Spt-Bz-6Nu"/>
@@ -2101,10 +2090,6 @@
                                     <constraint firstItem="ekr-LO-kjM" firstAttribute="leading" secondItem="nTS-Qq-hzm" secondAttribute="trailing" constant="1" id="zkQ-Pj-9zN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTt-BE-jXk">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1a-BF-6pu" userLabel="WhiteBackGround1">
                                 <rect key="frame" x="4" y="20" width="162" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2193,9 +2178,7 @@
                             <constraint firstItem="84v-4N-fKB" firstAttribute="top" secondItem="v1a-BF-6pu" secondAttribute="bottom" id="6BY-Dd-NNU"/>
                             <constraint firstItem="E7m-0A-j3Y" firstAttribute="centerX" secondItem="C3z-eY-Vfm" secondAttribute="centerX" id="Abn-jv-dq4"/>
                             <constraint firstItem="C3z-eY-Vfm" firstAttribute="centerX" secondItem="LIE-we-ys3" secondAttribute="centerX" id="BAH-C8-WRH"/>
-                            <constraint firstItem="gTt-BE-jXk" firstAttribute="width" secondItem="LIE-we-ys3" secondAttribute="width" id="Bns-O2-WAB"/>
                             <constraint firstAttribute="centerX" secondItem="b9I-9W-Ytf" secondAttribute="centerX" constant="4" id="BsY-iu-oxY"/>
-                            <constraint firstAttribute="centerX" secondItem="gTt-BE-jXk" secondAttribute="centerX" id="D0t-lt-Joo"/>
                             <constraint firstItem="b9I-9W-Ytf" firstAttribute="top" secondItem="DAd-Jc-ffJ" secondAttribute="bottom" id="FKf-Vu-xBy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BHz-SZ-ct9" secondAttribute="trailing" constant="-16" id="FPA-1e-lAc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DAd-Jc-ffJ" secondAttribute="trailing" id="Ind-RN-BT3"/>
@@ -2217,18 +2200,13 @@
                             <constraint firstAttribute="centerY" secondItem="khJ-kG-kqz" secondAttribute="centerY" id="rjL-Ig-4fA"/>
                             <constraint firstItem="BHz-SZ-ct9" firstAttribute="top" secondItem="e2i-1p-40M" secondAttribute="bottom" id="tFk-FS-LE7"/>
                             <constraint firstItem="tg1-y4-YmJ" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" id="uJq-SH-YbH"/>
-                            <constraint firstAttribute="centerY" secondItem="gTt-BE-jXk" secondAttribute="centerY" id="vBX-h0-guX"/>
                             <constraint firstItem="tg1-y4-YmJ" firstAttribute="top" secondItem="b9I-9W-Ytf" secondAttribute="bottom" id="vI4-zv-s6c"/>
                             <constraint firstItem="DAd-Jc-ffJ" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" id="wVo-4M-krU"/>
                             <constraint firstItem="v1a-BF-6pu" firstAttribute="top" secondItem="e2i-1p-40M" secondAttribute="bottom" id="yJS-Gt-RR5"/>
                             <constraint firstItem="84v-4N-fKB" firstAttribute="top" secondItem="C3z-eY-Vfm" secondAttribute="bottom" constant="93" id="yg4-o7-aSW"/>
                             <constraint firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="-38" id="zOz-9H-N7c"/>
-                            <constraint firstItem="gTt-BE-jXk" firstAttribute="height" secondItem="LIE-we-ys3" secondAttribute="height" id="zfU-dw-t4g"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="gTt-BE-jXk"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="aNI-WI-S8M"/>
                                 <exclude reference="nkN-Cs-yBg"/>

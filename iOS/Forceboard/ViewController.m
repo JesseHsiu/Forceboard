@@ -35,7 +35,6 @@
 @property AppDelegate *appDelegate;
 @property int totalErrorCount;
 @property int preErrorCount;
-@property NSMutableArray *forceData;
 
 @end
 
@@ -45,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     movedKey = [[NSMutableArray alloc]init];
+    forceData = [[NSMutableArray alloc] init];
     upperCase= false;
     
     [self addSwipeRecognizers];
@@ -109,6 +109,7 @@
     if ([keyboardView pointInside:touchLocation withEvent:event]) {
         
         isTouching = true;
+        NSLog(@"Touch start");
         self.touchModes = SlightTouch;
         
         
@@ -146,7 +147,12 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:keyboardView];
     
-    [_forceData addObject:[NSNumber numberWithFloat:touch.force/ touch.maximumPossibleForce]];
+    float forcePercentage = (float)touch.force/ (float)touch.maximumPossibleForce;
+    
+    [forceData addObject:[NSNumber numberWithFloat:forcePercentage]];
+    
+    
+    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
     
     for (UIView *view in keyboardView.subviews)
     {
@@ -156,9 +162,6 @@
             [movedKey addObject:view];
         }
     }
-//    if ([movedKey count] == 0) {
-//        return;
-//    }
     
     #if CircleView
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
@@ -202,6 +205,9 @@
         }
     }
     
+    
+//    NSLog(@"%@", forceData);
+    
     if ([movedKey count] == 0) {
         [self restartForNewTouch];
         return;
@@ -210,7 +216,7 @@
     [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     
-    [self determineTouchType:0.4];
+    [self determineTouchType:0.3];
 
 
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
@@ -268,7 +274,7 @@
 -(void)restartForNewTouch
 {
     [movedKey removeAllObjects];
-    [_forceData removeAllObjects];
+    [forceData removeAllObjects];
     self.touchModes = SlightTouch;
     upperCase = false;
 }
@@ -277,15 +283,19 @@
 {
     float average = 0.0f;
     
-    for (int i = 0; i< [_forceData count]; i++) {
-        average += [[_forceData objectAtIndex:i] floatValue];
+    for (int i = 0; i< [forceData count]; i++) {
+        average += [[forceData objectAtIndex:i] floatValue];
     }
-    average /= [_forceData count];
+    average /= (int)[forceData count];
     
+    
+//    NSLog(@"%f", average);
     if (average >= threshold) {
+        NSLog(@"heavy");
         self.touchModes = HeavyTouch;
     }
     else{
+        NSLog(@"slight");
         self.touchModes = SlightTouch;
     }
     
