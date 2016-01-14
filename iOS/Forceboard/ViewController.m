@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "KeysBtnView.h"
-//#import <AudioToolbox/AudioToolbox.h>
 #import "CalculateErrorRate.h"
 #import "KeyPressStatistic.h"
 #import "SplitViewController.h"
@@ -30,7 +29,6 @@
 #endif
 @property CalculateErrorRate* errorCalculator;
 @property KeyPressStatistic* keysStatistic;
-//@property CHCSVWriter *writer;
 @property NSString* userid;
 @property AppDelegate *appDelegate;
 @property int totalErrorCount;
@@ -39,7 +37,6 @@
 @end
 
 @implementation ViewController
-//@synthesize sensor;
 @synthesize touchModes = _touchModes;
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,13 +47,6 @@
     [self addSwipeRecognizers];
     
     outputText.delegate = self;
-//    outputText.minimumScaleFactor = 0.5;
-//    outputText.adjustsFontSizeToFitWidth = YES;
-    
-//    zoomboard
-//        CGAffineTransform transform = CGAffineTransformMakeScale(1.5, 1.5);
-        // you can implement any int/float value in context of what scale you want to zoom in or out
-//        keyboardView.transform = transform;
     
     _errorCalculator = [[CalculateErrorRate alloc ]init];
     //key press statistic
@@ -71,8 +61,6 @@
     self.totalErrorCount = 0;
     self.preErrorCount = 0;
     
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateBLEList) name:@"updateBLEList" object:nil];
-    
     
     currentTaskNumberText = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, 50, 30)];
     [self.view addSubview:currentTaskNumberText];
@@ -85,14 +73,9 @@
     [super viewDidAppear:animated];
     [self.appDelegate showAlertToNotifyUser];
     
-//    if ([self isKindOfClass:[ViewController class]]) {
-//        [self.appDelegate showAlertToNotifyUser];
-//    }
-    
 }
 -(void)dealloc
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.appDelegate.writer closeStream];
 }
 - (void)didReceiveMemoryWarning {
@@ -206,8 +189,6 @@
     }
     
     
-//    NSLog(@"%@", forceData);
-    
     if ([movedKey count] == 0) {
         [self restartForNewTouch];
         return;
@@ -288,8 +269,6 @@
     }
     average /= (int)[forceData count];
     
-    
-//    NSLog(@"%f", average);
     if (average >= threshold) {
         NSLog(@"heavy");
         self.touchModes = HeavyTouch;
@@ -389,50 +368,9 @@
         }]];
         
         [self presentViewController:alertCon animated:true completion:nil];
-        
-        
-        
-        
-        
-//        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Types of Keyboard" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"Force",@"QWERTY",@"Zoom", @"Split", nil];
-//        [actionSheet showInView:self.view];
     }
 }
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    
-//    
-//    switch (buttonIndex) {
-//        case 0:{
-//            ViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ViewController"];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            break;
-//        }
-//        case 1:{
-//            QWERTYViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"QWERTYViewController"];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            
-//            break;
-//        }
-//        case 2:{
-//            ZoomViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ZoomViewController"];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            
-//            break;
-//        }
-//        case 3:{
-//            SplitViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"SplitViewController"];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            
-//            
-//            break;
-//        }
-//            
-//        default:
-//            break;
-//    }
-//}
+
 
 -(void)addSwipeRecognizers
 {
@@ -492,8 +430,6 @@
     if (isTouching) {
         [self performSelector:@selector(updateCircleValue) withObject:self afterDelay:0.01];
     }
-    
-
 }
 #endif
 
