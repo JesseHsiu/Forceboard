@@ -7,22 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SerialGATT.h"
+//#import "SerialGATT.h"
 #import <CHCSVParser.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,BTSmartSensorDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) SerialGATT *bleSerial;
-@property (strong, nonatomic) NSArray *gonnaSetSensorValue;
-@property (nonatomic) float currentSensorValue;
-@property (strong, nonatomic) NSMutableArray *discoveredBLEs;
 @property (strong, nonatomic) CHCSVWriter *writer;
-@property (strong, nonatomic) NSArray *calibrateValues;
-@property (nonatomic, readonly, getter=isBleConnected) BOOL bleConnected;
 
--(void)startScanningBLE;
--(void)stopScanning;
 -(void)showAlertToNotifyUser;
 -(void)changeCSVFileName:(id)viewController;
 @end

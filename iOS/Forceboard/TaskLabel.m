@@ -23,6 +23,8 @@
         taskArray = [fileContents componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
         
         extraTextCount = 0;
+        
+        orignText = @"Ready -> Press Next";
 //        self.minimumScaleFactor = 0.5;
 //        self.adjustsFontSizeToFitWidth = YES;
         

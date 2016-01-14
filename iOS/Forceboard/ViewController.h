@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SerialGATT.h"
 #import "CircleButtonView.h"
 #import "TaskLabel.h"
 typedef  enum{
@@ -15,11 +14,9 @@ typedef  enum{
     HeavyTouch
 } TouchModes;
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIActionSheetDelegate>
+@interface ViewController : UIViewController<UITextViewDelegate>
 {
 
-    IBOutlet UITableView *tableview;
-    IBOutlet UIButton *searchBtn;
     IBOutlet UITextView *outputText;
     IBOutlet UILabel *WPMLabel;
     IBOutlet UIView *keyboardView;
@@ -31,16 +28,8 @@ typedef  enum{
     int currentTaskNumber;
     
     NSMutableArray *movedKey;
-    
-//    NSMutableArray *discoveredBLEs;
-//    NSArray *gonnaSetSensorValue;
-//    NSArray *currentSensorValue;
     BOOL upperCase;
     NSNumber *thresholdValue;
-    
-    
-//    NSArray *calibrateValues;
-    
     
     BOOL isTouching;
     
@@ -49,8 +38,6 @@ typedef  enum{
     NSString *orignTaskText;
     
 }
-//@property (strong, nonatomic) SerialGATT *sensor;
 @property (nonatomic)  TouchModes touchModes;
-//-(void) scanTimer:(NSTimer *)timer;
 @end
 

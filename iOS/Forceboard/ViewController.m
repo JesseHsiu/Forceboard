@@ -35,6 +35,7 @@
 @property AppDelegate *appDelegate;
 @property int totalErrorCount;
 @property int preErrorCount;
+@property NSMutableArray *forceData;
 
 @end
 
@@ -64,18 +65,13 @@
     
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    
-    
-    if ([self.appDelegate isBleConnected]) {
-        [searchBtn removeFromSuperview];
-    }
     [self.appDelegate changeCSVFileName:self];
     
     
     self.totalErrorCount = 0;
     self.preErrorCount = 0;
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateBLEList) name:@"updateBLEList" object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateBLEList) name:@"updateBLEList" object:nil];
     
     
     currentTaskNumberText = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, 50, 30)];
@@ -96,97 +92,61 @@
 }
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.appDelegate.writer closeStream];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-- (IBAction)scanHMSoftDevices:(id)sender {
-    
-    //UI stuff
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    [tableview setAlpha:1.0];
-    [UIView commitAnimations];
-    
-    //need to call delegate to start searching
-    [self.appDelegate startScanningBLE];
-}
-
-#pragma mark - tableview
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.appDelegate.discoveredBLEs count];
-
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    cell.textLabel.text = ((CBPeripheral *)[self.appDelegate.discoveredBLEs objectAtIndex:indexPath.row]).name;
-    
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSUInteger row = [indexPath row];
-    
-    self.appDelegate.bleSerial.activePeripheral = [self.appDelegate.discoveredBLEs objectAtIndex:row];
-    [self.appDelegate.bleSerial connect:self.appDelegate.bleSerial.activePeripheral];
-    [self.appDelegate stopScanning];
-    
-    //UI stuff
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    [tableview setAlpha:0];
-    [searchBtn setAlpha:0];
-    [UIView commitAnimations];
-}
 
 #pragma mark - Touch Event
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    isTouching = true;
-    self.touchModes = SlightTouch;
+
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:keyboardView];
     
-    for (UIView *view in keyboardView.subviews)
-    {
-        if ([view isMemberOfClass:[KeysBtnView class]] &&
-            CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
+    if ([keyboardView pointInside:touchLocation withEvent:event]) {
+        
+        isTouching = true;
+        self.touchModes = SlightTouch;
+        
+        
+        for (UIView *view in keyboardView.subviews)
         {
-            [movedKey addObject:view];
+            if ([view isMemberOfClass:[KeysBtnView class]] &&
+                CGRectContainsPoint(view.frame, touchLocation) && view!= [movedKey lastObject])
+            {
+                [movedKey addObject:view];
+            }
         }
-    }
-    if (![self isOtherClass]) {
-        [self updateThreshold];
-    }
-    if ([movedKey count] == 0) {
-        return;
+        
+#if CircleView
+        if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
+            _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
+            [self updateCircleValue];
+            [self.view addSubview:_circleView];
+        }
+#endif
+        
     }
     
-    #if CircleView
-    if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
-        _circleView = [[CircleButtonView alloc]initWithFrame:CGRectMake(touchLocation.x,touchLocation.y, 100, 100)];
-        [self updateCircleValue];
-        [self.view addSubview:_circleView];
-    }
-    #endif
+    
     
     
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+    if (!isTouching) {
+        return;
+    }
+    
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:keyboardView];
+    
+    [_forceData addObject:[NSNumber numberWithFloat:touch.force/ touch.maximumPossibleForce]];
     
     for (UIView *view in keyboardView.subviews)
     {
@@ -196,9 +156,9 @@
             [movedKey addObject:view];
         }
     }
-    if ([movedKey count] == 0) {
-        return;
-    }
+//    if ([movedKey count] == 0) {
+//        return;
+//    }
     
     #if CircleView
     if (CGRectContainsPoint(keyboardView.frame, touchLocation)) {
@@ -243,12 +203,14 @@
     }
     
     if ([movedKey count] == 0) {
-        [movedKey removeAllObjects];
+        [self restartForNewTouch];
         return;
     }
 
     [taskLabel cleanNext];
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
+    
+    [self determineTouchType:0.4];
 
 
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
@@ -275,11 +237,13 @@
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
         }
     }
-    self.touchModes = SlightTouch;
-    upperCase = false;
-    [movedKey removeAllObjects];
+    
+    [self restartForNewTouch];
     
     
+    
+    
+//    reset view
     for (UIView *view in keyboardView.subviews)
     {
         if ([view isMemberOfClass:[KeysBtnView class]])
@@ -300,6 +264,34 @@
     [self countErrorOperation];
     
 }
+
+-(void)restartForNewTouch
+{
+    [movedKey removeAllObjects];
+    [_forceData removeAllObjects];
+    self.touchModes = SlightTouch;
+    upperCase = false;
+}
+
+-(void)determineTouchType:(float)threshold
+{
+    float average = 0.0f;
+    
+    for (int i = 0; i< [_forceData count]; i++) {
+        average += [[_forceData objectAtIndex:i] floatValue];
+    }
+    average /= [_forceData count];
+    
+    if (average >= threshold) {
+        self.touchModes = HeavyTouch;
+    }
+    else{
+        self.touchModes = SlightTouch;
+    }
+    
+
+}
+
 #pragma mark - SwipeGesture
 -(void)handleSwipeGesture:(UISwipeGestureRecognizer *)swipeGestureRecognizer{
     #if CircleView
@@ -335,13 +327,6 @@
         default:
             break;
     }
-    
-//    if([self isKindOfClass:[SplitViewController class]])
-//    {
-//        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
-//    }
-    
-    
     [self countErrorOperation];
 }
 -(void)countErrorOperation{
@@ -360,57 +345,84 @@
     
     if (swipeGestureRecognizer.state == UIGestureRecognizerStateEnded)
     {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Types of Keyboard" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"Force",@"QWERTY",@"Zoom", @"Split", nil];
-        [actionSheet showInView:self.view];
-    }
-}
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    
-    switch (buttonIndex) {
-        case 0:{
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"Types of Keyboard" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"Force" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
             ViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ViewController"];
             [self presentViewController:vc animated:YES completion:nil];
-            break;
-        }
-        case 1:{
+        }]];
+        
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"QWERTY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             QWERTYViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"QWERTYViewController"];
             [self presentViewController:vc animated:YES completion:nil];
             
-            break;
-        }
-        case 2:{
+        }]];
+        
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"Zoom" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             ZoomViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ZoomViewController"];
             [self presentViewController:vc animated:YES completion:nil];
             
-            break;
-        }
-        case 3:{
+        }]];
+        
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"Split" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             SplitViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"SplitViewController"];
             [self presentViewController:vc animated:YES completion:nil];
             
+        }]];
+        
+        
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
-            break;
-        }
-            
-        default:
-            break;
+        }]];
+        
+        [self presentViewController:alertCon animated:true completion:nil];
+        
+        
+        
+        
+        
+//        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Types of Keyboard" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"Force",@"QWERTY",@"Zoom", @"Split", nil];
+//        [actionSheet showInView:self.view];
     }
-    
-    
-    
-//    [self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>]
-//    
-//    
-//    
-//    presentViewController:animated:completion:
-    
-    
-    
-    NSLog(@"%ld",(long)buttonIndex);
 }
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    
+//    switch (buttonIndex) {
+//        case 0:{
+//            ViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ViewController"];
+//            [self presentViewController:vc animated:YES completion:nil];
+//            break;
+//        }
+//        case 1:{
+//            QWERTYViewController* vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"QWERTYViewController"];
+//            [self presentViewController:vc animated:YES completion:nil];
+//            
+//            break;
+//        }
+//        case 2:{
+//            ZoomViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ZoomViewController"];
+//            [self presentViewController:vc animated:YES completion:nil];
+//            
+//            break;
+//        }
+//        case 3:{
+//            SplitViewController *vc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"SplitViewController"];
+//            [self presentViewController:vc animated:YES completion:nil];
+//            
+//            
+//            break;
+//        }
+//            
+//        default:
+//            break;
+//    }
+//}
 
 -(void)addSwipeRecognizers
 {
@@ -510,43 +522,8 @@
     
     currentTaskNumber++;
     currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
-    
-//    if([self isKindOfClass:[SplitViewController class]])
-//    {
-//        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
-//    }
 }
--(void)updateThreshold
-{
-    
-    if (!isTouching) {
-        return;
-    }
-    
-    //thresholdValue = [NSNumber numberWithFloat:THERSHOLD];//[self thresholdCheck];
-    if (![self isSlightPress]) {
-        self.touchModes = HeavyTouch;
-    }
-    if (isTouching) {
-        [self performSelector:@selector(updateThreshold) withObject:self afterDelay:0.01];
-    }
-}
--(BOOL)isSlightPress
-{
-    if (self.appDelegate.currentSensorValue < THERSHOLD && _touchModes == SlightTouch) {
-        return true;
-    }
-    return false;
-}
-//-(NSNumber*)thresholdCheck
-//{
-//    NSMutableArray *percentageArray = [[NSMutableArray alloc]init];
-//    
-//    for (int i = 0; i< [self.appDelegate.calibrateValues count]; i++) {
-//        [percentageArray addObject:[NSNumber numberWithFloat:fabs([[self.appDelegate.calibrateValues objectAtIndex:i] floatValue] - [[self.appDelegate.currentSensorValue objectAtIndex:i] floatValue])/THERSHOLD]];
-//    }
-//    return [percentageArray valueForKeyPath:@"@max.floatValue"];
-//}
+
 -(NSString*)uplowerCasingString:(NSString*)string
 {
     if (upperCase) {
@@ -557,26 +534,11 @@
         return [string lowercaseString];
     }
 }
-#pragma mark - Getter & Setter
--(void)setTouchModes:(TouchModes)touchModes
-{
-    if (_touchModes == SlightTouch && touchModes == HeavyTouch) {
-//        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    }
-    _touchModes = touchModes;
-}
--(TouchModes)touchModes
-{
-    return _touchModes;
-}
+
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [outputText resignFirstResponder];
-//    if([self isKindOfClass:[SplitViewController class]])
-//    {
-//        [self performSelector:@selector(adjustPosition) withObject:self afterDelay:0.005];
-//    }
 }
 
 -(BOOL)isOtherClass
@@ -589,11 +551,6 @@
         return NO;
     }
 
-}
-
--(void)updateBLEList
-{
-    [tableview reloadData];
 }
 
 @end

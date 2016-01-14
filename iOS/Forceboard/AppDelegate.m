@@ -18,19 +18,14 @@
 @end
 
 @implementation AppDelegate
-@synthesize bleConnected;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.bleSerial = [[SerialGATT alloc] init];
-    [self.bleSerial setup];
-    self.bleSerial.delegate = self;
-    self.discoveredBLEs = [[NSMutableArray alloc]init];
+//    self.bleSerial = [[SerialGATT alloc] init];
+//    [self.bleSerial setup];
+//    self.bleSerial.delegate = self;
     self.userNameSaved = false;
-    
-    
-    self.calibrateValues = @[[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:0.0f]];
     
     return YES;
 }
@@ -55,60 +50,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-
-
-#pragma mark - HMSoftSearching
--(void)scanTimer:(NSTimer *)timer
-{
-    [self stopScanning];
-}
--(void)stopScanning
-{
-    [self.bleSerial stopScan];
-    [self.discoveredBLEs removeAllObjects];
-}
-
-
-
-#pragma mark - HMSoftSensorDelegate
--(void) peripheralFound:(CBPeripheral *)peripheral
-{
-    if (![self.discoveredBLEs containsObject:peripheral]) {
-        [self.discoveredBLEs addObject:peripheral];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateBLEList" object:nil];
-    }
-}
--(void) serialGATTCharValueUpdated: (NSString *)UUID value: (NSData *)data
-{
-    NSString *value = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    
-    NSLog(@"%@",value);
-    
-    self.currentSensorValue = [value floatValue];
-    
-    
-    
-//    if ([[value componentsSeparatedByString:@"/"] count] != 4) {
-//        return;
-//    }
-//    else{
-//        self.gonnaSetSensorValue = [value componentsSeparatedByString:@"/"];
-//        [self performSelector:@selector(changecurrentValue) withObject:nil afterDelay:0.02];
-//    }
-}
--(void)changecurrentValue
-{
-    //self.currentSensorValue = self.gonnaSetSensorValue;
-}
--(void) setConnect
-{
-    bleConnected = YES;
-}
--(void) setDisconnect
-{
-    bleConnected = false;
 }
 
 
@@ -152,25 +93,6 @@
     self.writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
 }
 
--(void)startScanningBLE
-{
-
-    if ([self.bleSerial activePeripheral]) {
-        if (self.bleSerial.activePeripheral.state == CBPeripheralStateConnected) {
-            [self.bleSerial.manager cancelPeripheralConnection:self.bleSerial.activePeripheral];
-            self.bleSerial.activePeripheral = nil;
-        }
-    }
-    
-    if ([self.bleSerial peripherals]) {
-        self.bleSerial.peripherals = nil;
-    }
-    
-    self.bleSerial.delegate = self;
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(scanTimer:) userInfo:nil repeats:NO];
-    
-    [self.bleSerial findHMSoftPeripherals:10];
-}
 -(void)showAlertToNotifyUser
 {
     if (self.userNameSaved == true) {
@@ -197,9 +119,5 @@
     
     [alertController addAction:okAction];
     [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
-}
--(BOOL)isBleConnected
-{
-    return bleConnected;
 }
 @end
