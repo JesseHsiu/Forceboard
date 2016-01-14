@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class ViewController: UIViewController {
 
@@ -14,6 +15,11 @@ class ViewController: UIViewController {
     var count : Int = 0
     
     var currentTouchInDetectView = false
+    
+    var userName : String?
+    
+    var showData = [Float]()
+    @IBOutlet var lineChart: LineChartView!
     
     @IBOutlet var detectView: UIView!
     
@@ -24,6 +30,29 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+    }
+    
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let alertController = UIAlertController(title: "Name of User", message: "Please Input User Name", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        
+        alertController.addTextFieldWithConfigurationHandler {
+            textField in
+            textField.placeholder = "Name"
+        }
+        
+        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default) { (action) -> Void in
+            self.userName = alertController.textFields?.first?.text
+        }
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +66,9 @@ class ViewController: UIViewController {
             
             if detectView.pointInside(touch.locationInView(detectView), withEvent: event)
             {
-//                print("start")
+                detectView.backgroundColor = UIColor.redColor()
+                print("start")
+        
                 currentTouchInDetectView = true
             }
         }
@@ -46,40 +77,33 @@ class ViewController: UIViewController {
         
     }
     
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        if currentTouchInDetectView
+        {
+            dataToWrite[count].append(Float(touches.first!.force) / Float(touches.first!.maximumPossibleForce))
+        }
+    }
+    
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if currentTouchInDetectView
         {
-//            dataToWrite[count].append(1.234)
+            detectView.backgroundColor = UIColor.blueColor()
             let stringArray = dataToWrite[count].map{String($0)}
             
             if stringArray.count != 0
             {
                 print(stringArray.joinWithSeparator(","))
             }
-            
-//            print("end")
             count++
         }
         
         currentTouchInDetectView = false
     }
     
-    override func touchesEstimatedPropertiesUpdated(touches: Set<NSObject>) {
-        
-        if currentTouchInDetectView
-        {
-            let touches = touches as! Set<UITouch>
-            
-            for touch in touches
-            {
-                dataToWrite[count].append(Float(touch.force))
-            }
-        }
-    }
-    
     @IBAction func writeFile(sender: AnyObject) {
         let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first!
-        let responseDataLocation = dir.stringByAppendingString("/output.txt")
+        let responseDataLocation = dir.stringByAppendingString("/" + self.userName! + ".txt")
         
         
         var tmpString = ""
@@ -99,6 +123,7 @@ class ViewController: UIViewController {
             print("error happended")
         }
         dataToWrite.removeAll()
+        count = 0
     }
 
 
