@@ -36,36 +36,40 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
-    if (!firstTap) {
+    if (isTouching) {
+        if (!firstTap) {
+            
+            UITouch *touch = [[event allTouches] anyObject];
+            CGPoint touchLocation = [touch locationInView:self.view];
+            CGRect screenRect = [[UIScreen mainScreen] bounds];
+            CGFloat screenWidth = screenRect.size.width;
+            CGFloat screenHeight = screenRect.size.height;
+            
+            CGAffineTransform transform = CGAffineTransformMakeScale(SCALESIZE, SCALESIZE);
+            [UIView animateWithDuration:ZOOMTIME animations:^{
+                keyboardView.transform = transform;
+                keyboardView.center = CGPointMake(screenWidth - touchLocation.x,screenHeight- touchLocation.y);
+            }];
+            
+            
+        }
+        else
+        {
+            [super touchesEnded:touches withEvent:event];
+            
+            CGAffineTransform transform = CGAffineTransformMakeScale(1, 1);
+            [UIView animateWithDuration:ZOOMTIME animations:^{
+                keyboardView.transform = transform;
+                keyboardView.center = orignCenter;
+            }];
+            
+        }
         
-        UITouch *touch = [[event allTouches] anyObject];
-        CGPoint touchLocation = [touch locationInView:self.view];
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        
-        CGAffineTransform transform = CGAffineTransformMakeScale(SCALESIZE, SCALESIZE);
-        [UIView animateWithDuration:ZOOMTIME animations:^{
-            keyboardView.transform = transform;
-            keyboardView.center = CGPointMake(screenWidth - touchLocation.x,screenHeight- touchLocation.y);
-        }];
-        
-        
+        firstTap = !firstTap;
     }
-    else
-    {
-        [super touchesEnded:touches withEvent:event];
-        
-        CGAffineTransform transform = CGAffineTransformMakeScale(1, 1);
-        [UIView animateWithDuration:ZOOMTIME animations:^{
-            keyboardView.transform = transform;
-            keyboardView.center = orignCenter;
-        }];
-        
-    }
     
-    firstTap = !firstTap;
+    isTouching = false;
+    
 }
 
 @end

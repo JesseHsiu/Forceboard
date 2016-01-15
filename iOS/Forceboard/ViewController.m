@@ -44,7 +44,7 @@
     forceData = [[NSMutableArray alloc] init];
     upperCase= false;
     
-    [self addSwipeRecognizers];
+//    [self addSwipeRecognizers];
     
     outputText.delegate = self;
     
@@ -194,35 +194,37 @@
         return;
     }
 
-    [taskLabel cleanNext];
+    
     KeysBtnView *keybtn = (KeysBtnView*)[movedKey lastObject];
     
-    [self determineTouchType:0.3];
-
-
+    
+    if (![self isOtherClass]) {
+        [self determineTouchType:0.3];
+    }
+    
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
     if (self.touchModes == SlightTouch || [containkeys count] == 1) {
-        if ([containkeys[0] isEqualToString:@"_space"]) {
+        if ([containkeys[0] isEqualToString:@"space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
+            [taskLabel cleanNext];
+        }
+        else if([containkeys[0] isEqualToString:@"delete"]) {
+            if ([outputText.text length] != 0) {
+                outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
+                [taskLabel backforwad];
+            }
         }
         else
         {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
+            [taskLabel cleanNext];
         }
     }
     else
     {
-        if ([containkeys[1] isEqualToString:@"delete"]) {
-            if ([outputText.text length] == 0) {
-                return;
-            }
-            outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
-        }
-        else
-        {
-            outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
-        }
+        outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
+        [taskLabel cleanNext];
     }
     
     [self restartForNewTouch];
