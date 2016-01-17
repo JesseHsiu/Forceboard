@@ -21,6 +21,7 @@
 //use CircleView
 #define CircleView 0
 #define QWERTYBoard 0
+//#define Splitboard 0
 
 
 @interface ViewController ()
@@ -44,7 +45,7 @@
     forceData = [[NSMutableArray alloc] init];
     upperCase= false;
     
-//    [self addSwipeRecognizers];
+    [self addSwipeRecognizers];
     
     outputText.delegate = self;
     
@@ -376,22 +377,22 @@
 
 -(void)addSwipeRecognizers
 {
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [outputText addGestureRecognizer:swipeRight];
-    [outputText addGestureRecognizer:swipeLeft];
-    [outputText addGestureRecognizer:swipeUp];
-    [outputText addGestureRecognizer:swipeDown];
+//    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+//    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+//    
+//    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+//    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+//    
+//    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+//    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+//    
+//    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
+//    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
+//    
+//    [outputText addGestureRecognizer:swipeRight];
+//    [outputText addGestureRecognizer:swipeLeft];
+//    [outputText addGestureRecognizer:swipeUp];
+//    [outputText addGestureRecognizer:swipeDown];
     
     
     
@@ -455,7 +456,7 @@
         int softError = self.totalErrorCount - hardError;
         
         
-        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:outputText.text.length], [NSNumber numberWithInt:self.totalErrorCount], [NSNumber numberWithInt:hardError], [NSNumber numberWithInt:softError]];
+        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5.0f)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:outputText.text.length], [NSNumber numberWithInt:self.totalErrorCount], [NSNumber numberWithInt:hardError], [NSNumber numberWithInt:softError]];
         
         
         [self.appDelegate.writer writeLineOfFields:temp];

@@ -2094,6 +2094,32 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b95-U1-aMT" customClass="KeysBtnView">
+                                        <rect key="frame" x="1" y="95" width="69" height="20"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="69" id="3ll-CK-G9M"/>
+                                            <constraint firstAttribute="height" constant="20" id="Pce-Aq-1yb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="Space" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXx-ua-KYI" customClass="KeysBtnView">
+                                        <rect key="frame" x="71" y="95" width="69" height="20"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="dCz-w8-OeX"/>
+                                            <constraint firstAttribute="width" constant="69" id="upN-pT-ktE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                        <state key="normal" title="Delete" backgroundImage="test">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2118,6 +2144,7 @@
                                     <constraint firstAttribute="height" constant="115" id="91b-JQ-yTZ"/>
                                     <constraint firstItem="oMT-Fa-vfV" firstAttribute="top" secondItem="Qxt-dp-x0r" secondAttribute="bottom" constant="1" id="9Rd-y9-D0o"/>
                                     <constraint firstItem="g74-QN-q6m" firstAttribute="centerY" secondItem="MAO-BA-ltX" secondAttribute="centerY" id="9ky-6U-oeU"/>
+                                    <constraint firstAttribute="bottom" secondItem="b95-U1-aMT" secondAttribute="bottom" id="A62-cz-Tmx"/>
                                     <constraint firstItem="sw3-EK-trg" firstAttribute="top" secondItem="W1o-fb-Wej" secondAttribute="bottom" constant="1" id="B3f-xp-TRg"/>
                                     <constraint firstItem="5pw-ba-5k7" firstAttribute="leading" secondItem="Qxt-dp-x0r" secondAttribute="trailing" constant="1" id="CDS-NO-Ubr"/>
                                     <constraint firstItem="UK4-N3-frW" firstAttribute="centerY" secondItem="dRz-tA-7jA" secondAttribute="centerY" id="DiW-JZ-0tF"/>
@@ -2176,6 +2203,7 @@
                                     <constraint firstItem="Vwr-4U-OyO" firstAttribute="leading" secondItem="kIe-5F-byd" secondAttribute="trailing" constant="1" id="xkR-Zt-5jd"/>
                                     <constraint firstItem="nTS-Qq-hzm" firstAttribute="leading" secondItem="5pw-ba-5k7" secondAttribute="trailing" constant="1" id="y0c-gF-Pqw"/>
                                     <constraint firstItem="Nxk-Mk-4Pw" firstAttribute="centerY" secondItem="oMT-Fa-vfV" secondAttribute="centerY" id="y6Q-b4-ZJR"/>
+                                    <constraint firstAttribute="bottom" secondItem="kXx-ua-KYI" secondAttribute="bottom" id="z2B-Tx-xhe"/>
                                     <constraint firstItem="Nij-SR-CAr" firstAttribute="centerY" secondItem="oMT-Fa-vfV" secondAttribute="centerY" id="zCj-Si-YHg"/>
                                     <constraint firstItem="Qxt-dp-x0r" firstAttribute="centerY" secondItem="5pw-ba-5k7" secondAttribute="centerY" id="zcf-LN-8K6"/>
                                     <constraint firstItem="ekr-LO-kjM" firstAttribute="leading" secondItem="nTS-Qq-hzm" secondAttribute="trailing" constant="1" id="zkQ-Pj-9zN"/>
@@ -2259,32 +2287,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b95-U1-aMT" customClass="KeysBtnView">
-                                <rect key="frame" x="225" y="333" width="69" height="20"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="3ll-CK-G9M"/>
-                                    <constraint firstAttribute="height" constant="20" id="Pce-Aq-1yb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                                <state key="normal" title="Space" backgroundImage="test">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXx-ua-KYI" customClass="KeysBtnView">
-                                <rect key="frame" x="295" y="333" width="69" height="20"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="dCz-w8-OeX"/>
-                                    <constraint firstAttribute="width" constant="69" id="upN-pT-ktE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                                <state key="normal" title="Delete" backgroundImage="test">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -2298,7 +2300,6 @@
                             <constraint firstAttribute="centerX" secondItem="b9I-9W-Ytf" secondAttribute="centerX" constant="4" id="BsY-iu-oxY"/>
                             <constraint firstItem="b9I-9W-Ytf" firstAttribute="top" secondItem="DAd-Jc-ffJ" secondAttribute="bottom" id="FKf-Vu-xBy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BHz-SZ-ct9" secondAttribute="trailing" constant="-16" id="FPA-1e-lAc"/>
-                            <constraint firstItem="kXx-ua-KYI" firstAttribute="centerX" secondItem="b9I-9W-Ytf" secondAttribute="centerX" constant="33" id="I8y-Ze-30C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DAd-Jc-ffJ" secondAttribute="trailing" id="Ind-RN-BT3"/>
                             <constraint firstItem="84v-4N-fKB" firstAttribute="top" secondItem="5X6-tK-UjX" secondAttribute="bottom" constant="20" id="KVj-bT-aM9"/>
                             <constraint firstItem="DAd-Jc-ffJ" firstAttribute="top" secondItem="e2i-1p-40M" secondAttribute="bottom" constant="-16" id="KbF-F4-rwr"/>
@@ -2310,16 +2311,12 @@
                             <constraint firstItem="qnA-Mj-JNb" firstAttribute="top" secondItem="dxC-pp-bz1" secondAttribute="bottom" id="SL7-pX-f3U"/>
                             <constraint firstItem="84v-4N-fKB" firstAttribute="top" secondItem="BHz-SZ-ct9" secondAttribute="bottom" id="Sn5-8O-4Ac"/>
                             <constraint firstItem="v1a-BF-6pu" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" constant="-16" id="ZVs-FY-kPV"/>
-                            <constraint firstItem="b95-U1-aMT" firstAttribute="centerX" secondItem="b9I-9W-Ytf" secondAttribute="centerX" constant="-37" id="aCx-BG-rzg"/>
                             <constraint firstItem="khJ-kG-kqz" firstAttribute="leading" secondItem="qnA-Mj-JNb" secondAttribute="trailing" constant="-129" id="aNI-WI-S8M"/>
-                            <constraint firstItem="kXx-ua-KYI" firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="-14" id="bgU-cW-RdS"/>
+                            <constraint firstItem="b95-U1-aMT" firstAttribute="centerX" secondItem="b9I-9W-Ytf" secondAttribute="centerX" constant="-35" id="aUY-DV-uUC"/>
                             <constraint firstItem="BHz-SZ-ct9" firstAttribute="leading" secondItem="b9I-9W-Ytf" secondAttribute="trailing" id="cKg-Jd-O6Y"/>
-                            <constraint firstItem="b95-U1-aMT" firstAttribute="top" secondItem="khJ-kG-kqz" secondAttribute="bottom" constant="-20" id="hwL-rK-OtX"/>
-                            <constraint firstItem="kXx-ua-KYI" firstAttribute="top" secondItem="khJ-kG-kqz" secondAttribute="bottom" constant="-20" id="jne-jd-vkN"/>
                             <constraint firstItem="5X6-tK-UjX" firstAttribute="trailing" secondItem="LIE-we-ys3" secondAttribute="trailingMargin" id="koS-ND-X4x"/>
                             <constraint firstItem="84v-4N-fKB" firstAttribute="top" secondItem="tg1-y4-YmJ" secondAttribute="bottom" id="m5W-SA-vSv"/>
                             <constraint firstItem="C3z-eY-Vfm" firstAttribute="top" secondItem="qnA-Mj-JNb" secondAttribute="bottom" constant="8" id="nkN-Cs-yBg"/>
-                            <constraint firstItem="b95-U1-aMT" firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="-84" id="rMG-f8-XgT"/>
                             <constraint firstAttribute="centerY" secondItem="khJ-kG-kqz" secondAttribute="centerY" constant="5" id="rjL-Ig-4fA"/>
                             <constraint firstItem="BHz-SZ-ct9" firstAttribute="top" secondItem="e2i-1p-40M" secondAttribute="bottom" id="tFk-FS-LE7"/>
                             <constraint firstItem="tg1-y4-YmJ" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" id="uJq-SH-YbH"/>
@@ -2327,13 +2324,12 @@
                             <constraint firstItem="DAd-Jc-ffJ" firstAttribute="leading" secondItem="LIE-we-ys3" secondAttribute="leadingMargin" id="wVo-4M-krU"/>
                             <constraint firstItem="v1a-BF-6pu" firstAttribute="top" secondItem="e2i-1p-40M" secondAttribute="bottom" id="yJS-Gt-RR5"/>
                             <constraint firstItem="84v-4N-fKB" firstAttribute="top" secondItem="C3z-eY-Vfm" secondAttribute="bottom" constant="70" id="yg4-o7-aSW"/>
+                            <constraint firstItem="kXx-ua-KYI" firstAttribute="centerX" secondItem="b9I-9W-Ytf" secondAttribute="centerX" constant="35" id="zOo-yy-3me"/>
                             <constraint firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="-44" id="zOz-9H-N7c"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="aNI-WI-S8M"/>
-                                <exclude reference="rMG-f8-XgT"/>
-                                <exclude reference="bgU-cW-RdS"/>
                                 <exclude reference="nkN-Cs-yBg"/>
                             </mask>
                         </variation>
