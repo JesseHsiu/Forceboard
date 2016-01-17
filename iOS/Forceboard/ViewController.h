@@ -38,6 +38,8 @@ typedef  enum{
     NSString *orignTaskText;
     NSMutableArray *forceData;
     
+    NSMutableArray *keySequence;
+    
 }
 @property (nonatomic)  TouchModes touchModes;
 @end

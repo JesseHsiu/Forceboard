@@ -398,6 +398,7 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="5rT-ds-aPP"/>
+                                <exclude reference="u5y-mb-Qbx"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="VKS-2W-GVP"/>
@@ -1023,6 +1024,9 @@
                             <constraint firstItem="N0O-I8-bCS" firstAttribute="top" secondItem="4Oj-RO-UIA" secondAttribute="bottom" constant="20" id="xae-z6-RO6"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4Oj-RO-UIA"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="3Yq-Qq-CSb"/>
                                 <exclude reference="T6e-bT-bnV"/>
@@ -1680,6 +1684,9 @@
                             <constraint firstItem="xrW-Vn-kSR" firstAttribute="top" secondItem="RVn-9e-3u9" secondAttribute="bottom" id="z3b-sh-cdP"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Fr2-Td-nlI"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="dLU-OU-Ufw"/>
                                 <exclude reference="Spt-Bz-6Nu"/>
@@ -2337,6 +2344,9 @@
                             <constraint firstAttribute="centerX" secondItem="khJ-kG-kqz" secondAttribute="centerX" constant="-44" id="zOz-9H-N7c"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5X6-tK-UjX"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="aNI-WI-S8M"/>
                                 <exclude reference="nkN-Cs-yBg"/>

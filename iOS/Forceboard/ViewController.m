@@ -66,14 +66,13 @@
     [self.view addSubview:currentTaskNumberText];
     currentTaskNumber = 0;
     currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
+    keySequence = [[NSMutableArray alloc]init];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self.appDelegate showAlertToNotifyUser];
-    
-    
     
 }
 -(void)dealloc
@@ -209,22 +208,26 @@
     if (self.touchModes == SlightTouch || [containkeys count] == 1) {
         if ([containkeys[0] isEqualToString:@"space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
+            [keySequence addObject:@" "];
             [taskLabel cleanNext];
         }
         else if([containkeys[0] isEqualToString:@"delete"]) {
             if ([outputText.text length] != 0) {
                 outputText.text = [outputText.text substringToIndex:[outputText.text length]-1];
+                [keySequence addObject:@"<"];
                 [taskLabel backforwad];
             }
         }
         else
         {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[0]]];
+            [keySequence addObject:[self uplowerCasingString:containkeys[0]]];
             [taskLabel cleanNext];
         }
     }
     else
     {
+        [keySequence addObject:[self uplowerCasingString:containkeys[1]]];
         outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,[self uplowerCasingString:containkeys[1]]];
         [taskLabel cleanNext];
     }
@@ -463,6 +466,7 @@
         
         [dict setObject:[NSNumber numberWithInt:hardError] forKey:@"hard_error"];
         [dict setObject:[NSNumber numberWithInt:softError] forKey:@"soft_error"];
+        [dict setObject:keySequence forKey:@"input_sequence"];
         
         
         
@@ -484,6 +488,7 @@
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
+    [keySequence removeAllObjects];
     [sender setEnabled:false];
     outputText.text = @"";
     self.totalErrorCount = 0;
