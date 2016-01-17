@@ -8,12 +8,11 @@
 
 #import "ViewController.h"
 #import "KeysBtnView.h"
-#import "CalculateErrorRate.h"
+#import "JSONKit.h"
 #import "KeyPressStatistic.h"
 #import "SplitViewController.h"
 #import "ZoomViewController.h"
 #import "QWERTYViewController.h"
-#import <CHCSVParser.h>
 #import "AppDelegate.h"
 
 
@@ -28,7 +27,7 @@
 #if CircleView
 @property CircleButtonView* circleView;
 #endif
-@property CalculateErrorRate* errorCalculator;
+//@property CalculateErrorRate* errorCalculator;
 @property KeyPressStatistic* keysStatistic;
 @property NSString* userid;
 @property AppDelegate *appDelegate;
@@ -49,7 +48,7 @@
     
     outputText.delegate = self;
     
-    _errorCalculator = [[CalculateErrorRate alloc ]init];
+//    _errorCalculator = [[CalculateErrorRate alloc ]init];
     //key press statistic
     _keysStatistic = [[KeyPressStatistic alloc] init];
     
@@ -74,10 +73,12 @@
     [super viewDidAppear:animated];
     [self.appDelegate showAlertToNotifyUser];
     
+    
+    
 }
 -(void)dealloc
 {
-    [self.appDelegate.writer closeStream];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -322,8 +323,21 @@
     [self countErrorOperation];
 }
 -(void)countErrorOperation{
-    int currentError = [_errorCalculator LevenshteinDistance:outputText.text andCorrect:[[taskLabel orignText] substringToIndex:([outputText.text length] > [[taskLabel orignText] length] ? [[taskLabel orignText] length]:[outputText.text length])]];
-//    NSLog(@"\n%@\n%@\n%d vs %d",outputText.text,[[taskLabel orignText] substringToIndex:[outputText.text length]],currentError,self.preErrorCount);
+    
+    NSUInteger lenghForErrorCount;
+    
+    if ([outputText.text length] > [[taskLabel orignText] length]) {
+        lenghForErrorCount = [[taskLabel orignText] length];
+    }
+    else if ([outputText.text length] <= [[taskLabel orignText] length])
+    {
+        lenghForErrorCount = [outputText.text length];
+    }
+    
+    
+    NSLog(@"\n%@\n%@\n%ld\n%d",outputText.text,[[taskLabel orignText] substringToIndex:lenghForErrorCount],(long)[self computeLevenshteinDistanceFrom:outputText.text to:[[taskLabel orignText] substringToIndex:lenghForErrorCount]],self.totalErrorCount);
+    
+    int currentError = [self computeLevenshteinDistanceFrom:outputText.text to:[[taskLabel orignText] substringToIndex:lenghForErrorCount]];
     
     if ( currentError > self.preErrorCount) {
         self.totalErrorCount++;
@@ -377,29 +391,9 @@
 
 -(void)addSwipeRecognizers
 {
-//    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-//    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-//    
-//    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-//    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-//    
-//    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-//    swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-//    
-//    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeGesture:)];
-//    swipeDown.direction = UISwipeGestureRecognizerDirectionRight;
-//    
-//    [outputText addGestureRecognizer:swipeRight];
-//    [outputText addGestureRecognizer:swipeLeft];
-//    [outputText addGestureRecognizer:swipeUp];
-//    [outputText addGestureRecognizer:swipeDown];
-    
-    
-    
     
     UIScreenEdgePanGestureRecognizer *rightEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightEdgeGesture:)];
     rightEdgeGesture.edges = UIRectEdgeRight;
-//    rightEdgeGesture.delegate = self;
     [self.view addGestureRecognizer:rightEdgeGesture];
 }
 
@@ -442,24 +436,51 @@
 }
 - (IBAction)tappedNextBtn:(id)sender {
     if (startTime != nil) {
+        
         [WPMLabel setText:[NSString stringWithFormat:@"WPM:%f", ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60]];
+        
         int hardPress_num;
         int lightPress_num;
         [_keysStatistic CalculateHardPressesAndLightPresses:&hardPress_num or:&lightPress_num andInput:[taskLabel orignText]];
-        NSLog(@"data->hard: %d, Slight: %d",hardPress_num,lightPress_num);
-        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f, error:%0.2f%%",  ([taskLabel.orignText length] / 5)/[[NSDate date] timeIntervalSinceDate:startTime]*60,(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]);
         
         
-        //[NSNumber numberWithFloat:(float)100*[_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]]/(float)MAX([taskLabel orignText].length, outputText.text.length)]
-        
-        int hardError = [_errorCalculator LevenshteinDistance:outputText.text andCorrect:[taskLabel orignText]];
+        int hardError = [self computeLevenshteinDistanceFrom:outputText.text to:[taskLabel orignText]];
         int softError = self.totalErrorCount - hardError;
         
+        float wpm = ([taskLabel.orignText length] / 5.0f)/[[NSDate date] timeIntervalSinceDate:startTime]*60.0f;
+        NSLog(@"data->hard: %d, Slight: %d",hardPress_num,lightPress_num);
+        NSLog(@"%@",[NSString stringWithFormat:@"WPM:%f, error:%0.2f%%", wpm,(float)100.0f*hardError/(float)MAX([taskLabel orignText].length, outputText.text.length)]);
         
-        NSArray *temp=@[[taskLabel orignText],[outputText text],[NSNumber numberWithInt:hardPress_num],[NSNumber numberWithInt:lightPress_num],[NSNumber numberWithFloat:([taskLabel.orignText length] / 5.0f)/[[NSDate date] timeIntervalSinceDate:startTime]*60],[NSNumber numberWithFloat:outputText.text.length], [NSNumber numberWithInt:self.totalErrorCount], [NSNumber numberWithInt:hardError], [NSNumber numberWithInt:softError]];
+
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        
+        [dict setObject:[taskLabel orignText] forKey:@"original_Text"];
+        [dict setObject:[outputText text] forKey:@"user_Text"];
+        [dict setObject:[NSNumber numberWithInt:hardPress_num] forKey:@"num_hardPress"];
+        [dict setObject:[NSNumber numberWithInt:lightPress_num] forKey:@"num_lightPress"];
+        [dict setObject:[NSNumber numberWithFloat:wpm] forKey:@"WPM_value"];
+        [dict setObject:[NSNumber numberWithInt:self.totalErrorCount] forKey:@"total_error"];
+        
+        [dict setObject:[NSNumber numberWithInt:hardError] forKey:@"hard_error"];
+        [dict setObject:[NSNumber numberWithInt:softError] forKey:@"soft_error"];
         
         
-        [self.appDelegate.writer writeLineOfFields:temp];
+        
+        NSLog(@"%@",[dict JSONString]);
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:self.appDelegate.currentFilePath]) {
+            JSONDecoder *decoder = [JSONDecoder decoder];
+            NSMutableArray *object = [decoder mutableObjectWithData:[[NSFileManager defaultManager] contentsAtPath:self.appDelegate.currentFilePath]];
+            
+            [object addObject:dict];
+            [[object JSONString] writeToFile:self.appDelegate.currentFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        }
+        else{
+            NSArray *array = @[dict];
+            [[array JSONString] writeToFile:self.appDelegate.currentFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        }
+        
     }
     startTime = [NSDate date];
     [taskLabel nextTask];
@@ -500,6 +521,40 @@
         return NO;
     }
 
+}
+
+
+
+
+
+- (int)computeLevenshteinDistanceFrom:(NSString *)source to:(NSString *)target {
+    NSUInteger sourceLength = [source length] + 1;
+    NSUInteger targetLength = [target length] + 1;
+    
+    NSMutableArray *cost = [NSMutableArray new];
+    NSMutableArray *newCost = [NSMutableArray new];
+    
+    for (NSUInteger i = 0; i < sourceLength; i++) {
+        cost[i] = @(i);
+    }
+    
+    for (NSUInteger j = 1; j < targetLength; j++) {
+        newCost[0] = @(j - 1);
+        
+        for (NSUInteger i = 1; i < sourceLength; i++) {
+            NSInteger match = ([source characterAtIndex:i - 1] == [target characterAtIndex:j - 1]) ? 0 : 1;
+            NSInteger costReplace = [cost[i - 1] integerValue] + match;
+            NSInteger costInsert = [cost[i] integerValue] + 1;
+            NSInteger costDelete = [newCost[i - 1] integerValue] + 1;
+            newCost[i] = @(MIN(MIN(costInsert, costDelete), costReplace));
+        }
+        
+        NSMutableArray *swap = cost;
+        cost = newCost;
+        newCost = swap;
+    }
+    
+    return [cost[sourceLength - 1] intValue];
 }
 
 @end

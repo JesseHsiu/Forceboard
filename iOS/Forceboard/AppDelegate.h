@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 //#import "SerialGATT.h"
-#import <CHCSVParser.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) CHCSVWriter *writer;
 
 -(void)showAlertToNotifyUser;
 -(void)changeCSVFileName:(id)viewController;
+-(NSString*)currentFilePath;
 @end
 

@@ -15,6 +15,7 @@
 @interface AppDelegate ()
 @property (nonatomic,assign) BOOL userNameSaved;
 @property (nonatomic,strong) NSString* userID;
+@property (nonatomic,strong) NSString* filePath;
 @end
 
 @implementation AppDelegate
@@ -61,6 +62,10 @@
 }
 
 
+-(NSString*)currentFilePath{
+    return self.filePath;
+}
+
 -(void)changeCSVFileName:(id)viewController
 {
     if (self.userNameSaved == FALSE) {
@@ -70,27 +75,27 @@
     NSString *tempFileName;
     if ([viewController isKindOfClass:[QWERTYViewController class]])
     {
-        tempFileName = [NSString stringWithFormat:@"%@_qwerty.csv",self.userID];
+        tempFileName = [NSString stringWithFormat:@"%@_qwerty.json",self.userID];
     }
     else if ([viewController isKindOfClass:[ZoomViewController class]])
     {
-        tempFileName = [NSString stringWithFormat:@"%@_zoom.csv",self.userID];
+        tempFileName = [NSString stringWithFormat:@"%@_zoom.json",self.userID];
     }
     else if ([viewController isKindOfClass:[SplitViewController class]])
     {
-        tempFileName = [NSString stringWithFormat:@"%@_split.csv",self.userID];
+        tempFileName = [NSString stringWithFormat:@"%@_split.json",self.userID];
     }
     else if ([viewController isKindOfClass:[ViewController class]]) {
-        tempFileName = [NSString stringWithFormat:@"%@_force.csv",self.userID];
+        tempFileName = [NSString stringWithFormat:@"%@_force.json",self.userID];
     }
     
     
     
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsPath = [paths objectAtIndex:0];
-    NSString *tempFile = [docsPath stringByAppendingPathComponent:tempFileName];
-    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
-    self.writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
+    self.filePath = [docsPath stringByAppendingPathComponent:tempFileName];
+//    NSOutputStream *output = [NSOutputStream outputStreamToFileAtPath:tempFile append:YES];
+//    self.writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
 }
 
 -(void)showAlertToNotifyUser
@@ -100,7 +105,7 @@
     }
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"UserID"
-                                          message:@"Please Enter User ID to save CSV file"
+                                          message:@"Please Enter User ID to save JSON file"
                                           preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)

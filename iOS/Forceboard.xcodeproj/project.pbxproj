@@ -13,6 +13,7 @@
 		562444FD1B1597DF00A02BCE /* ZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562444FC1B1597DF00A02BCE /* ZoomViewController.m */; };
 		562445001B15A61700A02BCE /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562444FF1B15A61700A02BCE /* SplitViewController.m */; };
 		5645DA861B15794200610227 /* QWERTYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5645DA851B15794200610227 /* QWERTYViewController.m */; };
+		56A3FDF41C4B6C0C009AB1C7 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A3FDF31C4B6C0C009AB1C7 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AB7DFF1B07828B007FA312 /* TaskLabel.m */; };
 		56AB7E021B0782EE007FA312 /* phrases2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 56AB7E011B0782EE007FA312 /* phrases2.txt */; };
 		56E8319D1B12CFA300CE410A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56E8319C1B12CFA300CE410A /* AudioToolbox.framework */; };
@@ -26,7 +27,6 @@
 		56EF54E41B02229100589F0B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EF54E31B02229100589F0B /* CoreBluetooth.framework */; };
 		56EF54F51B02FFCC00589F0B /* KeysBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EF54F41B02FFCC00589F0B /* KeysBtnView.m */; };
 		56FC16821B0643370061727D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FC16811B0643370061727D /* QuartzCore.framework */; };
-		5E6A8F621B121D180002CE2D /* CalculateErrorRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A8F611B121D180002CE2D /* CalculateErrorRate.m */; };
 		5E6A8F651B1237670002CE2D /* KeyPressStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E6A8F641B1237670002CE2D /* KeyPressStatistic.m */; };
 		B67076032751F32AE99017D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1828D8DB3B5121550B623DE /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -52,6 +52,8 @@
 		562444FF1B15A61700A02BCE /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewController.m; sourceTree = "<group>"; };
 		5645DA841B15794200610227 /* QWERTYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWERTYViewController.h; sourceTree = "<group>"; };
 		5645DA851B15794200610227 /* QWERTYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWERTYViewController.m; sourceTree = "<group>"; };
+		56A3FDF21C4B6C0C009AB1C7 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		56A3FDF31C4B6C0C009AB1C7 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		56AB7DFE1B07828B007FA312 /* TaskLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskLabel.h; sourceTree = "<group>"; };
 		56AB7DFF1B07828B007FA312 /* TaskLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskLabel.m; sourceTree = "<group>"; };
 		56AB7E011B0782EE007FA312 /* phrases2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phrases2.txt; sourceTree = "<group>"; };
@@ -73,8 +75,6 @@
 		56EF54F31B02FFCC00589F0B /* KeysBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeysBtnView.h; sourceTree = "<group>"; };
 		56EF54F41B02FFCC00589F0B /* KeysBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeysBtnView.m; sourceTree = "<group>"; };
 		56FC16811B0643370061727D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5E6A8F601B121D180002CE2D /* CalculateErrorRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateErrorRate.h; sourceTree = "<group>"; };
-		5E6A8F611B121D180002CE2D /* CalculateErrorRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateErrorRate.m; sourceTree = "<group>"; };
 		5E6A8F631B1237670002CE2D /* KeyPressStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPressStatistic.h; sourceTree = "<group>"; };
 		5E6A8F641B1237670002CE2D /* KeyPressStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPressStatistic.m; sourceTree = "<group>"; };
 		722EFAD0B73D999AA46895CD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,10 +146,10 @@
 				56EF54F41B02FFCC00589F0B /* KeysBtnView.m */,
 				56AB7DFE1B07828B007FA312 /* TaskLabel.h */,
 				56AB7DFF1B07828B007FA312 /* TaskLabel.m */,
-				5E6A8F601B121D180002CE2D /* CalculateErrorRate.h */,
-				5E6A8F611B121D180002CE2D /* CalculateErrorRate.m */,
 				5E6A8F631B1237670002CE2D /* KeyPressStatistic.h */,
 				5E6A8F641B1237670002CE2D /* KeyPressStatistic.m */,
+				56A3FDF21C4B6C0C009AB1C7 /* JSONKit.h */,
+				56A3FDF31C4B6C0C009AB1C7 /* JSONKit.m */,
 				56EF54921B00D34C00589F0B /* Main.storyboard */,
 				56AB7E011B0782EE007FA312 /* phrases2.txt */,
 				56EF54951B00D34C00589F0B /* Images.xcassets */,
@@ -226,6 +226,7 @@
 				56EF54821B00D34C00589F0B /* Frameworks */,
 				56EF54831B00D34C00589F0B /* Resources */,
 				F19E5561425B123C2C531788 /* Copy Pods Resources */,
+				9C425301A376B46830015B22 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +330,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		9C425301A376B46830015B22 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F19E5561425B123C2C531788 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,13 +371,13 @@
 				56EF54F51B02FFCC00589F0B /* KeysBtnView.m in Sources */,
 				5645DA861B15794200610227 /* QWERTYViewController.m in Sources */,
 				56EF548E1B00D34C00589F0B /* AppDelegate.m in Sources */,
-				5E6A8F621B121D180002CE2D /* CalculateErrorRate.m in Sources */,
 				56EF548B1B00D34C00589F0B /* main.m in Sources */,
 				5603D8C51B05E3B300717E79 /* CircleButtonView.m in Sources */,
 				562445001B15A61700A02BCE /* SplitViewController.m in Sources */,
 				562444FD1B1597DF00A02BCE /* ZoomViewController.m in Sources */,
 				56AB7E001B07828B007FA312 /* TaskLabel.m in Sources */,
 				5E6A8F651B1237670002CE2D /* KeyPressStatistic.m in Sources */,
+				56A3FDF41C4B6C0C009AB1C7 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
