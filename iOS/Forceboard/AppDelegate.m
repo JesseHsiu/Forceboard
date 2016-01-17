@@ -98,9 +98,10 @@
 //    self.writer = [[CHCSVWriter alloc] initWithOutputStream:output encoding:NSUTF8StringEncoding delimiter:','];
 }
 
--(void)showAlertToNotifyUser
+-(void)showAlertToNotifyUser:(void (^)(void))callbackBlock
 {
     if (self.userNameSaved == true) {
+        callbackBlock();
         return;
     }
     UIAlertController *alertController = [UIAlertController
@@ -119,7 +120,7 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *action) {
-                                                         // do destructive stuff here
+                                                         callbackBlock();
                                                      }];
     
     [alertController addAction:okAction];

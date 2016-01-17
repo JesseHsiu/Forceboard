@@ -72,7 +72,10 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.appDelegate showAlertToNotifyUser];
+    [self.appDelegate showAlertToNotifyUser:^{
+        [outputText becomeFirstResponder];
+    }];
+    
     
 }
 -(void)dealloc

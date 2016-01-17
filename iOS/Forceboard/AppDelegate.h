@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
--(void)showAlertToNotifyUser;
+-(void)showAlertToNotifyUser:(void (^)(void))callbackBlock;
 -(void)changeCSVFileName:(id)viewController;
 -(NSString*)currentFilePath;
 @end
