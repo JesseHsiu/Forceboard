@@ -497,6 +497,17 @@
     
     currentTaskNumber++;
     currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
+    
+    if (currentTaskNumber % 5 == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Relax?" message:@"You can stop here to relax for a while. When you are ready, please press OK." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {
+                                                                 startTime = [NSDate date];
+                                                             }];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 -(NSString*)uplowerCasingString:(NSString*)string
