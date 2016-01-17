@@ -93,7 +93,7 @@
     if ([keyboardView pointInside:touchLocation withEvent:event]) {
         
         isTouching = true;
-        NSLog(@"Touch start");
+//        NSLog(@"Touch start");
         self.touchModes = SlightTouch;
         
         
@@ -136,7 +136,7 @@
     [forceData addObject:[NSNumber numberWithFloat:forcePercentage]];
     
     
-    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
+//    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
     
     for (UIView *view in keyboardView.subviews)
     {
@@ -273,11 +273,11 @@
     average /= (int)[forceData count];
     
     if (average >= threshold) {
-        NSLog(@"heavy");
+//        NSLog(@"heavy");
         self.touchModes = HeavyTouch;
     }
     else{
-        NSLog(@"slight");
+//        NSLog(@"slight");
         self.touchModes = SlightTouch;
     }
     

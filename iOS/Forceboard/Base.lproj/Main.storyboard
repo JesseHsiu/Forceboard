@@ -254,9 +254,11 @@
                                     <constraint firstAttribute="centerX" secondItem="bSu-d4-Df8" secondAttribute="centerX" id="5Hn-gg-uri"/>
                                     <constraint firstItem="Pma-Fe-N1U" firstAttribute="leading" secondItem="8N2-6J-jtO" secondAttribute="trailing" constant="1" id="5m5-c7-DIM"/>
                                     <constraint firstItem="fnJ-7F-kBd" firstAttribute="leading" secondItem="x9a-cW-vay" secondAttribute="trailing" constant="1" id="623-Lq-id7"/>
+                                    <constraint firstAttribute="bottom" secondItem="grS-pC-gSE" secondAttribute="bottom" id="8nR-ja-FQF"/>
                                     <constraint firstItem="grS-pC-gSE" firstAttribute="centerX" secondItem="Jn7-jj-NUX" secondAttribute="centerX" constant="34" id="9B6-MO-bpQ"/>
                                     <constraint firstItem="bAQ-rj-eMN" firstAttribute="leading" secondItem="wbX-3A-zKr" secondAttribute="trailing" constant="1" id="9Kg-hR-m8Y"/>
                                     <constraint firstAttribute="height" constant="115" id="BiI-Cj-FeO"/>
+                                    <constraint firstAttribute="bottom" secondItem="zPG-ux-evi" secondAttribute="bottom" id="CsG-Cu-wuK"/>
                                     <constraint firstItem="Pma-Fe-N1U" firstAttribute="top" secondItem="fnJ-7F-kBd" secondAttribute="bottom" constant="1" id="Dyr-yB-nlm"/>
                                     <constraint firstItem="hNq-fd-cyL" firstAttribute="leading" secondItem="VeL-z1-It6" secondAttribute="trailing" constant="1" id="FQt-Xe-TYL"/>
                                     <constraint firstItem="VeL-z1-It6" firstAttribute="centerY" secondItem="hNq-fd-cyL" secondAttribute="centerY" id="Gil-2Z-gmK"/>
@@ -291,6 +293,13 @@
                                     <constraint firstItem="fnJ-7F-kBd" firstAttribute="top" secondItem="TzR-Vm-2cD" secondAttribute="bottom" constant="1" id="z16-by-mAH"/>
                                     <constraint firstAttribute="bottom" secondItem="grS-pC-gSE" secondAttribute="bottom" id="zh7-hw-fkZ"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IM0-xG-mFe"/>
+                                        <exclude reference="gvl-Wa-6gQ"/>
+                                        <exclude reference="zh7-hw-fkZ"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleWatch" translatesAutoresizingMaskIntoConstraints="NO" id="eqw-my-SrF">
                                 <rect key="frame" x="162" y="52" width="283" height="435"/>
