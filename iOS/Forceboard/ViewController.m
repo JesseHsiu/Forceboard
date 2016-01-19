@@ -203,7 +203,7 @@
     
     
     if (![self isOtherClass]) {
-        [self determineTouchType:0.3];
+        [self determineTouchType:0.4];
     }
     
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
@@ -272,23 +272,41 @@
 
 -(void)determineTouchType:(float)threshold
 {
-    float average = 0.0f;
-    
-    for (int i = 0; i< [forceData count]; i++) {
-        average += [[forceData objectAtIndex:i] floatValue];
-    }
-    average /= (int)[forceData count];
-    
-    if (average >= threshold) {
-//        NSLog(@"heavy");
+    if ([[self standardDeviationOf:forceData] floatValue] >= threshold & [forceData count] >= 15) {
         self.touchModes = HeavyTouch;
     }
     else{
-//        NSLog(@"slight");
         self.touchModes = SlightTouch;
     }
-    
+}
 
+- (NSNumber *)meanOf:(NSArray *)array
+{
+    double runningTotal = 0.0;
+    
+    for(NSNumber *number in array)
+    {
+        runningTotal += [number doubleValue];
+    }
+    
+    return [NSNumber numberWithDouble:(runningTotal / [array count])];
+}
+
+- (NSNumber *)standardDeviationOf:(NSArray *)array
+{
+    if(![array count]) return nil;
+    
+    double mean = [[self meanOf:array] doubleValue];
+    double sumOfSquaredDifferences = 0.0;
+    
+    for(NSNumber *number in array)
+    {
+        double valueOfNumber = [number doubleValue];
+        double difference = valueOfNumber - mean;
+        sumOfSquaredDifferences += difference * difference;
+    }
+    
+    return [NSNumber numberWithDouble:sqrt(sumOfSquaredDifferences / [array count])];
 }
 
 #pragma mark - SwipeGesture
