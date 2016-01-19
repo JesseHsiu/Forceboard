@@ -54,12 +54,11 @@
 % Paper metadata (use plain text, for PDF inclusion and later
 % re-using, if desired).  Use \emtpyauthor when submitting for review
 % so you remain anonymous.
-\def\plaintitle{ForceBoard: An Experiment Using Force as Input Technique on Soft Keyboard }
+\def\plaintitle{ForceBoard: An Experiment Using Force as Input Technique on Limited-Size Soft Keyboard }
 \def\plainauthor{First Author, Second Author, Third Author,
   Fourth Author, Fifth Author, Sixth Author}
 \def\emptyauthor{}
-\def\plainkeywords{Authors' choice; of terms; separated; by
-  semicolons; include commas, within terms only; required.}
+\def\plainkeywords{ForceBoard; text entry; soft keyboard; smartwatch}
 \def\plaingeneralterms{Documentation, Standardization}
 
 % llt: Define a global style for URLs, rather that the default one
@@ -131,7 +130,7 @@
 \maketitle
 
 \begin{abstract}
-Using a soft keyboard to input on limited screen like smart watch is a serious problem for users. The existing techniques still need two taps or swiping for entering a key, which slows the input speed or is required users to learn. In this paper, we introduce ForceBoard, which is a soft keyboard uses force sensors built in the touch screen. By combining two keys into a single key, this technique lets keyboard twice smaller as the original QWERTY keyboard. Slight tapping on the screen for entering unpressed-key, and press harder for entering a pressed-key. This method allows users to enter a key without any gestures, and required only one touch for typing a key. Our study showed that with less than one hour training, tested on a reduced word set, ForceBoard users type 25.59 words per minute(WPM), 10.29\% faster than an existing baseline technique.
+Using a soft keyboard to input on limited screen like smart watch is a serious problem for users. The existing techniques need two taps or swiping for entering a key, which slows the input speed and also required users to learn. In this paper, we introduce ForceBoard, which is a soft keyboard uses force sensors built in the touch screen. By combining two keys into a single key, this technique lets keyboard twice smaller as the original QWERTY keyboard. Slight tapping on the screen for entering unpressed-key, and press harder for entering a pressed-key. This method allows users to enter a key without any gestures, and required only one touch for typing a key. Our study showed that with less than one hour training, tested on a reduced word set, ForceBoard users type 25.59 words per minute(WPM), 10.29\% faster than an existing baseline technique.
 \end{abstract}
 
 \category{H.5.2}{User Interfaces (D.2.2, H.1.2, I.3.6)}{Input devices and strategies (e.g., mouse, touchscreen)}
@@ -139,9 +138,13 @@ Using a soft keyboard to input on limited screen like smart watch is a serious p
 \keywords{\plainkeywords}
 
 \section{Introduction}
-Typing is a daily part of digital activities, either with PC, laptop or other smart devices. For smart devices, soft keyboards have become an important text entry mechanism. However, the smart devices become miniaturized(like smart watch), it is more difficult to type on soft keyboard. There lead to three main challenges for input, comfortable, accuracy and speed, we have to conquer.
+Typing is a daily part of digital activities, either with PC, laptop or other smart devices. For smart devices, soft keyboards are  mainly text entry mechanism nowadays. However, the devices become more miniaturized such as smart watch, it increased the difficulty of typing on a such limited soft keyboard. This leads to three main challenges for soft keyboard input, comfortable, accuracy and speed.
+% TODO: 要確保是否我們的這些很高
+%，不高的話請刪除這三點。
 
-We present our work on ForceBoard. A text entry technique for smaller devices, such as wristwatch. We sure that the force touch technique will build on every smart devices after the Apple Watch published. ForceBoard's GUI looks like QWERTY keyboard, user didn't need extra time to re-remember the keyboard. In addition, we combined two keys in one key. By using pressure sensors , the system can tell which letter you are truly tap. This method solved the 'fat finger' problem and also achieve 'one tap one letter' to keep the accuracy and input speed.
+Since force-sensing touch screen is widely adapted in current commercial products, we believe this technique will be build in as basic capability.
+ForceBoard, a soft keyboard adapted the force as an entry technique, is shaped like the original QWERTY keyboard which users used everyday. By using force-sensing technique to differ the touch pressures, we combined two keys into one key. When user press lighter, the left key is chosen, and press harder, the right key is chosen respectively. This method not only decreased the '{\it fat finger}' problem for comfortability, but also achieve '{\it one tap one letter}' to keep the accuracy and input speed.
+
 
 To assess the initial performance of the ForceBoard, we conducted a comparison experiment with users who had no prior exposure to the interface. The ForceBoard outperformed the three other techniques included in the experiment.
 
