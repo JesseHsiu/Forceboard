@@ -1,0 +1,286 @@
+\documentclass{sigchi}
+
+% Use this command to override the default ACM copyright statement
+% (e.g. for preprints).  Consult the conference website for the
+% camera-ready copyright statement.
+
+%% HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP --
+%% Please note you need to make sure the copy for your specific
+%% license is used here!
+% \toappear{
+% Permission to make digital or hard copies of all or part of this work
+% for personal or classroom use is granted without fee provided that
+% copies are not made or distributed for profit or commercial advantage
+% and that copies bear this notice and the full citation on the first
+% page. Copyrights for components of this work owned by others than ACM
+% must be honored. Abstracting with credit is permitted. To copy
+% otherwise, or republish, to post on servers or to redistribute to
+% lists, requires prior specific permission and/or a fee. Request
+% permissions from \href{mailto:Permissions@acm.org}{Permissions@acm.org}. \\
+% \emph{CHI '16},  May 07--12, 2016, San Jose, CA, USA \\
+% ACM xxx-x-xxxx-xxxx-x/xx/xx\ldots \$15.00 \\
+% DOI: \url{http://dx.doi.org/xx.xxxx/xxxxxxx.xxxxxxx}
+% }
+
+% Arabic page numbers for submission.  Remove this line to eliminate
+% page numbers for the camera ready copy
+% \pagenumbering{arabic}
+
+% Load basic packages
+\usepackage{balance}       % to better equalize the last page
+\usepackage{graphics}      % for EPS, load graphicx instead 
+\usepackage[T1]{fontenc}   % for umlauts and other diaeresis
+\usepackage{txfonts}
+\usepackage{mathptmx}
+\usepackage[pdflang={en-US},pdftex]{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{textcomp}
+
+% Some optional stuff you might like/need.
+\usepackage{microtype}        % Improved Tracking and Kerning
+% \usepackage[all]{hypcap}    % Fixes bug in hyperref caption linking
+\usepackage{ccicons}          % Cite your images correctly!
+% \usepackage[utf8]{inputenc} % for a UTF8 editor only
+
+% If you want to use todo notes, marginpars etc. during creation of
+% your draft document, you have to enable the "chi_draft" option for
+% the document class. To do this, change the very first line to:
+% "\documentclass[chi_draft]{sigchi}". You can then place todo notes
+% by using the "\todo{...}"  command. Make sure to disable the draft
+% option again before submitting your final document.
+\usepackage{todonotes}
+
+% Paper metadata (use plain text, for PDF inclusion and later
+% re-using, if desired).  Use \emtpyauthor when submitting for review
+% so you remain anonymous.
+\def\plaintitle{ForceBoard: An Experiment Using Force as Input Technique on Soft Keyboard }
+\def\plainauthor{First Author, Second Author, Third Author,
+  Fourth Author, Fifth Author, Sixth Author}
+\def\emptyauthor{}
+\def\plainkeywords{Authors' choice; of terms; separated; by
+  semicolons; include commas, within terms only; required.}
+\def\plaingeneralterms{Documentation, Standardization}
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{
+    \def\UrlFont{\sf}
+  }{
+    \def\UrlFont{\small\bf\ttfamily}
+  }}
+\makeatother
+\urlstyle{leo}
+
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, to give it a
+% fighting chance of not being over-written, since its job is to
+% redefine many LaTeX commands.
+\definecolor{linkColor}{RGB}{6,125,233}
+\hypersetup{%
+  pdftitle={\plaintitle},
+% Use \plainauthor for final version.
+%  pdfauthor={\plainauthor},
+  pdfauthor={\emptyauthor},
+  pdfkeywords={\plainkeywords},
+  pdfdisplaydoctitle=true, % For Accessibility
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=linkColor,
+  breaklinks=true,
+  hypertexnames=false
+}
+
+% create a shortcut to typeset table headings
+% \newcommand\tabhead[1]{\small\textbf{#1}}
+
+% End of preamble. Here it comes the document.
+\begin{document}
+
+\title{\plaintitle}
+
+\numberofauthors{3}
+\author{%
+  \alignauthor{Leave Authors Anonymous\\
+    \affaddr{for Submission}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+  \alignauthor{Leave Authors Anonymous\\
+    \affaddr{for Submission}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+  \alignauthor{Leave Authors Anonymous\\
+    \affaddr{for Submission}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+}
+
+\maketitle
+
+\begin{abstract}
+Using a soft keyboard to input on limited screen like smart watch is a serious problem for users. The existing techniques still need two taps or swiping for entering a key, which slows the input speed or is required users to learn. In this paper, we introduce ForceBoard, which is a soft keyboard uses force sensors built in the touch screen. By combining two keys into a single key, this technique lets keyboard twice smaller as the original QWERTY keyboard. Slight tapping on the screen for entering unpressed-key, and press harder for entering a pressed-key. This method allows users to enter a key without any gestures, and required only one touch for typing a key. Our study showed that with less than one hour training, tested on a reduced word set, ForceBoard users type 25.59 words per minute(WPM), 10.29\% faster than an existing baseline technique.
+\end{abstract}
+
+\category{H.5.2}{User Interfaces (D.2.2, H.1.2, I.3.6)}{Input devices and strategies (e.g., mouse, touchscreen)}
+
+\keywords{\plainkeywords}
+
+\section{Introduction}
+Typing is a daily part of digital activities, either with PC, laptop or other smart devices. For smart devices, soft keyboards have become an important text entry mechanism. However, the smart devices become miniaturized(like smart watch), it is more difficult to type on soft keyboard. There lead to three main challenges for input, comfortable, accuracy and speed, we have to conquer.
+
+We present our work on ForceBoard. A text entry technique for smaller devices, such as wristwatch. We sure that the force touch technique will build on every smart devices after the Apple Watch published. ForceBoard's GUI looks like QWERTY keyboard, user didn't need extra time to re-remember the keyboard. In addition, we combined two keys in one key. By using pressure sensors , the system can tell which letter you are truly tap. This method solved the 'fat finger' problem and also achieve 'one tap one letter' to keep the accuracy and input speed.
+
+To assess the initial performance of the ForceBoard, we conducted a comparison experiment with users who had no prior exposure to the interface. The ForceBoard outperformed the three other techniques included in the experiment.
+
+\section{Related Work}
+Entering texts for a small screen-size smartwatch can be difficult for users. To miniaturize the input efforts in small interfaces, many numeric keypads, keyboards, and touch input had proposed. 
+
+Wigdor and Balakrishnan designed a chord input to improve the traditional Multitap on the few and small phone keys \cite{Wigdor:2004:CCC:985692.985703}. The use of a touch screen inspires other possibilities. MultiWidget uses a dialing gesture along the watch's edges to specify a numeric value \cite{4067721}. This suggests a watch's tangibility could ease the input. Zoomboard uses iterative zooming for enlarging and acquiring keys on a soft keyboard \cite{Oney:2013:ZDQ:2470654.2481387}. SwipeBoard  \cite{Chen:2014:STE:2642918.2647354}, which is also a soft keyboard, uses two swipe gestures for entering a key and it enabled eyes-free input method for such a small screen. Hong et al. \cite{Hong:2015:SSS:2702123.2702273} proposed a technique that split the QWERTY keyboard into two parts (left/right). It allows users typing a key by switching left or right. However, these techniques still require two taps or swiping within typing a key.
+
+Tapping and sliding the finger on the display can be combined on touch screens. Sliding gestures can be either straight lines akin to selecting in one-level marking menus\cite{Isokoski:2004:PMS:985692.985746} or recognized as shapes akin to handwriting \cite{Isokoski:2010:MET:1868914.1869004}. A publicly available example of a tap-gesture keyboard is the MessagEase system \cite{Nesbat:2003:SFF:958432.958437}. While tap-slide combinations can save motor effort and are potentially fast for experienced users, planning the tap-slide movements is difficult for new users, which makes these movements time consuming \cite{Isokoski:2004:PMS:985692.985746}.
+
+The central theme in miniature soft keyboards is the balance between the number of keys and the ambiguity of a key press \cite{MacKenzie:2002:KCT:645739.666587}. The multi-tap technique used in 12-key telephone keypads is an example of explicit, user-initiated disambiguation of ambiguous keys. The English language multi-tap requires an average of over two key presses for each character \cite{MacKenzie:2002:KCT:645739.666587}. Assigning frequent characters to shorter key press sequences can reduce the number of key presses. An example of such an optimization is the QWERTY-like keypad (QLKP) used in our comparison experiments as a representative of multi-tap text entry methods. An evaluation by Hwang and Lee \cite{Hwang:2005:QKL:1056808.1056946} showed that the QLKP was superior to the standard telephone character layout.
+
+Using force sensor to selecting menu or text had also proposed. \cite{Stewart:2010:CPI:1753326.1753444,Stewart:2012:EIV:2371574.2371581} puts force sensor on the back of phone, and let users to experience different levels of pressure. PressureText \cite{McCallum:2009:PPI:1520340.1520693} use force sensor in each button of whole numeric keypads, each button has three levels of sensor threshold to identify which letter is going to type. Wilson et al. \cite{Wilson:2010:PMS:1851600.1851631} prosed a menu that chosen by pressure sensor value. However, these works are not focusing one the current technique that we daily use, QWERTY keyboard.
+\section{ForceBoard}
+The QWERTY layout is wide; therefore, the keys become very narrow on a smartwatch. In ForceBoard, we combined two QWERTY layouts into one key, as shown in Figure 1. Although the layout was little different between QWERTY and ForceBoard, the position of letters on ForceBOard were the same. The user didn't need to training before use ForceBoard. 
+
+Through the pressure sensors,
+
+\section{Evaluation}
+The conventional QWERTY keyboard (the QWERTY) is an obvious baseline for comparison. The ZoomBoard was
+found to be faster than the QWERTY on a very small keyboard. The divided keyboard layout to several sections was considered potentially important; therefore, we included the SplitBoard, which was published on 2015. Finally,
+we wanted to include a tap-slide adaptation of the QWERTY layout that we chose SwipeBoard. In the SwipeeBoard, characters are entered with two swipes; the first swipe specifies the region where the character is located, and the second swipe specifies the character within that region. 
+
+Before conducting the user study, we let users practiced each different keyboards one time. Make sure they understood how every techniques worked. 
+
+\section{participants}
+We recruited 24 participants(12 male, 12 female, mean age = 22.5 ) from our university. The participants were not native English speakers. Every participants were used four patterns (QWERTY, ZoomBoard, SplitBoard, ForceBoard). Each pattern concluded 25 sentences. Total had 24 participants * 25 sentences * 4 techniques = 2400 trials. 
+
+\section{apparatus}
+The experiment was conducted on a Apple iPhone 6 with a 29.3 x 29.3 mm touch screen. The presented phrase and entered phrase were displayed above the keyboard area, as shown in Figure 1. The phrases were picked randomly
+from the \cite{MacKenzie:1999:DEH:302979.302983}. The device were set on the table and the participants used their index finger of dominant hand to operate it.
+
+The size of alphabetic keys was 2.9 x 5.3 mm for the QWERTY, 2.9 x 2.9 mm and 5.8 x 5.8 mm for the zoomed- out and zoomed-in ZoomBoard respectively, and 4.8 x 6.5 mm for the SplitBoard. The size of space and backspace keys on the SplitBoard was 14.5 x 1.8 mm. For keyboards used by Group B, we adjusted the positions and sizes of three function keys such that they were consistent across the three keyboards as shown in Figure 4. The size of the three function keys was 9.4 x 1.8 mm, and the sizes of the alphabetic keys in the QLKP and the SlideBoard were 9.5 x 6.4 mm and 5.6 x 6.5 mm, respectively.
+
+\section{procedure}
+First, panticipants practiced each different keyboards one time to make sure they understood how every techniques worked.The duration of the experiment was approximately one hour per participant. For each Participants, each input pattern had 25 test sentences to enter. When participant finished the 25 sentences of first pattern then the system would change to next pattern to continue. After finishing with all patterns, participants were asked to answer a questionnaire.
+
+\section{design}
+In each group, Keyboards and Blocks were independent variables, and a 3(Keyboards) x 5(Blocks) within-subject factorial design was used. We fully counterbalanced the order of using the keyboards. The text entry speeds in words-per-minute (WPM), total error rates (TER), and uncorrected error rates (UER) of the keyboards were measured.
+
+\section{results}
+We statistically compared the WPMs and TERs of the keyboards in Group A and B using a repeated measures ANOVA (3 methods x 5 blocks) and a pairwise comparison with Šidák correction. The results of Group A are summarized in Figure 3 and Table 1. In Group A, there was a significant main effect of Keyboards on WPM (F(2, 22) = 47.19, p < 0.001). The SplitBoard was faster than the QWERTY (p < 0.05) and the ZoomBoard (p < 0.001). There was a significant main effect of Keyboards on TER (F(2,22) = 62.416, p < 0.001). The QWERTY caused more errors than the SplitBoard (p < 0.001). There was no statistically significant difference between the SplitBoard and the ZoomBoard (p = 0.206). The average UER of the SplitBoard was 0.58\%. The QWERTY showed the same UER as the SplitBoard at 0.58\%. The average UER for the ZoomBoard was 0.3\%.
+
+In the questionnaire results, 11 of 12 participants in Group A ranked the QWERTY as the least-preferred keyboard. All participants in Group A preferred the SplitBoard most, stating that the keys of the QWERTY were too small and led to numerous errors. They additionally stated that the      
+frequent zooming of the ZoomBoard caused eyestrain. They mentioned that the SplitBoard was easy to use but it was inconvenient when a sentence required frequent switching between the keyboard parts.
+
+
+\section{Conclusion}
+
+It is important that you write for the SIGCHI audience. Please read
+previous years' proceedings to understand the writing style and
+conventions that successful authors have used. It is particularly
+important that you state clearly what you have done, not merely what
+you plan to do, and explain how your work is different from previously
+published work, i.e., the unique contribution that your work makes to
+the field. Please consider what the reader will learn from your
+submission, and how they will find your work useful. If you write with
+these questions in mind, your work is more likely to be successful,
+both in being accepted into the conference, and in influencing the
+work of our field.
+
+\section{Acknowledgments}
+
+Sample text: We thank all the volunteers, and all publications support
+and staff, who wrote and provided helpful comments on previous
+versions of this document. Authors 1, 2, and 3 gratefully acknowledge
+the grant from NSF (\#1234--2012--ABC). \textit{This whole paragraph is
+  just an example.}
+
+% Balancing columns in a ref list is a bit of a pain because you
+% either use a hack like flushend or balance, or manually insert
+% a column break.  http://www.tex.ac.uk/cgi-bin/texfaq2html?label=balance
+% multicols doesn't work because we're already in two-column mode,
+% and flushend isn't awesome, so I choose balance.  See this
+% for more info: http://cs.brown.edu/system/software/latex/doc/balance.pdf
+%
+% Note that in a perfect world balance wants to be in the first
+% column of the last page.
+%
+% If balance doesn't work for you, you can remove that and
+% hard-code a column break into the bbl file right before you
+% submit:
+%
+% http://stackoverflow.com/questions/2149854/how-to-manually-equalize-columns-
+% in-an-ieee-paper-if-using-bibtex
+%
+% Or, just remove \balance and give up on balancing the last page.
+%
+\balance{}
+
+\section{References Format}
+Your references should be published materials accessible to the
+public. Internal technical reports may be cited only if they are
+easily accessible and may be obtained by any reader for a nominal
+fee. Proprietary information may not be cited. Private communications
+should be acknowledged in the main text, not referenced (e.g.,
+[Golovchinsky, personal communication]). References must be the same
+font size as other body text. References should be in alphabetical
+order by last name of first author. Use a numbered list of references
+at the end of the article, ordered alphabetically by last name of
+first author, and referenced by numbers in brackets. For papers from
+conference proceedings, include the title of the paper and the name of
+the conference. Do not include the location of the conference or the
+exact date; do include the page numbers if available. 
+
+References should be in ACM citation format:
+\url{http://www.acm.org/publications/submissions/latex_style}.  This
+includes citations to Internet
+resources~\cite{CHINOSAUR:venue,cavender:writing,psy:gangnam}
+according to ACM format, although it is often appropriate to include
+URLs directly in the text, as above. Example reference formatting for
+individual journal articles~\cite{ethics}, articles in conference
+proceedings~\cite{Klemmer:2002:WSC:503376.503378},
+books~\cite{Schwartz:1995:GBF}, theses~\cite{sutherland:sketchpad},
+book chapters~\cite{winner:politics}, an entire journal
+issue~\cite{kaye:puc},
+websites~\cite{acm_categories,cavender:writing},
+tweets~\cite{CHINOSAUR:venue}, patents~\cite{heilig:sensorama}, and
+online videos~\cite{psy:gangnam} is given here.  See the examples of
+citations at the end of this document and in the accompanying
+\texttt{BibTeX} document. This formatting is a edited version of the
+format automatically generated by the ACM Digital Library
+(\url{http://dl.acm.org}) as ``ACM Ref.'' DOI and/or URL links are
+optional but encouraged as are full first names. Note that the
+Hyperlink style used throughout this document uses blue links;
+however, URLs in the references section may optionally appear in
+black.
+
+% BALANCE COLUMNS
+\balance{}
+
+% REFERENCES FORMAT
+% References must be the same font size as other body text.
+\bibliographystyle{SIGCHI-Reference-Format}
+\bibliography{sample}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

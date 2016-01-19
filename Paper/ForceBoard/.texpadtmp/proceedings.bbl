@@ -1,0 +1,173 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{00}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{{\tt DOI:}\penalty0{#1}\ }
+  \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
+
+\bibitem{4067721}
+{G. Blasko} {and} {S. Feiner}. 2006.
+\newblock \showarticletitle{Evaluation of an Eyes-Free Cursorless Numeric Entry
+  System for Wearable Computers}. In {\em Wearable Computers, 2006 10th IEEE
+  International Symposium on}. 21--28.
+\newblock
+\showISSN{1550-4816}
+\showDOI{%
+\url{http://dx.doi.org/10.1109/ISWC.2006.286338}}
+
+
+\bibitem{Chen:2014:STE:2642918.2647354}
+{Xiang~'Anthony' Chen}, {Tovi Grossman}, {and} {George Fitzmaurice}. 2014.
+\newblock \showarticletitle{Swipeboard: A Text Entry Technique for Ultra-small
+  Interfaces That Supports Novice to Expert Transitions} {\em (UIST '14)}. ACM,
+  New York, NY, USA, 615--620.
+\newblock
+\showISBNx{978-1-4503-3069-5}
+
+
+\bibitem{Hong:2015:SSS:2702123.2702273}
+{Jonggi Hong}, {Seongkook Heo}, {Poika Isokoski}, {and} {Geehyuk Lee}. 2015.
+\newblock \showarticletitle{SplitBoard: A Simple Split Soft Keyboard for
+  Wristwatch-sized Touch Screens} {\em (CHI '15)}. ACM, New York, NY, USA,
+  1233--1236.
+\newblock
+\showISBNx{978-1-4503-3145-6}
+
+
+\bibitem{Hwang:2005:QKL:1056808.1056946}
+{Sunyu Hwang} {and} {Geehyuk Lee}. 2005.
+\newblock \showarticletitle{Qwerty-like 3x4 Keypad Layouts for Mobile Phone}.
+  In {\em CHI '05 Extended Abstracts on Human Factors in Computing Systems}
+  {\em (CHI EA '05)}. ACM, New York, NY, USA, 1479--1482.
+\newblock
+\showISBNx{1-59593-002-7}
+
+
+\bibitem{Isokoski:2004:PMS:985692.985746}
+{Poika Isokoski}. 2004.
+\newblock \showarticletitle{Performance of Menu-augmented Soft Keyboards}. In
+  {\em Proceedings of the SIGCHI Conference on Human Factors in Computing
+  Systems} {\em (CHI '04)}. ACM, New York, NY, USA, 423--430.
+\newblock
+\showISBNx{1-58113-702-8}
+
+
+\bibitem{Isokoski:2010:MET:1868914.1869004}
+{Poika Isokoski}, {Beno\^{\i}t Martin}, {Paul Gandouly}, {and} {Thomas
+  Stephanov}. 2010.
+\newblock \showarticletitle{Motor Efficiency of Text Entry in a Combination of
+  a Soft Keyboard and Unistrokes}. In {\em Proceedings of the 6th Nordic
+  Conference on Human-Computer Interaction: Extending Boundaries} {\em
+  (NordiCHI '10)}. ACM, New York, NY, USA, 683--686.
+\newblock
+\showISBNx{978-1-60558-934-3}
+
+
+\bibitem{MacKenzie:2002:KCT:645739.666587}
+{I.~Scott MacKenzie}. 2002.
+\newblock \showarticletitle{KSPC (Keystrokes Per Character) As a Characteristic
+  of Text Entry Techniques}. In {\em Proceedings of the 4th International
+  Symposium on Mobile Human-Computer Interaction} {\em (Mobile HCI '02)}.
+  Springer-Verlag, London, UK, UK, 195--210.
+\newblock
+\showISBNx{3-540-44189-1}
+
+
+\bibitem{MacKenzie:1999:DEH:302979.302983}
+{I.~Scott MacKenzie} {and} {Shawn~X. Zhang}. 1999.
+\newblock \showarticletitle{The Design and Evaluation of a High-performance
+  Soft Keyboard} {\em (CHI '99)}. ACM, New York, NY, USA, 25--31.
+\newblock
+\showISBNx{0-201-48559-1}
+
+
+\bibitem{McCallum:2009:PPI:1520340.1520693}
+{David~C. McCallum}, {Edward Mak}, {Pourang Irani}, {and} {Sriram Subramanian}.
+  2009.
+\newblock \showarticletitle{PressureText: Pressure Input for Mobile Phone Text
+  Entry} {\em (CHI EA '09)}. ACM, New York, NY, USA, 4519--4524.
+\newblock
+\showISBNx{978-1-60558-247-4}
+
+
+\bibitem{Nesbat:2003:SFF:958432.958437}
+{Saied~B. Nesbat}. 2003.
+\newblock \showarticletitle{A System for Fast, Full-text Entry for Small
+  Electronic Devices}. In {\em Proceedings of the 5th International Conference
+  on Multimodal Interfaces} {\em (ICMI '03)}. ACM, New York, NY, USA, 4--11.
+\newblock
+\showISBNx{1-58113-621-8}
+
+
+\bibitem{Oney:2013:ZDQ:2470654.2481387}
+{Stephen Oney}, {Chris Harrison}, {Amy Ogan}, {and} {Jason Wiese}. 2013.
+\newblock \showarticletitle{ZoomBoard: A Diminutive Qwerty Soft Keyboard Using
+  Iterative Zooming for Ultra-small Devices} {\em (CHI '13)}. ACM, New York,
+  NY, USA, 2799--2802.
+\newblock
+\showISBNx{978-1-4503-1899-0}
+
+
+\bibitem{Stewart:2012:EIV:2371574.2371581}
+{Craig Stewart}, {Eve Hoggan}, {Laura Haverinen}, {Hugues Salamin}, {and}
+  {Giulio Jacucci}. 2012.
+\newblock \showarticletitle{An Exploration of Inadvertent Variations in Mobile
+  Pressure Input} {\em (MobileHCI '12)}. ACM, New York, NY, USA, 35--38.
+\newblock
+\showISBNx{978-1-4503-1105-2}
+
+
+\bibitem{Stewart:2010:CPI:1753326.1753444}
+{Craig Stewart}, {Michael Rohs}, {Sven Kratz}, {and} {Georg Essl}. 2010.
+\newblock \showarticletitle{Characteristics of Pressure-based Input for Mobile
+  Devices} {\em (CHI '10)}. ACM, New York, NY, USA, 801--810.
+\newblock
+\showISBNx{978-1-60558-929-9}
+
+
+\bibitem{Wigdor:2004:CCC:985692.985703}
+{Daniel Wigdor} {and} {Ravin Balakrishnan}. 2004.
+\newblock \showarticletitle{A Comparison of Consecutive and Concurrent Input
+  Text Entry Techniques for Mobile Phones}. In {\em Proceedings of the SIGCHI
+  Conference on Human Factors in Computing Systems} {\em (CHI '04)}. ACM, New
+  York, NY, USA, 81--88.
+\newblock
+\showISBNx{1-58113-702-8}
+
+
+\bibitem{Wilson:2010:PMS:1851600.1851631}
+{Graham Wilson}, {Craig Stewart}, {and} {Stephen~A. Brewster}. 2010.
+\newblock \showarticletitle{Pressure-based Menu Selection for Mobile Devices}
+  {\em (MobileHCI '10)}. ACM, New York, NY, USA, 181--190.
+\newblock
+\showISBNx{978-1-60558-835-3}
+
+
+\end{thebibliography}
