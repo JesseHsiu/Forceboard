@@ -32,12 +32,12 @@ def main():
 
 					# print data
 					if isForceTouch:
-						if len(data) < 15:
-							print "error"
+						if max(data) <= 0.35:
+							print "error " + str(max(data))
 						forceData.append(data)
 					else:
-						if len(data) > 15:
-							print "error2"
+						if max(data) > 0.35:
+							print "error2 " + str(max(data))
 						slightData.append(data)
 					isForceTouch = ~isForceTouch
 
@@ -50,38 +50,38 @@ def main():
 					f.write(str(data).strip('[]') + '\n')
 
 		# ======= NORMALIZE FILES ======
-		forcefiles = glob.glob('./force/*.txt')
-		slightfiles = glob.glob('./slight/*.txt')
+		# forcefiles = glob.glob('./force/*.txt')
+		# slightfiles = glob.glob('./slight/*.txt')
 
-		for x in xrange(0,len(forcefiles)):
-			if not os.path.exists('./force/evaluate/user_' + str(x)+'/'):
-			    os.makedirs('./force/evaluate/user_' + str(x)+'/')
-			for y in xrange(0,len(forcefiles)):
-				if y == x:
-					with open('./force/evaluate/user_' + str(x) + '/predict.txt', 'a') as f:
-						with open(forcefiles[y]) as r:
-							for line in r:
-								f.write(line);
-				else:
-					with open('./force/evaluate/user_' + str(x) + '/train.txt', 'a') as f:
-						with open(forcefiles[y]) as r:
-							for line in r:
-								f.write(line);
+		# for x in xrange(0,len(forcefiles)):
+		# 	if not os.path.exists('./force/evaluate/user_' + str(x)+'/'):
+		# 	    os.makedirs('./force/evaluate/user_' + str(x)+'/')
+		# 	for y in xrange(0,len(forcefiles)):
+		# 		if y == x:
+		# 			with open('./force/evaluate/user_' + str(x) + '/predict.txt', 'a') as f:
+		# 				with open(forcefiles[y]) as r:
+		# 					for line in r:
+		# 						f.write(line);
+		# 		else:
+		# 			with open('./force/evaluate/user_' + str(x) + '/train.txt', 'a') as f:
+		# 				with open(forcefiles[y]) as r:
+		# 					for line in r:
+		# 						f.write(line);
 
-		for x in xrange(0,len(slightfiles)):
-			if not os.path.exists('./slight/evaluate/user_' + str(x)+'/'):
-			    os.makedirs('./slight/evaluate/user_' + str(x)+'/')
-			for y in xrange(0,len(slightfiles)):
-				if y == x:
-					with open('./slight/evaluate/user_' + str(x) + '/predict.txt', 'a') as f:
-						with open(slightfiles[y]) as r:
-							for line in r:
-								f.write(line);
-				else:
-					with open('./slight/evaluate/user_' + str(x) + '/train.txt', 'a') as f:
-						with open(slightfiles[y]) as r:
-							for line in r:
-								f.write(line);
+		# for x in xrange(0,len(slightfiles)):
+		# 	if not os.path.exists('./slight/evaluate/user_' + str(x)+'/'):
+		# 	    os.makedirs('./slight/evaluate/user_' + str(x)+'/')
+		# 	for y in xrange(0,len(slightfiles)):
+		# 		if y == x:
+		# 			with open('./slight/evaluate/user_' + str(x) + '/predict.txt', 'a') as f:
+		# 				with open(slightfiles[y]) as r:
+		# 					for line in r:
+		# 						f.write(line);
+		# 		else:
+		# 			with open('./slight/evaluate/user_' + str(x) + '/train.txt', 'a') as f:
+		# 				with open(slightfiles[y]) as r:
+		# 					for line in r:
+		# 						f.write(line);
 			
 
 	else:

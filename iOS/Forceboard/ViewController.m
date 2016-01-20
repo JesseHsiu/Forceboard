@@ -139,7 +139,7 @@
     [forceData addObject:[NSNumber numberWithFloat:forcePercentage]];
     
     
-//    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
+    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
     
     for (UIView *view in keyboardView.subviews)
     {
@@ -203,7 +203,7 @@
     
     
     if (![self isOtherClass]) {
-        [self determineTouchType:0.4];
+        [self determineTouchType:0.3];
     }
     
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
@@ -272,7 +272,8 @@
 
 -(void)determineTouchType:(float)threshold
 {
-    if ([[self standardDeviationOf:forceData] floatValue] >= threshold & [forceData count] >= 15) {
+//     &[[self standardDeviationOf:forceData] floatValue] >= threshold
+    if ([[forceData valueForKeyPath:@"@max.floatValue"] floatValue] >= threshold) {
         self.touchModes = HeavyTouch;
     }
     else{
@@ -519,7 +520,7 @@
     currentTaskNumber++;
     currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
     
-    if (currentTaskNumber % 5 == 0) {
+//    if (currentTaskNumber % 5 == 0) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Relax?" message:@"You can stop here to relax for a while. When you are ready, please press OK." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * action) {
@@ -528,7 +529,7 @@
         
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
-    }
+//    }
 }
 
 -(NSString*)uplowerCasingString:(NSString*)string
