@@ -40,7 +40,8 @@
         if (!firstTap) {
             
             UITouch *touch = [[event allTouches] anyObject];
-            CGPoint touchLocation = [touch locationInView:self.view];
+            CGPoint touchLocation = [touch locationInView:keyboardView];
+            CGPoint touchALLLocation = [touch locationInView:self.view];
             CGRect screenRect = [[UIScreen mainScreen] bounds];
             CGFloat screenWidth = screenRect.size.width;
             CGFloat screenHeight = screenRect.size.height;
@@ -48,7 +49,7 @@
             CGAffineTransform transform = CGAffineTransformMakeScale(SCALESIZE, SCALESIZE);
             [UIView animateWithDuration:ZOOMTIME animations:^{
                 keyboardView.transform = transform;
-                keyboardView.center = CGPointMake(screenWidth - touchLocation.x,screenHeight- touchLocation.y);
+                keyboardView.center = CGPointMake(screenWidth - touchLocation.x,screenHeight- touchALLLocation.y);
             }];
             
             
