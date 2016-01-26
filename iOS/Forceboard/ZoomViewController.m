@@ -16,6 +16,7 @@
 {
     [super viewDidLoad];
     firstTap = false;
+    tmpTap = [[NSMutableArray alloc] init];
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -41,6 +42,10 @@
             
             UITouch *touch = [[event allTouches] anyObject];
             CGPoint touchLocation = [touch locationInView:keyboardView];
+            
+            
+            [tmpTap addObject:[[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:touchLocation.x],[NSNumber numberWithFloat:touchLocation.y], nil]];
+            
             CGPoint touchALLLocation = [touch locationInView:self.view];
             CGRect screenRect = [[UIScreen mainScreen] bounds];
             CGFloat screenWidth = screenRect.size.width;
@@ -56,6 +61,23 @@
         }
         else
         {
+            
+            
+            
+            if ([movedKey count] == 0)
+            {
+                [tmpTap removeAllObjects];
+            }
+            else{
+                UITouch *touch = [[event allTouches] anyObject];
+                CGPoint touchLocation = [touch locationInView:keyboardView];
+                [tmpTap addObject:[[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:touchLocation.x],[NSNumber numberWithFloat:touchLocation.y], nil]];
+                
+                
+                [zoomPositionRecord addObject:[tmpTap copy]];
+                [tmpTap removeAllObjects];
+            }
+            
             [super touchesEnded:touches withEvent:event];
             
             CGAffineTransform transform = CGAffineTransformMakeScale(1, 1);

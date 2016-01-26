@@ -13,6 +13,8 @@
 {
     BOOL firstTap;
     CGPoint orignCenter;
+    
+    NSMutableArray *tmpTap;
 
 }
 
