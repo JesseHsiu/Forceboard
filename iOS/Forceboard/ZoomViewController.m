@@ -49,7 +49,7 @@
             CGAffineTransform transform = CGAffineTransformMakeScale(SCALESIZE, SCALESIZE);
             [UIView animateWithDuration:ZOOMTIME animations:^{
                 keyboardView.transform = transform;
-                keyboardView.center = CGPointMake(screenWidth - touchLocation.x,screenHeight- touchALLLocation.y);
+                keyboardView.center = CGPointMake(screenWidth - touchLocation.x - 30,screenHeight- touchALLLocation.y);
             }];
             
             
