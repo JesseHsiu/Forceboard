@@ -56,12 +56,12 @@
     
     if (swipeGestureRecognizer.direction == UISwipeGestureRecognizerDirectionRight ) {
         isCurrentLeft = YES;
-        middleLineConstraint.constant = -248;
+        middleLineConstraint.constant = -228;
     }
     else if (swipeGestureRecognizer.direction == UISwipeGestureRecognizerDirectionLeft)
     {
         isCurrentLeft = NO;
-        middleLineConstraint.constant = -156;
+        middleLineConstraint.constant = -136;
     }
     
     [UIView animateWithDuration:0.2 animations:^{
