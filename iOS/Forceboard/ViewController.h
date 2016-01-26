@@ -41,7 +41,13 @@ typedef  enum{
     NSMutableArray *keySequence;
     NSMutableArray *keyTouchDistanceAndPosition;
     
+    NSMutableArray *pathRecordBeforeNext;
+    NSMutableArray *pathRecordtmp;
+    
+    NSMutableArray *zoomPositionRecord;
+    
 }
 @property (nonatomic)  TouchModes touchModes;
+- (IBAction)tappedNextBtn:(id)sender;
 @end
 

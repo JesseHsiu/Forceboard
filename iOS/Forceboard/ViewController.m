@@ -68,6 +68,9 @@
     currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
     keySequence = [[NSMutableArray alloc]init];
     keyTouchDistanceAndPosition = [[NSMutableArray alloc]init];
+    pathRecordBeforeNext = [[NSMutableArray alloc]init];
+    pathRecordtmp = [[NSMutableArray alloc]init];
+    zoomPositionRecord = [[NSMutableArray alloc]init];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -93,6 +96,8 @@
 
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:keyboardView];
+    
+    [pathRecordtmp addObject:[[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:touchLocation.x], [NSNumber numberWithFloat:touchLocation.y], nil]];
     
     if ([keyboardView pointInside:touchLocation withEvent:event]) {
         
@@ -128,13 +133,16 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:keyboardView];
+    NSLog(@"%f, %f", touchLocation.x, touchLocation.y);
+    [pathRecordtmp addObject:[[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:touchLocation.x], [NSNumber numberWithFloat:touchLocation.y], nil]];
+    
+    
+    
     if (!isTouching) {
         return;
     }
-    
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint touchLocation = [touch locationInView:keyboardView];
-    
     float forcePercentage = (float)touch.force/ (float)touch.maximumPossibleForce;
     
     [forceData addObject:[NSNumber numberWithFloat:forcePercentage]];
@@ -184,6 +192,7 @@
     
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchLocation = [touch locationInView:keyboardView];
+    [pathRecordtmp removeAllObjects];
     for (UIView *view in keyboardView.subviews)
     {
         if ([view isMemberOfClass:[KeysBtnView class]] &&
@@ -295,13 +304,11 @@
             isCorrect = true;
         }
         
-        
-        
         CGFloat xDist = (touchPosition.x - btn.center.x);
         CGFloat yDist = (touchPosition.y - btn.center.y);
         CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
         
-        NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithFloat:xDist],@"x_distance",[NSNumber numberWithFloat:yDist],@"y_distance",[NSNumber numberWithFloat:distance],@"directDistance",[NSNumber numberWithBool:isCorrect], @"correct", nil];
+        NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:[taskLabel currentRequestChar],@"target_key",[NSNumber numberWithFloat:xDist],@"x_distance",[NSNumber numberWithFloat:yDist],@"y_distance",[NSNumber numberWithFloat:distance],@"directDistance",[NSNumber numberWithBool:isCorrect], @"correct", nil];
         
         [keyTouchDistanceAndPosition addObject:dict];
     }
@@ -541,6 +548,12 @@
         
         if ([self isKindOfClass:[QWERTYViewController class]]) {
             [dict setObject:keyTouchDistanceAndPosition forKey:@"input_touchDistance"];
+        }
+        if ([self isKindOfClass:[SplitViewController class]]) {
+            [dict setObject:pathRecordBeforeNext forKey:@"split_path"];
+        }
+        if ([self isKindOfClass:[ZoomViewController class]]) {
+            [dict setObject:zoomPositionRecord forKey:@"zoom_postion"];
         }
         
         
