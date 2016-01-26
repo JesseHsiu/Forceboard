@@ -67,6 +67,7 @@
     currentTaskNumber = 0;
     currentTaskNumberText.text = [NSString stringWithFormat:@"%d",currentTaskNumber];
     keySequence = [[NSMutableArray alloc]init];
+    keyTouchDistanceAndPosition = [[NSMutableArray alloc]init];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -208,6 +209,11 @@
     
     NSArray *containkeys = [keybtn.titleLabel.text componentsSeparatedByString:@" "];
     
+    if ([self isKindOfClass:[QWERTYViewController class]]) {
+        [self distanceCalculationAndPosition:touchLocation andLastTouched: keybtn];
+    }
+    
+    
     if (self.touchModes == SlightTouch || [containkeys count] == 1) {
         if ([containkeys[0] isEqualToString:@"space"]) {
             outputText.text = [NSString stringWithFormat:@"%@%@",outputText.text,@" "];
@@ -259,6 +265,49 @@
     [outputText scrollRangeToVisible:range];
     
     [self countErrorOperation];
+    
+}
+
+-(void)distanceCalculationAndPosition:(CGPoint)touchPosition andLastTouched:(KeysBtnView*)lastTouchKey
+{
+    
+    if ([lastTouchKey.titleLabel.text isEqualToString:@"space"] || [lastTouchKey.titleLabel.text isEqualToString:@"delete"]) {
+        
+    }
+    else{
+        KeysBtnView *btn;
+        //    find wich one is correct one view
+        for (UIView *view in keyboardView.subviews)
+        {
+            if ([view isMemberOfClass:[KeysBtnView class]])
+            {
+                KeysBtnView *btn_tmp = (KeysBtnView*)view;
+                if ([[taskLabel currentRequestChar] isEqualToString:btn_tmp.titleLabel.text]) {
+                    btn = btn_tmp;
+                    break;
+                }
+            }
+        }
+        
+        bool isCorrect = false;
+        
+        if (lastTouchKey == btn) {
+            isCorrect = true;
+        }
+        
+        
+        
+        CGFloat xDist = (touchPosition.x - btn.center.x);
+        CGFloat yDist = (touchPosition.y - btn.center.y);
+        CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
+        
+        NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithFloat:xDist],@"x_distance",[NSNumber numberWithFloat:yDist],@"y_distance",[NSNumber numberWithFloat:distance],@"directDistance",[NSNumber numberWithBool:isCorrect], @"correct", nil];
+        
+        [keyTouchDistanceAndPosition addObject:dict];
+    }
+    
+    
+
     
 }
 
@@ -490,6 +539,11 @@
         [dict setObject:[NSNumber numberWithInt:softError] forKey:@"soft_error"];
         [dict setObject:keySequence forKey:@"input_sequence"];
         
+        if ([self isKindOfClass:[QWERTYViewController class]]) {
+            [dict setObject:keyTouchDistanceAndPosition forKey:@"input_touchDistance"];
+        }
+        
+        
         
         
         NSLog(@"%@",[dict JSONString]);
@@ -511,6 +565,7 @@
     startTime = [NSDate date];
     [taskLabel nextTask];
     [keySequence removeAllObjects];
+    [keyTouchDistanceAndPosition removeAllObjects];
     [sender setEnabled:false];
     outputText.text = @"";
     self.totalErrorCount = 0;

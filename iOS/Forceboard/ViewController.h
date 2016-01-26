@@ -39,6 +39,7 @@ typedef  enum{
     NSMutableArray *forceData;
     
     NSMutableArray *keySequence;
+    NSMutableArray *keyTouchDistanceAndPosition;
     
 }
 @property (nonatomic)  TouchModes touchModes;

@@ -22,4 +22,5 @@
 -(void)cleanNext;
 -(void)backforwad;
 -(void)backToOrigin;
+-(NSString*)currentRequestChar;
 @end

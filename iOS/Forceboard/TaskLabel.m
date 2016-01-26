@@ -119,4 +119,7 @@
     [self setAttributedText:attString];
 }
 
+-(NSString*)currentRequestChar{
+    return [[orignText substringFromIndex:currentindex] substringToIndex:1];
+}
 @end
