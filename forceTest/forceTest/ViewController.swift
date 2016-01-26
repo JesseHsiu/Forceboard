@@ -88,6 +88,8 @@ class ViewController: UIViewController {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if currentTouchInDetectView
         {
+            dataToWrite[count].append(Float(touches.first!.force) / Float(touches.first!.maximumPossibleForce))
+            
             detectView.backgroundColor = UIColor.blueColor()
             let stringArray = dataToWrite[count].map{String($0)}
             

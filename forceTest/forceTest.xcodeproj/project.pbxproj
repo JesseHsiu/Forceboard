@@ -12,20 +12,6 @@
 		5683749C1C3F97D3000D6E80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5683749A1C3F97D3000D6E80 /* Main.storyboard */; };
 		5683749E1C3F97D3000D6E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5683749D1C3F97D3000D6E80 /* Assets.xcassets */; };
 		568374A11C3F97D3000D6E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5683749F1C3F97D3000D6E80 /* LaunchScreen.storyboard */; };
-		56D8442F1C45267D00B5A06B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844201C45267D00B5A06B /* Array.swift */; };
-		56D844301C45267D00B5A06B /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844211C45267D00B5A06B /* Bool.swift */; };
-		56D844311C45267D00B5A06B /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844221C45267D00B5A06B /* Character.swift */; };
-		56D844321C45267D00B5A06B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844231C45267D00B5A06B /* Dictionary.swift */; };
-		56D844331C45267D00B5A06B /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844241C45267D00B5A06B /* Double.swift */; };
-		56D844341C45267D00B5A06B /* ExSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844261C45267D00B5A06B /* ExSwift.swift */; };
-		56D844351C45267D00B5A06B /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844271C45267D00B5A06B /* Float.swift */; };
-		56D844361C45267D00B5A06B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56D844281C45267D00B5A06B /* Info.plist */; };
-		56D844371C45267D00B5A06B /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D844291C45267D00B5A06B /* Int.swift */; };
-		56D844381C45267D00B5A06B /* NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8442A1C45267D00B5A06B /* NSArray.swift */; };
-		56D844391C45267D00B5A06B /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8442B1C45267D00B5A06B /* NSDate.swift */; };
-		56D8443A1C45267D00B5A06B /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8442C1C45267D00B5A06B /* Range.swift */; };
-		56D8443B1C45267D00B5A06B /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8442D1C45267D00B5A06B /* Sequence.swift */; };
-		56D8443C1C45267D00B5A06B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8442E1C45267D00B5A06B /* String.swift */; };
 		A5E3D26CE5D0956854BBE519 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB8F3E85D1C26E5823B808 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,21 +23,6 @@
 		5683749D1C3F97D3000D6E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		568374A01C3F97D3000D6E80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		568374A21C3F97D3000D6E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56D844201C45267D00B5A06B /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		56D844211C45267D00B5A06B /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
-		56D844221C45267D00B5A06B /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		56D844231C45267D00B5A06B /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		56D844241C45267D00B5A06B /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		56D844251C45267D00B5A06B /* ExSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExSwift.h; sourceTree = "<group>"; };
-		56D844261C45267D00B5A06B /* ExSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSwift.swift; sourceTree = "<group>"; };
-		56D844271C45267D00B5A06B /* Float.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
-		56D844281C45267D00B5A06B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56D844291C45267D00B5A06B /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
-		56D8442A1C45267D00B5A06B /* NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray.swift; sourceTree = "<group>"; };
-		56D8442B1C45267D00B5A06B /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
-		56D8442C1C45267D00B5A06B /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		56D8442D1C45267D00B5A06B /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
-		56D8442E1C45267D00B5A06B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		83EB8F3E85D1C26E5823B808 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD20594636B0D137211025FF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAA8BBF7B881ABFF24C69938 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +61,6 @@
 		568374951C3F97D3000D6E80 /* forceTest */ = {
 			isa = PBXGroup;
 			children = (
-				56D8441F1C45267D00B5A06B /* ExSwift */,
 				568374961C3F97D3000D6E80 /* AppDelegate.swift */,
 				568374981C3F97D3000D6E80 /* ViewController.swift */,
 				5683749A1C3F97D3000D6E80 /* Main.storyboard */,
@@ -99,28 +69,6 @@
 				568374A21C3F97D3000D6E80 /* Info.plist */,
 			);
 			path = forceTest;
-			sourceTree = "<group>";
-		};
-		56D8441F1C45267D00B5A06B /* ExSwift */ = {
-			isa = PBXGroup;
-			children = (
-				56D844201C45267D00B5A06B /* Array.swift */,
-				56D844211C45267D00B5A06B /* Bool.swift */,
-				56D844221C45267D00B5A06B /* Character.swift */,
-				56D844231C45267D00B5A06B /* Dictionary.swift */,
-				56D844241C45267D00B5A06B /* Double.swift */,
-				56D844251C45267D00B5A06B /* ExSwift.h */,
-				56D844261C45267D00B5A06B /* ExSwift.swift */,
-				56D844271C45267D00B5A06B /* Float.swift */,
-				56D844281C45267D00B5A06B /* Info.plist */,
-				56D844291C45267D00B5A06B /* Int.swift */,
-				56D8442A1C45267D00B5A06B /* NSArray.swift */,
-				56D8442B1C45267D00B5A06B /* NSDate.swift */,
-				56D8442C1C45267D00B5A06B /* Range.swift */,
-				56D8442D1C45267D00B5A06B /* Sequence.swift */,
-				56D8442E1C45267D00B5A06B /* String.swift */,
-			);
-			path = ExSwift;
 			sourceTree = "<group>";
 		};
 		DDAB9BB0A271EFD5B89D0775 /* Frameworks */ = {
@@ -175,7 +123,7 @@
 				TargetAttributes = {
 					568374921C3F97D3000D6E80 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = QKNZ2N2P2F;
+						DevelopmentTeam = RB4R9J58EV;
 					};
 				};
 			};
@@ -202,7 +150,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D844361C45267D00B5A06B /* Info.plist in Resources */,
 				568374A11C3F97D3000D6E80 /* LaunchScreen.storyboard in Resources */,
 				5683749E1C3F97D3000D6E80 /* Assets.xcassets in Resources */,
 				5683749C1C3F97D3000D6E80 /* Main.storyboard in Resources */,
@@ -264,21 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D8442F1C45267D00B5A06B /* Array.swift in Sources */,
-				56D844301C45267D00B5A06B /* Bool.swift in Sources */,
-				56D8443B1C45267D00B5A06B /* Sequence.swift in Sources */,
-				56D8443A1C45267D00B5A06B /* Range.swift in Sources */,
-				56D844341C45267D00B5A06B /* ExSwift.swift in Sources */,
-				56D844311C45267D00B5A06B /* Character.swift in Sources */,
 				568374991C3F97D3000D6E80 /* ViewController.swift in Sources */,
 				568374971C3F97D3000D6E80 /* AppDelegate.swift in Sources */,
-				56D844381C45267D00B5A06B /* NSArray.swift in Sources */,
-				56D844321C45267D00B5A06B /* Dictionary.swift in Sources */,
-				56D844371C45267D00B5A06B /* Int.swift in Sources */,
-				56D844331C45267D00B5A06B /* Double.swift in Sources */,
-				56D8443C1C45267D00B5A06B /* String.swift in Sources */,
-				56D844391C45267D00B5A06B /* NSDate.swift in Sources */,
-				56D844351C45267D00B5A06B /* Float.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

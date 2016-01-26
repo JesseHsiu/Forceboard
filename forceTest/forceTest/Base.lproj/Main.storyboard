@@ -51,6 +51,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="udY-bL-kO4" secondAttribute="trailing" constant="-20" id="aSE-38-lIp"/>
                             <constraint firstItem="2nk-h3-3Id" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iwQ-vx-Orw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="udY-bL-kO4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="detectView" destination="2nk-h3-3Id" id="O9e-h7-b3t"/>
