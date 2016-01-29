@@ -8,7 +8,7 @@
 
 #import "ZoomViewController.h"
 #define ZOOMTIME 0.2
-#define SCALESIZE 1.8
+#define SCALESIZE 2.0
 
 @implementation ZoomViewController
 
@@ -44,17 +44,19 @@
             CGPoint touchLocation = [touch locationInView:keyboardView];
             
             
+            
             [tmpTap addObject:[[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:touchLocation.x],[NSNumber numberWithFloat:touchLocation.y], nil]];
             
             CGPoint touchALLLocation = [touch locationInView:self.view];
-            CGRect screenRect = [[UIScreen mainScreen] bounds];
-            CGFloat screenWidth = screenRect.size.width;
-            CGFloat screenHeight = screenRect.size.height;
+//            CGRect screenRect = [[UIScreen mainScreen] bounds];
+//            CGFloat screenWidth = screenRect.size.width;
+//            CGFloat screenHeight = screenRect.size.height;
             
             CGAffineTransform transform = CGAffineTransformMakeScale(SCALESIZE, SCALESIZE);
             [UIView animateWithDuration:ZOOMTIME animations:^{
+                keyboardView.center = CGPointMake(orignCenter.x - (touchALLLocation.x - orignCenter.x) * 1.2, orignCenter.y - (touchALLLocation.y - orignCenter.y)* 1.2 );
                 keyboardView.transform = transform;
-                keyboardView.center = CGPointMake(screenWidth - touchLocation.x - 30,screenHeight- touchALLLocation.y);
+                
             }];
             
             

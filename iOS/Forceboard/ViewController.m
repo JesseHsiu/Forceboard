@@ -148,7 +148,7 @@
     [forceData addObject:[NSNumber numberWithFloat:forcePercentage]];
     
     
-    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
+//    NSLog(@"force - %f", touch.force/ touch.maximumPossibleForce);
     
     for (UIView *view in keyboardView.subviews)
     {
