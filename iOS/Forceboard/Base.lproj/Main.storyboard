@@ -1059,7 +1059,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cve-DG-SgQ">
-                                <rect key="frame" x="406" y="238" width="142" height="115"/>
+                                <rect key="frame" x="408" y="239" width="142" height="115"/>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73z-Vo-ifZ" customClass="KeysBtnView">
                                         <rect key="frame" x="1" y="2" width="13" height="30"/>
@@ -1611,7 +1611,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready -&gt; Press Next" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtF-xY-yzP" customClass="TaskLabel">
-                                <rect key="frame" x="406" y="217" width="142" height="20"/>
+                                <rect key="frame" x="408" y="218" width="142" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2de-tI-CyW"/>
@@ -1621,7 +1621,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ei-5H-EZh">
-                                <rect key="frame" x="406" y="177" width="142" height="40"/>
+                                <rect key="frame" x="408" y="178" width="142" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="P6B-Tf-4Lk"/>
@@ -1648,8 +1648,8 @@
                             <constraint firstItem="jQb-vz-ypC" firstAttribute="centerX" secondItem="xrW-Vn-kSR" secondAttribute="centerX" id="ita-mQ-7wg"/>
                             <constraint firstItem="KtF-xY-yzP" firstAttribute="top" secondItem="1Ei-5H-EZh" secondAttribute="bottom" id="jhJ-8L-EK7"/>
                             <constraint firstItem="M8W-eo-sYB" firstAttribute="top" secondItem="jQb-vz-ypC" secondAttribute="bottom" constant="70" id="l6V-z6-fDP"/>
-                            <constraint firstAttribute="centerX" secondItem="Cve-DG-SgQ" secondAttribute="centerX" constant="-177" id="utW-MG-LV0"/>
-                            <constraint firstAttribute="centerY" secondItem="Cve-DG-SgQ" secondAttribute="centerY" constant="5" id="vs5-06-7pY"/>
+                            <constraint firstAttribute="centerX" secondItem="Cve-DG-SgQ" secondAttribute="centerX" constant="-179" id="utW-MG-LV0"/>
+                            <constraint firstAttribute="centerY" secondItem="Cve-DG-SgQ" secondAttribute="centerY" constant="4" id="vs5-06-7pY"/>
                             <constraint firstItem="GOP-n5-nQq" firstAttribute="top" secondItem="jQb-vz-ypC" secondAttribute="bottom" constant="8" id="xcA-Ih-ql7"/>
                         </constraints>
                         <variation key="default">
